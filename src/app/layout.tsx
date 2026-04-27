@@ -36,12 +36,12 @@ export default async function RootLayout({
         />
       </head>
 
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full bg-[#121c2d] flex flex-col">
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LocaleProvider initialLocale={locale as "en" | "ru"}>
             <AuthLoader>
               <HeaderSwitch />
-              {children}
+              <div className="rounded-4xl ">{children}</div>
             </AuthLoader>
           </LocaleProvider>
         </NextIntlClientProvider>

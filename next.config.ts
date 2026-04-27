@@ -9,7 +9,7 @@ const withNextIntl = createNextIntlPlugin(
 const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
-  basePath: isProd ? "/app" : "",
+  basePath: isProd ? "" : "",
 
   async rewrites() {
     if (isProd) return [];
