@@ -24,6 +24,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="icon" href="/Dark_eyes_logo.svg" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -48,4 +49,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
