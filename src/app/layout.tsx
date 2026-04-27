@@ -25,6 +25,8 @@ export default async function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="icon" href="/Dark_eyes_logo.svg" />
+        <link rel="icon" href="/Dark_eyes_logo.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/Dark_eyes_logo.svg" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
