@@ -1,0 +1,100 @@
+.toastContainer {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toastItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 400px;
+  max-width: 90vw;
+  padding: 16px 20px;
+  background: var(--toast-bg);
+  border-radius: 8px;
+  box-shadow: var(--toast-shadow);
+  pointer-events: auto;
+  border: 1px solid var(--toast-border);
+  animation: toastIn 0.3s ease-out;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toastItem.error {
+  border-color: var(--toast-error-border);
+  background: var(--toast-error-bg);
+}
+
+.toastItem.success {
+  border-color: var(--toast-success-border);
+  background: var(--toast-success-bg);
+}
+
+.toastItem.info {
+  border-color: var(--toast-info-border);
+  background: var(--toast-info-bg);
+}
+
+.toastIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.toastText {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--toast-fg);
+}
+
+.toastItem.error .toastText {
+  color: var(--toast-error-text);
+}
+
+.toastItem.success .toastText {
+  color: var(--toast-success-text);
+}
+
+.toastItem.info .toastText {
+  color: var(--toast-info-text);
+}
+
+.toastClose {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+}
+
+.toastClose:hover {
+  color: var(--fg);
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}

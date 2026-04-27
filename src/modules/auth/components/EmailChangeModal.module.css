@@ -1,0 +1,191 @@
+/* ===== Overlay ===== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== Modal ===== */
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: scaleIn 0.18s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.96) translateY(4px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.14s;
+}
+.closeBtn:hover {
+  background: var(--bg-alt);
+}
+
+/* ===== Body ===== */
+.body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.stepTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.hint strong {
+  color: var(--fg);
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+.fieldInput:focus {
+  border-color: var(--accent-solid);
+}
+.fieldInput::placeholder {
+  color: var(--muted);
+}
+
+.codeInput {
+  font-size: 20px;
+  letter-spacing: 0.25em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.resendBtn {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #008cff;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  text-align: left;
+  transition: color 0.14s;
+}
+.resendBtn:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.errorMsg {
+  font-size: 12px;
+  color: var(--danger);
+  margin: 0;
+}
+
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.btnCancel {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.btnCancel:hover {
+  background: var(--bg-alt);
+}
+
+.btnSave {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #006dfa;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.btnSave:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+.btnSave:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

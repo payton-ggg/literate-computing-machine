@@ -1,0 +1,212 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 540px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+  animation: fadeSlideUp 0.3s ease;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 34px 30px 16px;
+}
+
+.header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.btnClose {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.body {
+  padding: 0 30px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.rowGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.required::after {
+  content: " *";
+  color: var(--danger);
+}
+
+.radioGroup {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.customRadio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.customRadio input[type="radio"] {
+  display: none;
+}
+
+.radioCircle {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.customRadio input[type="radio"]:checked + .radioCircle {
+  border-color: var(--accent);
+}
+
+.customRadio input[type="radio"]:checked + .radioCircle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--fg);
+  background: var(--bg-alt);
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+  border-color: var(--accent);
+}
+
+.formTextarea {
+  height: 90px;
+  resize: none;
+}
+
+.formHint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.formSelect {
+  appearance: none;
+}
+
+.selectChevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 30px;
+}
+
+.btnSecondary {
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btnSecondary:hover {
+  background: var(--bg-alt);
+}
+
+.btnPrimary {
+  padding: 8px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btnPrimary:hover {
+  opacity: 0.9;
+}

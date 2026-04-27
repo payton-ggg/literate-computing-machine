@@ -1,0 +1,68 @@
+.column {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  position: sticky;
+  top: 32px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 24px 0;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--fg);
+  background: var(--bg-alt);
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.formInput:focus,
+.formSelect:focus {
+  border-color: var(--accent);
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.formSelect {
+  appearance: none;
+}
+
+.selectChevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .column {
+    position: static;
+    top: auto;
+  }
+}

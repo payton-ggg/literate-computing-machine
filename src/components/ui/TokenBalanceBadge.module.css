@@ -1,0 +1,73 @@
+.tokenBalanceNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  padding-left: 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 8%;
+}
+
+.tokenBalanceNav:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.balancePill {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pillLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.pillValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.addFundsBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.addFundsBtn:hover {
+  background: var(--header-logo-dot, #0ea5e9);
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.4);
+}
+
+.addFundsBtn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .tokenBalanceNav {
+    padding-left: 12px;
+    gap: 8px;
+  }
+
+  .pillLabel {
+    display: none;
+  }
+}

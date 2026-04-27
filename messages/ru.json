@@ -1,0 +1,1241 @@
+{
+  "toasts": {
+    "___dummy": "test",
+    "updated": "Обновлено",
+    "saved": "Сохранено",
+    "deleted": "Удалено",
+    "error": "Ошибка",
+    "success": "Успешно",
+    "research": {
+      "updated": "Исследование успешно обновлено",
+      "deleted": "Исследование удалено",
+      "deleteFailed": "Ошибка при удалении: {error}",
+      "updateFailed": "Ошибка при обновлении: {error}",
+      "uploadSuccess": "Файлы ({count}) успешно загружены",
+      "uploadFailed": "Загрузка не удалась: {error}"
+    },
+    "folder": {
+      "created": "Проект успешно создан",
+      "updated": "Проект обновлен",
+      "deleted": "Проект удален",
+      "createFailed": "Ошибка при создании папки: {error}",
+      "updateFailed": "Ошибка при обновлении папки: {error}",
+      "deleteFailed": "Ошибка при удалении папки: {error}",
+      "assigned": "Назначено в проект \"{name}\"",
+      "removed": "Удалено из проекта"
+    },
+    "auth": {
+      "pleaseVerify": "Пожалуйста, подтвердите ваш email"
+    }
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "create": "Создать",
+    "close": "Закрыть",
+    "back": "Назад",
+    "refresh": "Обновить",
+    "open": "Открыть",
+    "saving": "Сохранение...",
+    "saved": "Изменения сохранены",
+    "error": "Ошибка",
+    "success": "Успешно",
+    "yes": "Да",
+    "no": "Нет",
+    "all": "Все",
+    "none": "Нет",
+    "search": "Поиск",
+    "filter": "Фильтр",
+    "clear": "Очистить",
+    "confirm": "Подтвердить",
+    "ok": "ОК",
+    "processing": "Обработка...",
+    "selectAll": "Выбрать все",
+    "add": "Добавить",
+    "help": "Справка",
+    "fullScreen": "На весь экран",
+    "export": "Экспорт",
+    "apply": "Применить",
+    "viewDetails": "Подробнее"
+  },
+  "header": {
+    "logo": "zernote",
+    "aboutUs": "О нас",
+    "login": "Войти",
+    "logout": "Выйти",
+    "settings": "Настройки",
+    "language": "Язык",
+    "themeDark": "Темная тема",
+    "themeLight": "Светлая тема",
+    "nav": {
+      "interviews": "Исследования",
+      "ideas": "Идеи",
+      "aria": "Разделы"
+    }
+  },
+  "footer": {
+    "interviews": "Исследования",
+    "ideas": "Идеи",
+    "analysis": "Анализ",
+    "library": "Библиотека"
+  },
+  "modals": {
+    "logout": {
+      "title": "Выход из аккаунта",
+      "text": "Вы действительно хотите выйти из аккаунта?",
+      "confirm": "Да, выйти"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Вход",
+      "username": "Имя пользователя",
+      "usernameOrEmail": "Имя пользователя или Email",
+      "password": "Пароль",
+      "submit": "Войти",
+      "submitting": "Вход...",
+      "createAccount": "Создать аккаунт",
+      "enterCredentials": "Введите имя пользователя и пароль",
+      "invalidCredentials": "Неверное имя пользователя или пароль",
+      "verificationFailed": "Не удалось проверить учётные данные",
+      "success": "Вход выполнен"
+    },
+    "continueWithGoogle": "Продолжить через Google",
+    "or": "или",
+    "register": {
+      "title": "Регистрация",
+      "username": "Имя пользователя",
+      "email": "Email",
+      "password": "Пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "submit": "Зарегистрироваться",
+      "submitting": "Регистрация...",
+      "hasAccount": "Уже есть аккаунт? Войти",
+      "success": "Регистрация успешна",
+      "failed": "Не удалось зарегистрироваться",
+      "validation": {
+        "usernameRequired": "Введите имя пользователя",
+        "usernamePattern": "Имя пользователя: 3-30 символов (буквы, цифры, ._-)",
+        "emailRequired": "Введите email",
+        "emailInvalid": "Введите корректный email",
+        "passwordRequired": "Введите пароль",
+        "passwordPattern": "Пароль: мин. 8 символов, заглавная и строчная латинские буквы, цифра, спецсимвол",
+        "confirmRequired": "Подтвердите пароль",
+        "passwordMismatch": "Пароли не совпадают"
+      }
+    },
+    "verify": {
+      "title": "Подтверждение Email",
+      "subtitle": "Мы отправили код подтверждения на {email}",
+      "codeLabel": "Код подтверждения",
+      "placeholder": "000000",
+      "submit": "Подтвердить Email",
+      "submitting": "Проверка...",
+      "resend": "Отправить повторно",
+      "resendWait": "Повторная отправка через {time}с",
+      "resendSending": "Отправка...",
+      "success": "Email подтверждён! Перенаправление...",
+      "resendSuccess": "Новый код отправлен!",
+      "invalidCode": "Неверный код подтверждения",
+      "expiredCode": "Код истёк, запросите новый",
+      "failed": "Ошибка подтверждения"
+    },
+    "setupProfile": {
+      "title": "Добро пожаловать!",
+      "hint": "Пожалуйста, выберите имя пользователя. Это имя будет использоваться в системе.",
+      "usernameLabel": "Имя пользователя",
+      "usernamePlaceholder": "Напр., ivan_ivanov"
+    },
+    "accountSettings": {
+      "accountSection": "Ваш аккаунт",
+      "title": "Настройки аккаунта",
+      "emailLabel": "Почта",
+      "newEmailLabel": "Новая почта",
+      "newEmailCodeLabel": "Код с новой почты",
+      "currentPasswordLabel": "Текущий пароль",
+      "newPasswordLabel": "Новый пароль",
+      "confirmPasswordLabel": "Подтвердите новый пароль",
+      "passwordLabel": "Пароль",
+      "passwordSectionTitle": "Смена пароля",
+      "currentPasswordPlaceholder": "Текущий пароль",
+      "newPasswordPlaceholder": "Новый пароль",
+      "confirmPasswordPlaceholder": "Подтвердите новый пароль",
+      "currentPasswordRequired": "Введите текущий пароль",
+      "forgotPasswordLink": "Забыли пароль?",
+      "emailHint": "Этот email используется для входа и уведомлений.",
+      "changeEmail": "Изменить почту",
+      "currentEmailStepHint": "Мы отправили код на вашу текущую почту. Введите код, чтобы подтвердить, что это вы.",
+      "currentEmailCodePlaceholder": "Код из письма",
+      "currentEmailCodeRequired": "Введите код из письма",
+      "currentEmailSubmit": "Подтвердить почту",
+      "currentEmailCodeSent": "Код отправлен на текущий email",
+      "newEmailStepHint": "Введите новый email и код, который мы отправили на него.",
+      "newEmailCodePlaceholder": "Код с нового email",
+      "newEmailCodeRequired": "Введите код с нового email",
+      "newEmailSubmit": "Сохранить новую почту",
+      "newEmailCodeSent": "Код отправлен на новый email",
+      "reservePasswordTitle": "Установить пароль",
+      "reservePasswordPlaceholder": "Введите пароль",
+      "reservePasswordConfirmPlaceholder": "Подтвердите пароль",
+      "changeEmailTitle": "Смена почты",
+      "enterCodeTitle": "Введите код",
+      "newEmailHint": "Введите новый адрес электронной почты",
+      "resendIn": "Отправить код повторно через",
+      "resendCode": "Отправить повторно",
+      "codePlaceholder": "6-значный код",
+      "profileSettings": "Профиль / Настройки"
+    },
+    "passwordValidation": {
+      "noCyrillic": "Пароль должен содержать только латинские символы (кириллица недопустима)",
+      "tooShort": "Пароль должен содержать не менее 8 символов",
+      "tooLong": "Пароль должен быть не длиннее 64 символов",
+      "needUppercase": "Пароль должен содержать хотя бы одну заглавную букву (A-Z)",
+      "needLowercase": "Пароль должен содержать хотя бы одну строчную букву (a-z)",
+      "needDigit": "Пароль должен содержать хотя бы одну цифру (0-9)",
+      "needSpecial": "Пароль должен содержать хотя бы один спецсимвол (!, #, $, % и др.)"
+    },
+    "forgotPassword": {
+      "title": "Сброс пароля",
+      "subtitle": "Введите email для получения инструкций",
+      "emailLabel": "Email",
+      "submit": "Отправить ссылку",
+      "submitting": "Отправка...",
+      "success": "Инструкции отправлены на ваш email",
+      "backToLogin": "Назад ко входу"
+    },
+    "resetPassword": {
+      "title": "Новый пароль",
+      "passwordLabel": "Новый пароль",
+      "placeholder": "Минимум 8 символов",
+      "submit": "Сменить пароль",
+      "submitting": "Смена пароля...",
+      "success": "Пароль успешно изменен! Перенаправление...",
+      "failed": "Не удалось сменить пароль",
+      "invalidTokenTitle": "Ссылка устарела",
+      "invalidTokenMessage": "Ссылка для сброса пароля недействительна или уже истекла. Запросите новую.",
+      "requestNewLink": "Запросить новую ссылку"
+    }
+  },
+  "interviews": {
+    "startResearch": "Начать исследование",
+    "title": "Исследования",
+    "loading": "Загрузка...",
+    "sorted": "Отсортированные",
+    "newCard": "+ Новая карточка",
+    "createFolder": "+ Создать проект",
+    "noInterviews": "Пока нет исследований. Нажмите \"Новая карточка\" чтобы начать.",
+    "loadingInterviews": "Загрузка исследований...",
+    "loadError": "Не удалось загрузить исследования",
+    "foldersLoadError": "Не удалось загрузить проекты. Обновите страницу.",
+    "noDescription": "Нет описания",
+    "transcriptReady": "✓ Транскрипт готов",
+    "folder": "Проект",
+    "uncategorized": "Без проекта",
+    "uncategorizedDescription": "Исследования без проекта",
+    "created": "Создано",
+    "backToList": "← Назад к списку",
+    "notFound": "Интервью не найдено.",
+    "returnToList": "Вернуться к списку",
+    "loadingDetails": "Загрузка данных исследования...",
+    "loadFailed": "Не удалось загрузить исследование",
+    "uploadInterview": "Загрузить исследование",
+    "sortRecent": "Недавние",
+    "sortOldest": "Старые",
+    "searchFoldersPlaceholder": "Поиск по проектам",
+    "searchInterviewsPlaceholder": "Поиск по исследованиям",
+    "deleteFolderTitle": "Удаление проекта",
+    "deleteFolderConfirm": "Удалить проект \"{name}\"? Карточки не будут удалены.",
+    "countSuffix": {
+      "million": " млн",
+      "thousand": " тыс"
+    },
+    "autoReevaluate": {
+      "title": "Обновление инсайтов и идей",
+      "message": "После обработки нового исследования инсайты и идеи проекта будут автоматически обновлены.",
+      "confirm": "Продолжить"
+    },
+    "renameFolder": {
+      "title": "Переименовать проект",
+      "placeholder": "Новое название"
+    },
+    "selection": {
+      "select": "Выбрать",
+      "done": "Готово",
+      "cancelSelect": "Отменить",
+      "selected": "Выбрано",
+      "selectedCountLabel": "Выбрано {count}: ",
+      "resetSelection": "Сбросить",
+      "moveToFolder": "В проект",
+      "loadMore": "Загрузить еще",
+      "assignToFolder": "📁 В проект",
+      "delete": "🗑 Удалить",
+      "deleteTitle": "Удалить карточки",
+      "deleteConfirm": "Удалить выбранные карточки ({count})? Это действие нельзя отменить.",
+      "deleteError": "Не удалось удалить некоторые карточки",
+      "deleteConfirmTitle": "Вы уверены?",
+      "deleteConfirmMessage": "Удаление является необратимым — восстановить данные после этого не получится.",
+      "deleteConfirmBack": "Назад",
+      "deleteConfirmYes": "Да, удалить",
+      "movedToFolder": "{count} карточек перемещено в \"{folder}\"",
+      "removedFromFolder": "{count} карточек убрано из проекта",
+      "unknownError": "Неизвестная ошибка"
+    },
+    "insightsHint": "Добавьте карточки транскрибаций в проект чтобы создать карту инсайтов",
+    "results": "результатов"
+  },
+  "card": {
+    "edit": "✎ Редактировать",
+    "save": "✓ Сохранить",
+    "saveFailed": "Не удалось сохранить данные. Попробуйте ещё раз.",
+    "titleTooLong": "Название не должно превышать 255 символов. Сократите название и попробуйте снова.",
+    "cancel": "✕ Отмена",
+    "assignFolder": "📁 Проект",
+    "changeFolder": "📁 Сменить проект",
+    "retry": "↻ Повторить",
+    "delete": "🗑 Удалить",
+    "deleteConfirmTitle": "Удалить интервью?",
+    "deleteConfirmMessage": "Интервью и все связанные данные (транскрипт, инсайты, evidence) будут удалены безвозвратно.",
+    "deleteConfirmYes": "Да, удалить",
+    "deleteConfirmBack": "Отмена",
+    "description": "Описание",
+    "noDescription": "Нет описания",
+    "audio": "Аудио",
+    "transcriptTitle": "Транскрипт",
+    "notes": "Заметки",
+    "noNotes": "Нет заметок",
+    "notesToolbar": {
+      "bold": "Жирный",
+      "italic": "Курсив",
+      "header": "Заголовок",
+      "ul": "Список"
+    },
+    "inlineEditing": {
+      "saving": "Сохранение...",
+      "saved": "Сохранено"
+    },
+    "downloads": "Загрузки",
+    "downloading": "Downloading file...",
+    "playbackError": "Failed to play audio.",
+    "downloadAudio": "⬇ Скачать аудио (.ogg)",
+    "downloadTranscript": "⬇ Скачать транскрипт (.txt)",
+    "downloadingAudio": "Загрузка аудио...",
+    "downloadingTranscript": "Загрузка транскрипта...",
+    "downloadAudioFailed": "Не удалось скачать аудио. Попробуйте ещё раз.",
+    "downloadTranscriptFailed": "Не удалось скачать транскрипт. Попробуйте ещё раз.",
+    "retryFailed": "Не удалось повторить обработку. Попробуйте ещё раз.",
+    "metadata": {
+      "id": "ID",
+      "created": "Создано",
+      "updated": "Обновлено"
+    },
+    "speakerNames": {
+      "assign": "👤 Назначить имена",
+      "title": "Назначить имена спикерам",
+      "description": "Назначьте собственные имена обнаруженным спикерам.",
+      "noSpeakers": "Спикеры не обнаружены. Диаризация может быть отключена.",
+      "speaker": "Спикер",
+      "firstPhrase": "Первая фраза",
+      "customName": "Имя",
+      "enterName": "Введите имя для спикера",
+      "phrases": "фраз",
+      "phrase": "фраза",
+      "assigning": "Назначение...",
+      "assignButton": "Назначить имена",
+      "validation": {
+        "empty": "Имя не может быть пустым",
+        "tooLong": "Имя должно быть не более 100 символов",
+        "invalidChars": "Допустимы только буквы, цифры, пробелы, дефисы и подчёркивания",
+        "reserved": "Имя не может содержать зарезервированный шаблон",
+        "fixErrors": "Исправьте ошибки валидации"
+      }
+    },
+    "transcript": {
+      "formatted": "Форматированный",
+      "plain": "Простой",
+      "viewDiarized": "По ролям",
+      "viewPlain": "Простой текст",
+      "editSpeakers": "👤 Редактировать спикеров",
+      "expand": "Развернуть транскрипт",
+      "collapse": "Свернуть транскрипт",
+      "noTranscript": "Транскрипт недоступен",
+      "pendingTranscript": "Транскрипт появится после обработки...",
+      "formatError": "Транскрипт доступен, но не удалось автоматически отформатировать.",
+      "diarizationDisabled": "Диаризация отключена для этого исследования. Назначение имён недоступно."
+    },
+    "upload": {
+      "dropFiles": "Перетащите аудио/видео/текст файлы сюда",
+      "orBrowse": "или нажмите для выбора",
+      "formats": "Поддерживаемые форматы: mp3, mp4, ogg, aac, webm, m4a, mov, mkv, txt, md, pdf",
+      "maxSize": "Максимальный размер файла: 2 ГБ",
+      "filesSelected": "{count} файл(ов) выбрано",
+      "language": "Язык",
+      "russian": "Русский",
+      "english": "Английский",
+      "popularLanguages": "Популярные",
+      "otherLanguages": "Другие языки",
+      "startProcessing": "🚀 Начать обработку",
+      "invalidFormat": "Неподдерживаемый формат: {name}",
+      "fileTooLarge": "Файл слишком большой: {name} (макс. 2ГБ)",
+      "uploadFailed": "Ошибка при загрузке исследования",
+      "fileProcessingError": "Ошибка обработки файла (неподдерживаемый формат или повреждённый файл)",
+      "processingFailed": "Ошибка обработки",
+      "retryProcessing": "↻ Повторить обработку",
+      "uploadFile": "Загрузить файл",
+      "addToFolder": "Добавить в проект"
+    },
+    "progress": {
+      "uploading": "Загрузка...",
+      "processing": "Обработка...",
+      "transcribing": "Транскрибирование...",
+      "complete": "Готово",
+      "steps": {
+        "upload": "Загрузка",
+        "process": "Обработка",
+        "transcribe": "Транскрипт"
+      }
+    },
+    "formatting": {
+      "h1": "H1",
+      "bold": "Жирный",
+      "italic": "Курсив"
+    },
+    "translation": {
+      "button": "Перевести",
+      "original": "Оригинал",
+      "translated": "Переведено",
+      "translating": "Перевод...",
+      "selectLanguage": "Перевести на",
+      "error": "Ошибка перевода",
+      "translateTo": "Перевести на"
+    }
+  },
+  "status": {
+    "empty": "Пусто",
+    "uploading": "Загрузка",
+    "converting": "Конвертация",
+    "analyzing": "Анализ",
+    "ready": "Готово",
+    "failed": "Ошибка",
+    "titles": {
+      "empty": "Исследование создано, файлов нет",
+      "uploading": "Файлы загружаются на сервер",
+      "converting": "Конвертация аудио в .ogg формат",
+      "analyzing": "Генерация транскрипта и резюме",
+      "ready": "Обработка завершена, можно скачать",
+      "failed": "Обработка не удалась, нажмите для повтора"
+    }
+  },
+  "dialogs": {
+    "createCard": {
+      "title": "Создать новую карточку",
+      "titleLabel": "Название",
+      "titlePlaceholder": "Введите название",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Введите описание",
+      "sidesLabel": "Участники",
+      "sidesPlaceholder": "например, Иван, Мария",
+      "notesLabel": "Заметки",
+      "notesPlaceholder": "Введите заметки",
+      "create": "Создать карточку",
+      "creating": "Создание...",
+      "failed": "Не удалось создать карточку",
+      "titleTooLong": "Название не должно превышать 255 символов. Сократите название и попробуйте снова."
+    },
+    "createFolder": {
+      "title": "Создать проект",
+      "nameLabel": "Название",
+      "namePlaceholder": "Введите название проекта",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Введите описание проекта",
+      "create": "Создать проект",
+      "creating": "Создание...",
+      "failed": "Не удалось создать проект",
+      "networkError": "Нет связи с сервером. Проверьте подключение к интернету.",
+      "validationError": "Неверные данные. Проверьте название и описание."
+    },
+    "assignFolder": {
+      "title": "Назначить проект",
+      "folderLabel": "Проект",
+      "placeholder": "Выберите проект",
+      "hint": "Оставьте пустым, чтобы убрать из проекта (переместить в \"Без проекта\")",
+      "assign": "Назначить"
+    },
+    "lowBalance": {
+      "title": "Недостаточно баланса",
+      "message": "Выбранные файлы требуют {required}ч, но на вашем счёте только {available}ч.",
+      "topUp": "Пожалуйста, пополните баланс для продолжения.",
+      "buyHours": "Купить часы",
+      "menu": "Меню"
+    }
+  },
+  "billing": {
+    "title": "Оплата",
+    "backToInterviews": "← Назад к исследованиям",
+    "balance": {
+      "title": "Ваш баланс",
+      "hoursSuffix": "ч",
+      "totalAvailable": "Всего доступно",
+      "free": "Бесплатно (пробный):",
+      "paid": "Оплачено:"
+    },
+    "packages": {
+      "title": "Купить часы",
+      "popular": "Популярный",
+      "perHour": "/ час",
+      "buy": "Купить"
+    },
+    "custom": {
+      "title": "Свой объём",
+      "description": "Нужно другое количество? Укажите количество часов.",
+      "hours": "Часы",
+      "total": "Итого:",
+      "buyHours": "Купить {count} ч."
+    },
+    "time": {
+      "hours": "{count} часов",
+      "hour": "{count} час",
+      "hours24": "{count} часа",
+      "minutes": "м",
+      "hourShort": "ч",
+      "minuteShort": "м",
+      "format": "{h}ч {m}м"
+    },
+    "page": {
+      "title": "Биллинг и использование",
+      "subtitle": "Управляйте тарифом, балансом токенов, PPU и недавними списаниями.",
+      "openPricing": "Открыть тарифы"
+    },
+    "tokenBadge": {
+      "label": "Токены"
+    },
+    "currentPlan": {
+      "title": "Текущий тариф",
+      "subtitle": "Статус подписки синхронизирован с Paddle",
+      "status": "Статус",
+      "renewalDate": "Следующее продление",
+      "upgrade": "Повысить",
+      "downgrade": "Понизить",
+      "cancel": "Отменить подписку"
+    },
+    "tokenBalance": {
+      "title": "Баланс токенов",
+      "persistent": "Постоянные",
+      "nonPersistent": "Непостоянные",
+      "frozen": "Замороженные",
+      "effective": "Эффективно доступно"
+    },
+    "ppu": {
+      "title": "Pay-per-use",
+      "subtitle": "Дополнительное списание после исчерпания токенов тарифа",
+      "limit": "Лимит на цикл (USD)",
+      "used": "Использовано в цикле, центы",
+      "pending": "Ожидает списания, центы",
+      "remaining": "Осталось, центы",
+      "debt": "Долг, центы"
+    },
+    "usageHistory": {
+      "title": "История использования",
+      "date": "Дата",
+      "operation": "Операция",
+      "tokens": "Токены",
+      "balanceAfter": "Баланс после",
+      "empty": "Транзакций токенов пока нет."
+    },
+    "insufficient": {
+      "title": "Недостаточно токенов",
+      "body": "Для этого действия нужно {estimated} токенов, а сейчас доступно только {available}.",
+      "ppuLimitBody": "Для этого действия нужно примерно {estimated} токенов. В PPU у вас осталось {ppuRemainingCents} центов из лимита {ppuSpendingLimitCents}, но этот запуск потребует примерно {estimatedPpuCents} центов.",
+      "upgradePlan": "Улучшить тариф",
+      "enablePpu": "Включить PPU",
+      "increaseLimit": "Увеличить лимит"
+    },
+    "messages": {
+      "loadBalanceError": "Не удалось загрузить баланс. Обновите страницу.",
+      "loadPackagesError": "Не удалось загрузить пакеты. Обновите страницу.",
+      "purchaseSuccess": "Успешно куплено {hours} часов!",
+      "purchaseError": "Не удалось оформить платёж. Попробуйте ещё раз.",
+      "paymentServiceUnavailable": "Сервис оплаты временно недоступен. Попробуйте позже.",
+      "paymentFailed": "Не удалось оформить платёж. Попробуйте ещё раз или обратитесь в поддержку.",
+      "loadSubscriptionError": "Не удалось загрузить данные подписки.",
+      "loadTransactionsError": "Не удалось загрузить историю токенов.",
+      "ppuSaved": "Настройки PPU обновлены.",
+      "ppuSaveError": "Не удалось сохранить настройки PPU.",
+      "planUpdated": "Запрос на смену тарифа отправлен.",
+      "planUpdateError": "Не удалось сменить тариф.",
+      "cancelScheduled": "Отмена запланирована на конец текущего периода.",
+      "cancelError": "Не удалось отменить подписку."
+    }
+  },
+  "pricing": {
+    "title": "Тарифы",
+    "subtitle": "Выберите план под вашу интенсивность исследований.",
+    "openBilling": "Открыть биллинг",
+    "cta": "Выбрать тариф",
+    "checkoutError": "Не удалось открыть checkout. Попробуйте ещё раз.",
+    "ppu": {
+      "title": "Дополнение pay-per-use",
+      "description": "Если PPU включен, перерасход токенов будет списан в конце цикла в пределах установленного лимита."
+    }
+  },
+  "buy": {
+    "title": "Спецпредложение",
+    "subtitle": "Разовая оплата доступа к транскрибации на созвоне.",
+    "price": "$40",
+    "pay": "Оплатить",
+    "processing": "Открываем оплату...",
+    "back": "На сайт",
+    "messages": {
+      "paymentServiceUnavailable": "Сервис оплаты временно недоступен. Попробуйте позже.",
+      "paymentFailed": "Не удалось оформить платёж. Попробуйте ещё раз."
+    }
+  },
+  "audioPlayer": {
+    "processing": "Аудио ещё обрабатывается",
+    "processingHint": "Вернитесь позже или обновите страницу.",
+    "loading": "Загружаем аудио…",
+    "loadingHint": "Это может занять несколько секунд.",
+    "unsupportedFormat": "Браузер не поддерживает формат OGG (Opus).",
+    "unsupportedHint": "Скачайте файл и откройте его на устройстве или используйте другой браузер (Chrome, Edge, Firefox).",
+    "downloadFile": "Скачать файл",
+    "download": "Скачать",
+    "downloading": "Загрузка файла...",
+    "playbackError": "Не получилось воспроизвести аудио.",
+    "pause": "Пауза",
+    "play": "Воспроизвести",
+    "mute": "Выключить звук",
+    "unmute": "Включить звук",
+    "volumeLow": "Тихо",
+    "volumeMedium": "Средняя громкость",
+    "volumeHigh": "Громко",
+    "browserNotSupported": "Ваш браузер не поддерживает воспроизведение OGG. Скачайте файл.",
+    "errors": {
+      "formatNotSupported": "Формат аудио не поддерживается вашим браузером.",
+      "serverError": "Сервер вернул ошибку: {status} {statusText}{details}",
+      "fetchFailed": "Не удалось получить аудиофайл. Проверьте подключение или попробуйте обновить страницу.",
+      "unexpectedType": "Сервер вернул неожиданный тип данных (ожидалось audio/*). Скачайте файл вручную.",
+      "invalidResponse": "Получен некорректный ответ от сервера.",
+      "playerNotReady": "Плеер не успел подготовиться к загрузке аудио. Попробуйте обновить страницу.",
+      "prepareFailed": "Не удалось подготовить аудиофайл.",
+      "loadFailed": "Не удалось загрузить файл. Попробуйте обновить страницу.",
+      "unknown": "Неизвестная ошибка воспроизведения.",
+      "aborted": "Загрузка аудио была прервана.",
+      "network": "Проблема с сетью при загрузке аудио.",
+      "decode": "Не удалось декодировать аудио. Файл, возможно, поврежден.",
+      "srcNotSupported": "Формат аудио не поддерживается или файл недоступен. Скачайте файл и откройте его локально.",
+      "playFailed": "Не удалось запустить воспроизведение.",
+      "downloadFailed": "Не удалось скачать файл. Попробуйте ещё раз или обратитесь к администратору."
+    }
+  },
+  "insights": {
+    "graphView": "📊 Граф инсайтов",
+    "notInFolder": "Переместите в исследование для извлечения инсайтов",
+    "noTranscript": "Транскрипт недоступен",
+    "extractSuccess": "Извлечено {count} инсайтов",
+    "extractError": "Ошибка извлечения инсайтов",
+    "graph": {
+      "title": "Граф инсайтов",
+      "loading": "Загрузка данных...",
+      "error": "Ошибка загрузки",
+      "nodeDistance": "Расстояние между нодами",
+      "repulsionForce": "Сила отталкивания",
+      "settings": "Настройки графа",
+      "exportAll": "Экспортировать все",
+      "ungrouped": "Негруппированный",
+      "csv": {
+        "name": "Название",
+        "description": "Описание",
+        "group": "Группа",
+        "interview": "Исследование",
+        "quote": "Цитата",
+        "speaker": "Спикер",
+        "timestamp": "Таймкод"
+      },
+      "legend": {
+        "castdev": "Кастдев (исследование)",
+        "group": "Группа инсайтов",
+        "insight": "Инсайт",
+        "insightInGroup": "Инсайт (в группе)",
+        "ungrouped": "Негруппированный инсайт"
+      },
+      "controlsPanel": {
+        "title": "Управление графом",
+        "autoCollapse": "Авто-сворачивание",
+        "legendAndVisibility": "Легенда и видимость:",
+        "toggleUngrouped": "Показать/скрыть все одиночные",
+        "toggleGroups": "Показать/скрыть все группы",
+        "toggleExtCastdev": "Показать/скрыть от интервью",
+        "toggleExtInsight": "Показать/скрыть внутри групп",
+        "collapseAll": "Свернуть все узлы",
+        "showGrid": "Отображать сетку",
+        "untangle": "Распутать узлы",
+        "pullNodes": "Стянуть к центру",
+        "baseNode": "Базовый узел"
+      },
+      "hint": "Кликните на группу чтобы увидеть инсайты. Кликните ещё раз чтобы скрыть.",
+      "panel": {
+        "insights": "Инсайты",
+        "relatedInterviews": "Связанные исследования",
+        "interview": "Исследование",
+        "insightTitle": "Инсайт"
+      },
+      "feedback": {
+        "step1Title": "Насколько полезными<br>оказались инсайты?",
+        "useful": "Полезно",
+        "notVery": "Не очень",
+        "step2Title": "Что было не так?",
+        "reasonSuperficial": "Инсайты поверхностные",
+        "reasonOffTopic": "Не по теме интервью",
+        "reasonMissed": "Пропущены важные моменты",
+        "reasonHardToUnderstand": "Сложно понять",
+        "reasonOther": "Другое",
+        "placeholder": "Например: инсайты слишком общие или пропущены важные моменты интервью",
+        "send": "Отправить",
+        "thanksTitle": "Спасибо за ваш ответ!",
+        "thanksSubtitle": "Это помогает нам улучшать<br>продукт"
+      },
+      "backToFolder": "← Назад к проекту"
+    }
+  },
+  "landing": {
+    "nav": {
+      "register": "Регистрация",
+      "login": "Войти",
+      "process": "Процесс",
+      "features": "Фичи",
+      "about": "О нас"
+    },
+    "hero": {
+      "kicker": "AI-помощник для product и project менеджеров",
+      "title": "Расшифровка ваших кастдевов по ролям",
+      "subtitle": "Загружайте записи исследований, получайте структурированную расшифровку по ролям и заметкам - без ручной рутины.",
+      "cta": "Зарегистрироваться"
+    },
+    "process": {
+      "title": "Как это работает",
+      "steps": [
+        {
+          "title": "Загружаете аудио или видео",
+          "text": "Поддерживаем zoom-записи, файлы с диктофона, mp4, mp3 и другие популярные форматы."
+        },
+        {
+          "title": "Получаете текст по ролям",
+          "text": "Ассистент автоматически разбивает кастдев по ролям участников."
+        },
+        {
+          "title": "Добавляете заметки и сохраняете",
+          "text": "Меняйте имена, помечайте инсайты, сохраняйте карточку исследования в нужном проекте."
+        }
+      ]
+    },
+    "features": {
+      "title": "Дополнительные фичи",
+      "items": [
+        {
+          "title": "Все исследования в одном месте",
+          "text": "Единая база исследований, которая всегда под рукой."
+        },
+        {
+          "title": "Группировка по проектам",
+          "text": "Собирайте исследования по проектам, гипотезам или сегментам."
+        },
+        {
+          "title": "Прослушивание на высокой скорости",
+          "text": "Слушайте записи в 1.5x-2x прямо из интерфейса."
+        },
+        {
+          "title": "Поддержка всех популярных форматов",
+          "text": "Загружайте видео, аудио и записи звонков."
+        },
+        {
+          "title": "Расширенный Markdown для заметок",
+          "text": "Используйте списки, выделение, чекбоксы и форматирование прямо в карточке кастдева."
+        },
+        {
+          "title": "Самая низкая цена",
+          "text": "Экономия бюджета без компромиссов по качеству."
+        }
+      ]
+    },
+    "final": {
+      "title": "Начните наводить порядок в исследованиях уже сегодня",
+      "text": "Подключите ассистента, чтобы не терять инсайты и освободить время для принятия решений.",
+      "cta": "Зарегистрироваться"
+    },
+    "footer": "© {year} zernote. Сделано с заботой о product-командах."
+  },
+  "ideasPage": {
+    "title": "Идеи",
+    "searchPlaceholder": "Поиск по названию",
+    "filter": "Фильтр",
+    "apply": "Применить",
+    "export": "Экспорт",
+    "newIdea": "Новая идея",
+    "newIdeaCta": "+ Новая идея",
+    "viewSettings": {
+      "title": "Вид таблички"
+    },
+    "layouts": {
+      "horizontal": "Таблица",
+      "vertical": "Карточки"
+    },
+    "retry": "Попробовать снова",
+    "resetAll": "Сбросить всё",
+    "delete": "Удалить",
+    "change": "Сменить",
+    "noFolder": "Без проекта",
+    "exportEmptySelection": "Сначала выберите хотя бы одну идею с помощью чекбоксов.",
+    "exportReady": "Готово к экспорту!\nКоличество: {count}\nID: {ids}",
+    "filters": {
+      "type": "Вид",
+      "status": "Статус",
+      "folder": "Проект",
+      "allFolders": "Все проекты",
+      "typeLabel": "Тип:",
+      "statusLabel": "Статус:",
+      "folderLabel": "Проект:"
+    },
+    "columns": {
+      "idea": "Идеи",
+      "type": "Вид",
+      "status": "Статус",
+      "pain": "Боль",
+      "priority": "Приоритет",
+      "folder": "Проект",
+      "confidence": "Уверенность",
+      "evidence": "Доказательства"
+    },
+    "types": {
+      "hypothesis": "Гипотеза",
+      "manual": "Без шаблона",
+      "insight": "Инсайт",
+      "jtbd": "JTBD"
+    },
+    "statuses": {
+      "hasSignals": "Есть сигналы",
+      "noData": "Нет данных",
+      "confirmed": "Подтверждено",
+      "refuted": "Опровергнуто"
+    },
+    "emptyStates": {
+      "initial": {
+        "title": "У вас пока нет созданных идей",
+        "desc": "Создайте свою первую идею, чтобы начать работу над проектом и отслеживать прогресс.",
+        "btn": "Новая идея"
+      },
+      "error": {
+        "title": "Не удалось загрузить идеи",
+        "desc": "Произошла ошибка при получении данных.",
+        "btn": "Попробовать снова"
+      },
+      "filter": {
+        "title": "Ничего не нашли",
+        "desc": "Попробуйте изменить параметры фильтрации, поисковый запрос или сбросить все фильтры.",
+        "btn": "Сбросить фильтры"
+      }
+    },
+    "modals": {
+      "deleteTitle": "Удалить идеи?",
+      "deleteWarning": "Удаление является необратимым",
+      "confirmDelete": "Да, удалить",
+      "chooseFolder": "Выберите проект"
+    },
+    "confirmDeleteCount": "Удалить {count} идею(й)?",
+    "selectedCount": "Выбрано: {count}",
+    "selection": {
+      "count": "Выбрано: {count}",
+      "changeFolder": "Сменить проект",
+      "deleteConfirmTitle": "Удалить идеи?",
+      "deleteConfirmMessage": "Вы уверены, что хотите удалить выбранные идеи ({count})? Это действие нельзя отменить."
+    },
+    "folderActions": {
+      "add": "Добавить в проект",
+      "change": "Поменять проект"
+    },
+    "drawer": {
+      "title": "Новая идея",
+      "types": {
+        "hypothesis": "Гипотеза",
+        "manual": "Без шаблона",
+        "jtbd": "JTBD"
+      },
+      "goToLibrary": "Перейти в библиотеку шаблонов",
+      "templateTitle": "Шаблон",
+      "fields": {
+        "name": "Название",
+        "folder": "Проект",
+        "segment": "Сегмент пользователей",
+        "problem": "Проблема",
+        "solution": "Решение",
+        "description": "Описание",
+        "pain": "Оценка боли",
+        "priority": "Приоритет",
+        "notSet": "Не указано",
+        "jtbdWhen": "Когда",
+        "jtbdWant": "Я хочу",
+        "jtbdResult": "Чтобы"
+      },
+      "placeholders": {
+        "name": "Введите название идеи",
+        "segment": "Для кого эта идея?",
+        "problem": "В чем заключается проблема?",
+        "solution": "Какое решение предлагается?",
+        "description": "Краткое описание",
+        "jtbdWhen": "Контекст",
+        "jtbdWant": "Действие",
+        "jtbdResult": "Результат"
+      },
+      "aiAssessment": "Если оставить оба поля пустыми, ИИ оценит идею на основе исследований.",
+      "painPlaceholder": "Выберите оценку боли (1-10)",
+      "priorityPlaceholder": "Выберите приоритет (1-10)",
+      "save": "Добавить идею",
+      "hints": {
+        "hypothesisLine1": "Мы считаем, что [сегмент пользователей] сталкивается с проблемой [описание проблемы].",
+        "hypothesisLine2": "Если мы реализуем [решение / идея], пользователи смогут [ожидаемый результат].",
+        "jtbdLine1": "Когда [контекст / ситуация], я хочу [действие], чтобы [желаемый результат].",
+        "jtbdLine2": "Что мешает мне сейчас — это [барьер / проблема].",
+        "manualLine1": "Свободное описание идеи.",
+        "manualLine2": "Добавьте любые детали, которые не вписываются в шаблоны."
+      }
+    },
+    "errors": {
+      "selectFolder": "Выберите проект, чтобы загрузить идеи.",
+      "loadIdeas": "Не удалось загрузить идеи",
+      "loadIdeasToast": "Ошибка при загрузке идей",
+      "loadFolders": "Не удалось загрузить проекты",
+      "chooseFolder": "Выберите проект для идеи"
+    },
+    "toasts": {
+      "priorityUpdated": "Приоритет успешно обновлен!",
+      "priorityUpdateFailed": "Ошибка при обновлении приоритета.",
+      "deleteSuccess": "Успешно удалили идей: {count}.",
+      "deleteFailed": "Произошла ошибка при удалении. Проверьте консоль.",
+      "folderAdded": "Идеи ({count}) успешно добавлены в проект {folder}.",
+      "folderChanged": "Идеи ({count}) успешно перемещены в проект {folder}.",
+      "folderChangeFailed": "Произошла ошибка при смене проекта: {error}",
+      "createSuccess": "Новая идея успешно добавлена!",
+      "createSuccessAuto": "Новая идея добавлена и оценена по исследованиям.",
+      "createFailed": "Ошибка при создании идеи",
+      "autoEvaluateStarted": "ИИ начал оценку идеи в фоне.",
+      "autoEvaluateSuccess": "ИИ завершил оценку идеи.",
+      "autoEvaluateFailed": "Идея создана, но ИИ не смог оценить ее по исследованиям."
+    }
+  },
+  "ideaDetail": {
+    "title": "Детали идеи",
+    "actions": {
+      "add": "Добавить",
+      "duplicate": "Дублировать",
+      "history": "История изменений"
+    },
+    "banner": {
+      "text": "Есть изменения в идее. Хотите обновить доказательства?",
+      "evaluating": "Оценка..."
+    },
+    "evidence": {
+      "title": "Доказательства",
+      "defaultTitle": "Цитата из исследования",
+      "filters": {
+        "all": "Все доказательства",
+        "positive": "Подтверждающее",
+        "negative": "Опровергающее"
+      }
+    },
+    "details": {
+      "title": "Детали",
+      "folderPlaceholder": "Выберите проект",
+      "expectedEffect": "Ожидаемый эффект",
+      "expectedEffectPlaceholder": "Какой результат получит пользователь"
+    },
+    "editIdea": {
+      "title": "Редактировать идею",
+      "nameLabel": "Название",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Необязательно — под заголовком на карточке"
+    },
+    "modal": {
+      "addTitle": "Добавить доказательство",
+      "editTitle": "Изменить доказательство",
+      "character": "Характер",
+      "speaker": "Спикер",
+      "description": "Описание",
+      "quoteLocked": "Цитату редактировать нельзя",
+      "weight": "Вес",
+      "weightHint": "Насколько это доказательство влияет на итоговый вывод"
+    },
+    "toasts": {
+      "ideaSaved": "Идея сохранена. Можно обновить доказательства, когда будете готовы.",
+      "updated": "Доказательства обновлены.",
+      "updateFailed": "Ошибка при оценке идеи.",
+      "added": "Добавили [{title}] в доказательства.",
+      "edited": "Изменили [{title}] в доказательствах.",
+      "deleted": "Удалили [{title}] из доказательств."
+    }
+  },
+  "support": {
+    "title": "Связаться с разработкой",
+    "button": "Обратная связь",
+    "placeholder": "Опишите вашу проблему или предложение...",
+    "submit": "Отправить",
+    "cancel": "Отмена",
+    "success": "Ваше сообщение успешно отправлено!",
+    "error": "Не удалось отправить сообщение"
+  },
+  "jtbd": {
+    "extractJobs": "Дерево работ",
+    "extracting": "Извлечение...",
+    "viewTree": "Открыть дерево",
+    "noTranscript": "Транскрипт недоступен",
+    "extractError": "Ошибка извлечения дерева работ",
+    "title": "Дерево работ (JTBD)",
+    "backToInterview": "← Назад к карточке",
+    "noTree": "Дерево работ ещё не извлечено",
+    "extractButton": "Извлечь дерево работ",
+    "reExtract": "↻ Извлечь заново",
+    "extractedAt": "Извлечено",
+    "highLevel": "High-Level Job",
+    "coreJob": "Core Job",
+    "microJob": "Micro Job",
+    "whenTrigger": "Когда",
+    "iWantTo": "Я хочу",
+    "soThat": "Чтобы",
+    "currentSolution": "Текущее решение",
+    "importance": "Важность",
+    "satisfaction": "Удовлетворённость",
+    "evidence": "Цитата",
+    "context": "Контекст",
+    "loading": "Загрузка дерева работ...",
+    "transferToIdeas": "Перенести в идеи",
+    "edit": "Редактировать",
+    "copy": "Копировать",
+    "download": "Скачать",
+    "delete": "Удалить",
+    "inIdea": "В идею",
+    "connections": "Связи",
+    "confirmDeleteTitle": "Удалить работу?",
+    "confirmDeleteMsg": "Вы действительно хотите удалить работу \"{name}\"?",
+    "deleteWarning": "Это действие нельзя отменить",
+    "deleteConfirmButton": "Да, удалить",
+    "selectedCount": "Выбрано: {count} раб.",
+    "transferSuccess": "Успешно перенесено в идеи",
+    "transferSuccessMsg": "Идея \"{name}\" успешно добавлена",
+    "transferError": "Ошибка при переносе",
+    "loadError": "Не удалось загрузить древо",
+    "extractSuccess": "Древо успешно извлечено",
+    "exportSuccess": "Данные экспортированы",
+    "export": "Экспорт",
+    "editComingSoon": "Редактировать",
+    "copySuccess": "Ссылка скопирована",
+    "deleteSuccess": "Удалено",
+    "transferProgress": "Перенос...",
+    "transferModal": {
+      "title": "Добавить в идею",
+      "name": "Название",
+      "namePlaceholder": "Понять, что писать на конкретном рынке...",
+      "description": "Описание",
+      "descriptionPlaceholder": "Максимум 100 символов",
+      "maxChars": "Максимум 100 символов",
+      "project": "Папка",
+      "templateTitle": "Шаблон JTBD",
+      "when": "Когда",
+      "whenPlaceholder": "Контекст...",
+      "want": "Я хочу",
+      "wantPlaceholder": "Действие...",
+      "soThat": "Чтобы",
+      "soThatPlaceholder": "Результат...",
+      "solution": "Существующее решение",
+      "solutionPlaceholder": "Что мешает..."
+    },
+    "editModal": {
+      "title": "Редактировать работу",
+      "name": "Название",
+      "nameRequired": "Название обязательно",
+      "success": "Работа успешно обновлена",
+      "error": "Ошибка при обновлении"
+    }
+  },
+  "folderJtbd": {
+    "title": "Древо работ",
+    "generating": "Формируем древо работ...",
+    "generatingHint": "Это может занять несколько минут",
+    "emptyTitle": "Древо работ пока не сформировано",
+    "emptyDesc": "Нажмите кнопку ниже, чтобы сформировать обобщённое древо работ на основе всех интервью в папке.",
+    "generateButton": "Сформировать",
+    "export": "Экспортировать",
+    "regenerate": "Сформировать заново",
+    "loadError": "Не удалось загрузить древо работ",
+    "generateError": "Не удалось сформировать древо работ",
+    "nav": {
+      "interviews": "Интервью",
+      "notes": "Заметки",
+      "insights": "Инсайты",
+      "jobTree": "Древо работ",
+      "ideas": "Идеи"
+    },
+    "panel": {
+      "noDescription": "Нет описания",
+      "scores": "Оценки",
+      "sectorTitle": "Сегмент",
+      "hlTitle": "High level работа",
+      "coreTitle": "Core работа",
+      "microTitle": "Micro работа",
+      "prev": "Назад",
+      "next": "Вперёд"
+    }
+  },
+  "billing": {
+    "title": "Оплата",
+    "backToInterviews": "← Назад к исследованиям",
+    "balance": {
+      "title": "Ваш баланс",
+      "hoursSuffix": "ч",
+      "totalAvailable": "Всего доступно",
+      "free": "Бесплатно (пробный):",
+      "paid": "Оплачено:"
+    },
+    "packages": {
+      "title": "Купить часы",
+      "popular": "Популярный",
+      "perHour": "/ час",
+      "buy": "Купить"
+    },
+    "custom": {
+      "title": "Свой объём",
+      "description": "Нужно другое количество? Укажите количество часов.",
+      "hours": "Часы",
+      "total": "Итого:",
+      "buyHours": "Купить {count} ч."
+    },
+    "time": {
+      "hours": "{count} часов",
+      "hour": "{count} час",
+      "hours24": "{count} часа",
+      "minutes": "м",
+      "hourShort": "ч",
+      "minuteShort": "м",
+      "format": "{h}ч {m}м"
+    },
+    "page": {
+      "title": "Биллинг и использование",
+      "subtitle": "Управляйте тарифом, балансом токенов, PPU и недавними списаниями.",
+      "openPricing": "Открыть тарифы"
+    },
+    "tokenBadge": {
+      "label": "Токены"
+    },
+    "currentPlan": {
+      "title": "Текущий тариф",
+      "subtitle": "Статус подписки синхронизирован с Paddle",
+      "status": "Статус",
+      "renewalDate": "Следующее продление",
+      "upgrade": "Повысить",
+      "downgrade": "Понизить",
+      "cancel": "Отменить подписку"
+    },
+    "tokenBalance": {
+      "title": "Баланс токенов",
+      "persistent": "Постоянные",
+      "nonPersistent": "Непостоянные",
+      "frozen": "Замороженные",
+      "effective": "Эффективно доступно"
+    },
+    "ppu": {
+      "title": "Pay-per-use",
+      "subtitle": "Дополнительное списание после исчерпания токенов тарифа",
+      "limit": "Лимит на цикл (USD)",
+      "used": "Использовано в цикле, центы",
+      "pending": "Ожидает списания, центы",
+      "remaining": "Осталось, центы",
+      "debt": "Долг, центы"
+    },
+    "usageHistory": {
+      "title": "История использования",
+      "date": "Дата",
+      "operation": "Операция",
+      "tokens": "Токены",
+      "balanceAfter": "Баланс после",
+      "empty": "Транзакций токенов пока нет."
+    },
+    "insufficient": {
+      "title": "Недостаточно токенов",
+      "body": "Для этого действия нужно {estimated} токенов, а сейчас доступно только {available}.",
+      "ppuLimitBody": "Для этого действия нужно примерно {estimated} токенов. В PPU у вас осталось {ppuRemainingCents} центов из лимита {ppuSpendingLimitCents}, но этот запуск потребует примерно {estimatedPpuCents} центов.",
+      "upgradePlan": "Улучшить тариф",
+      "enablePpu": "Включить PPU",
+      "increaseLimit": "Увеличить лимит"
+    },
+    "messages": {
+      "loadBalanceError": "Не удалось загрузить баланс. Обновите страницу.",
+      "loadPackagesError": "Не удалось загрузить пакеты. Обновите страницу.",
+      "purchaseSuccess": "Успешно куплено {hours} часов!",
+      "purchaseError": "Не удалось оформить платёж. Попробуйте ещё раз.",
+      "paymentServiceUnavailable": "Сервис оплаты временно недоступен. Попробуйте позже.",
+      "paymentFailed": "Не удалось оформить платёж. Попробуйте ещё раз или обратитесь в поддержку.",
+      "loadSubscriptionError": "Не удалось загрузить данные подписки.",
+      "loadTransactionsError": "Не удалось загрузить историю токенов.",
+      "ppuSaved": "Настройки PPU обновлены.",
+      "ppuSaveError": "Не удалось сохранить настройки PPU.",
+      "planUpdated": "Запрос на смену тарифа отправлен.",
+      "planUpdateError": "Не удалось сменить тариф.",
+      "cancelScheduled": "Отмена запланирована на конец текущего периода.",
+      "cancelError": "Не удалось отменить подписку."
+    }
+  },
+  "pricing": {
+    "title": "Тарифы",
+    "subtitle": "Выберите план под вашу интенсивность исследований.",
+    "openBilling": "Открыть биллинг",
+    "cta": "Выбрать тариф",
+    "checkoutError": "Не удалось открыть checkout. Попробуйте ещё раз.",
+    "ppu": {
+      "title": "Дополнение pay-per-use",
+      "description": "Если PPU включен, перерасход токенов будет списан в конце цикла в пределах установленного лимита."
+    }
+  },
+  "buy": {
+    "title": "Спецпредложение",
+    "subtitle": "Разовая оплата доступа к транскрибации на созвоне.",
+    "price": "$40",
+    "pay": "Оплатить",
+    "processing": "Открываем оплату...",
+    "back": "На сайт",
+    "messages": {
+      "paymentServiceUnavailable": "Сервис оплаты временно недоступен. Попробуйте позже.",
+      "paymentFailed": "Не удалось оформить платёж. Попробуйте ещё раз."
+    }
+  },
+  "dialogs": {
+    "createCard": {
+      "title": "Создать карточку исследования",
+      "titleLabel": "Заголовок",
+      "titlePlaceholder": "Напр., Интервью с клиентом OCHI",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "Контекст или краткое резюме исследования",
+      "notesPlaceholder": "Добавьте заметки или контекст здесь...",
+      "creating": "Создание...",
+      "create": "Создать",
+      "titleTooLong": "Заголовок слишком длинный",
+      "failed": "Не удалось создать карточку"
+    },
+    "createFolder": {
+      "title": "Создать проект",
+      "nameLabel": "Название проекта",
+      "namePlaceholder": "Напр., Мобильное приложение OCHI",
+      "descriptionLabel": "Описание",
+      "descriptionPlaceholder": "О чем этот проект...",
+      "creating": "Создание...",
+      "create": "Создать проект",
+      "networkError": "Ошибка сети. Попробуйте еще раз.",
+      "validationError": "Некорректный запрос или проект уже существует.",
+      "failed": "Не удалось создать проект"
+    },
+    "assignFolder": {
+      "placeholder": "Выберите проект"
+    }
+  },
+  "support": {
+    "button": "Поддержка"
+  }
+}

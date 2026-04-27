@@ -1,0 +1,82 @@
+.bar {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--bg-card) 88%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(12px);
+  z-index: 20;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.ghost {
+  composes: btn;
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.ghost:hover {
+  border-color: var(--accent-solid);
+  color: var(--accent-solid);
+}
+
+.danger {
+  composes: btn;
+  background: #d92d20;
+  color: #fff;
+}
+
+.danger:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .bar {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    transform: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .label { width: 100%; }
+  .buttons { width: 100%; }
+  .btn { flex: 1; }
+}

@@ -1,0 +1,314 @@
+/* ===== Page Layout ===== */
+.settingsPage {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.settingsContainer {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Breadcrumb & Header ===== */
+.breadcrumb {
+  margin-bottom: 24px;
+}
+
+.breadcrumbBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.breadcrumbBack:hover {
+  color: var(--fg);
+}
+
+.pageTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 24px 0;
+  letter-spacing: -0.3px;
+}
+
+/* ===== Body ===== */
+.body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ===== Sections ===== */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+/* ===== Form fields ===== */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.fieldInputWrap {
+  position: relative;
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+.fieldInput:focus {
+  border-color: var(--accent-solid);
+}
+.fieldInput::placeholder {
+  color: var(--muted);
+}
+.fieldInput:disabled {
+  background: var(--bg-alt);
+  color: var(--muted);
+  cursor: default;
+}
+.hasSuffix {
+  padding-right: 36px;
+}
+
+.inputSuffixIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+/* ===== Change email button ===== */
+.btnChangeEmail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  width: fit-content;
+  transition: all 0.14s;
+}
+.btnChangeEmail:hover {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+}
+
+/* ===== Reserve password toggle ===== */
+.toggleSwitch {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+.toggleSwitch.active {
+  background: var(--accent-solid);
+}
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+.toggleSwitch.active .toggleKnob {
+  transform: translateX(16px);
+}
+
+/* ===== Link button ===== */
+.linkBtn {
+  background: transparent;
+  border: none;
+  color: #008cff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+.linkBtn:hover {
+  text-decoration: underline;
+}
+
+/* ===== Inline Success Message ===== */
+.inlineSuccess {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+.inlineSuccess span {
+  flex: 1;
+  color: #166534;
+  font-size: 13px;
+  font-weight: 500;
+}
+.closeSuccess {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #166534;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+  opacity: 0.7;
+}
+.closeSuccess:hover {
+  opacity: 1;
+}
+
+:global(html[data-theme="dark"]) .inlineSuccess {
+  background: rgba(20, 176, 83, 0.1);
+  border-color: #14b053;
+}
+:global(html[data-theme="dark"]) .inlineSuccess span,
+:global(html[data-theme="dark"]) .closeSuccess {
+  color: #b4f0c8;
+}
+
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 32px;
+  margin-top: auto;
+}
+
+.btnCancel {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.btnCancel:hover {
+  background: var(--bg-alt);
+}
+
+.btnSave {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #006dfa;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.btnSave:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+.btnSave:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Errors ===== */
+.errorMsg {
+  font-size: 12px;
+  color: var(--danger);
+  margin: 0;
+}
+
+.errorList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.errorList li {
+  font-size: 12px;
+  color: var(--danger);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .settingsPage {
+    padding: 20px 16px;
+  }
+}

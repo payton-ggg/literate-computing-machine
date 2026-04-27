@@ -1,0 +1,671 @@
+.cardDetail {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  color: var(--fg);
+}
+
+.titleInline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.titleInput {
+  width: 100%;
+  padding: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--bg-alt);
+  color: var(--fg);
+  box-sizing: border-box;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ready {
+  background: rgba(40, 167, 69, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.failed {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.processing, .uploading, .analyzing, .converting {
+  background: rgba(255, 152, 0, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btnIcon {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.btnIcon:hover {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+}
+
+.btnSave {
+  background: var(--success);
+  color: #fff;
+  border-color: var(--success);
+}
+
+.btnSave:hover {
+  opacity: 0.9;
+}
+
+.btnCancel {
+  background: var(--border);
+}
+
+.btnRetry {
+  background: var(--warning);
+  color: #fff;
+  border-color: var(--warning);
+}
+
+.btnDelete {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btnDelete:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.description {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+.descriptionInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.transcriptContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transcriptContent {
+  background: var(--bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 16px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.plainLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.plainText {
+  flex: 1 1 auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--fg);
+}
+
+.placeholder {
+  color: var(--muted);
+  font-style: italic;
+  padding: 12px;
+  background: var(--bg-alt);
+  border-radius: 8px;
+}
+
+.notesSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.notesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.notesEditorTextarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.notesPreviewCard {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.notesMarkdown {
+  display: grid;
+  gap: 12px;
+  color: var(--fg);
+  white-space: pre-wrap;
+}
+
+.metadata {
+  background: var(--bg-alt);
+}
+
+.metaItem {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.metaItem:last-child {
+  margin-bottom: 0;
+}
+
+.metaLabel {
+  font-weight: 600;
+  width: 100px;
+  color: var(--muted);
+}
+
+.metaValue {
+  color: var(--fg);
+  color: var(--warning);
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btnIcon {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+
+.btnIcon:hover {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+}
+
+.btnSave {
+  background: var(--success);
+  color: #fff;
+  border-color: var(--success);
+}
+
+.btnSave:hover {
+  opacity: 0.9;
+}
+
+.btnCancel {
+  background: var(--border);
+}
+
+.btnRetry {
+  background: var(--warning);
+  color: #fff;
+  border-color: var(--warning);
+}
+
+.btnDelete {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btnDelete:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.description {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+.descriptionInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-alt);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.transcriptContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transcriptContent {
+  background: var(--bg-alt);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 16px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.plainLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.plainText {
+  flex: 1 1 auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--fg);
+}
+
+.placeholder {
+  color: var(--muted);
+  font-style: italic;
+  padding: 12px;
+  background: var(--bg-alt);
+  border-radius: 8px;
+}
+
+.notesSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.notesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.notesEditorTextarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.notesPreviewCard {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.notesMarkdown {
+  display: grid;
+  gap: 12px;
+  color: var(--fg);
+  white-space: pre-wrap;
+}
+
+.metadata {
+  background: var(--bg-alt);
+}
+
+.metaItem {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.metaItem:last-child {
+  margin-bottom: 0;
+}
+
+.metaLabel {
+  font-weight: 600;
+  width: 100px;
+  color: var(--muted);
+}
+
+.metaValue {
+  color: var(--fg);
+  font-family: monospace;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+  
+  .actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .btnIcon {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btnDownload {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .metaItem {
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+
+  .metaLabel {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .supportAction {
+    margin-top: 24px;
+  }
+
+  .btnSupport {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* --- Audio section --- */
+.audioReady {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.audioProcessing {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid var(--warning);
+  border-radius: 8px;
+  color: var(--warning);
+}
+
+.processingMessage {
+  margin: 0;
+  font-size: 14px;
+}
+
+.uploadFailed {
+  text-align: center;
+  padding: 24px 16px;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 16px;
+}
+
+.failedIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.failedMessage {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f87171;
+}
+
+.btnRetryUpload {
+  padding: 8px 16px;
+  background: var(--warning);
+  color: var(--fg);
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.18s ease;
+}
+
+.btnRetryUpload:hover {
+  opacity: 0.9;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sectionHeader h3 {
+  margin: 0;
+}
+
+.btnFolder {
+  /* color: var(--fg); */
+}
+
+.downloads {
+  background: var(--bg-alt);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btnDownload {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 16px;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.18s ease;
+}
+
+.btnDownload:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btnDownload:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnDownloadLoading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btnDownloadSpinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.supportAction {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnSupport {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.btnSupport:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.3);
+  opacity: 1;
+}
+
+.btnSupport:active {
+  transform: translateY(0);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

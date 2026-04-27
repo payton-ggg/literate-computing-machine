@@ -1,0 +1,79 @@
+.titleSection {
+  padding: 32px 40px 16px 40px;
+}
+.titleContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.titleWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.desktopOnlyIcon {
+  color: var(--fg);
+}
+.pageMainTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+.mobileTopActions {
+  display: none;
+  gap: 8px;
+  align-items: center;
+}
+.filterIconBtn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+  color: var(--fg);
+}
+.filterIconBtn.active {
+  border-color: var(--accent-solid);
+  background: rgba(0, 109, 250, 0.08);
+  color: var(--accent-solid);
+}
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: white;
+  color: #006DFA;
+  border: 1px solid #006DFA;
+  font-size: 12px;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 768px) {
+  .titleSection {
+    padding: 16px 16px 10px;
+  }
+  .desktopOnlyIcon {
+    display: none !important;
+  }
+  .pageMainTitle {
+    font-size: 22px;
+  }
+  .mobileTopActions {
+    display: flex;
+  }
+}

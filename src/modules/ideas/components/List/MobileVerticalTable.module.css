@@ -1,0 +1,265 @@
+.verticalTable {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px 100px 16px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.checkboxArea {
+  padding-top: 4px;
+}
+
+.contentArea {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.type {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.statusArea {
+  margin-top: 2px;
+}
+
+/* Status Badges */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.statusSignals {
+  color: #3b82f6;
+  border: 1px solid #dceafd;
+  background: #eff6ff;
+}
+.statusNoData {
+  color: #9ca3af;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+.statusRefuted {
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  background: #fef2f2;
+}
+.statusConfirmed {
+  color: #22c55e;
+  border: 1px solid #dcfce7;
+  background: #f0fdf4;
+}
+
+.chevronArea {
+  padding-top: 4px;
+  color: #606b85;
+}
+
+.chevron {
+  transition: transform 0.2s;
+}
+
+.chevron.isExpanded {
+  transform: rotate(180deg);
+}
+
+.cardDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 12px 0 4px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detailLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.detailValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+/* Pain score (dots or number on mobile) */
+.painWrapper {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Confidence (bar) */
+.confidenceWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 4px;
+  background-color: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--fg);
+  border-radius: 2px;
+}
+
+.confidenceText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Evidence signals */
+.evidenceRow {
+  display: flex;
+  gap: 12px;
+}
+
+.evUp,
+.evDown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.evUp {
+  color: #16a34a;
+}
+.evDown {
+  color: #dc2626;
+}
+
+.viewMore {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.viewMoreBtn {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Checkbox */
+.customCheckbox {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.customCheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #d0d5dd;
+  border-radius: 6px;
+  background-color: white;
+  transition: all 0.2s;
+}
+
+.customCheckbox input:checked ~ .checkmark {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.customCheckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .verticalTable {
+    display: none !important;
+  }
+}
+
+.hideOnMobile {
+  display: none !important;
+}

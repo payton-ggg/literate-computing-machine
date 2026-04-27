@@ -1,0 +1,126 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+.dialogCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.closeBtn:hover {
+  background: var(--bg-alt);
+  color: var(--fg);
+}
+
+.body {
+  margin-bottom: 24px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 12px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--fg);
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btnGhost {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.btnGhost:hover {
+  background: var(--bg-alt);
+}
+
+.btnSubmit {
+  padding: 8px 16px;
+  background: #f56c6c;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.btnSubmit:hover:not(:disabled) {
+  background: #f78989;
+}
+
+.btnSubmit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .dialogCard {
+    padding: 16px;
+    margin: 16px;
+    width: calc(100% - 32px);
+  }
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btnGhost, .btnSubmit {
+    width: 100%;
+  }
+}

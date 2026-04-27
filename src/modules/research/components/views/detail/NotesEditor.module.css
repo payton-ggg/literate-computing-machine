@@ -1,0 +1,72 @@
+.notesEditorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.toolbarBtn {
+  background: none;
+  border: none;
+  color: var(--fg);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.toolbarBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+}
+
+.saveIndicator {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.saveIndicator.saving {
+  color: var(--warning);
+}
+
+.saveIndicator.saved {
+  color: var(--success);
+}
+
+.notesTextarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.notesTextarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}

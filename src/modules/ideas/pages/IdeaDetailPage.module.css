@@ -1,0 +1,33 @@
+.page {
+  padding: 32px 60px;
+  margin: 0 auto;
+  color: var(--fg);
+  background: var(--bg);
+  min-height: 100vh;
+  border-radius: 24px 24px 0 0;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 24px 20px;
+  }
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px 14px 24px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+}

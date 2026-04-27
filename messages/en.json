@@ -1,0 +1,1238 @@
+{
+  "toasts": {
+    "updated": "Updated",
+    "saved": "Saved",
+    "deleted": "Deleted",
+    "error": "Error",
+    "success": "Success",
+    "interview": {
+      "updated": "Interview updated successfully",
+      "deleted": "Interview deleted",
+      "deleteFailed": "Delete failed: {error}",
+      "updateFailed": "Update failed: {error}",
+      "uploadSuccess": "Successfully uploaded {count} file(s)",
+      "uploadFailed": "Upload failed: {error}"
+    },
+    "folder": {
+      "created": "Folder created successfully",
+      "updated": "Folder updated",
+      "deleted": "Folder deleted",
+      "createFailed": "Failed to create folder: {error}",
+      "updateFailed": "Failed to update folder: {error}",
+      "deleteFailed": "Failed to delete folder: {error}",
+      "assigned": "Assigned to folder \"{name}\"",
+      "removed": "Removed from folder"
+    },
+    "auth": {
+      "pleaseVerify": "Please verify your email"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "back": "Back",
+    "refresh": "Refresh",
+    "open": "Open",
+    "saving": "Saving...",
+    "saved": "Saved",
+    "error": "Error",
+    "success": "Success",
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "none": "None",
+    "search": "Search",
+    "filter": "Filter",
+    "clear": "Clear",
+    "confirm": "Confirm",
+    "processing": "Processing...",
+    "selectAll": "Select all",
+    "add": "Add",
+    "help": "Help",
+    "fullScreen": "Fullscreen",
+    "export": "Export",
+    "apply": "Apply",
+    "ok": "OK",
+    "viewDetails": "View details"
+  },
+  "header": {
+    "logo": "zernote",
+    "aboutUs": "About us",
+    "login": "Login",
+    "logout": "Logout",
+    "settings": "Settings",
+    "language": "Language",
+    "themeDark": "Dark theme",
+    "themeLight": "Light theme",
+    "nav": {
+      "interviews": "Researches",
+      "ideas": "Ideas",
+      "aria": "Main sections"
+    }
+  },
+  "footer": {
+    "interviews": "Interviews",
+    "ideas": "Ideas",
+    "analysis": "Analysis",
+    "library": "Library"
+  },
+  "modals": {
+    "logout": {
+      "title": "Logout",
+      "text": "Are you sure you want to log out?",
+      "confirm": "Yes, log out"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "username": "Username",
+      "usernameOrEmail": "Username or Email",
+      "password": "Password",
+      "submit": "Login",
+      "submitting": "Logging in...",
+      "createAccount": "Create account",
+      "enterCredentials": "Enter username and password",
+      "invalidCredentials": "Invalid username or password",
+      "verificationFailed": "Failed to verify credentials",
+      "success": "Login successful"
+    },
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
+    "register": {
+      "title": "Registration",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "submit": "Register",
+      "submitting": "Registering...",
+      "hasAccount": "Already have an account? Login",
+      "success": "Registration successful",
+      "failed": "Registration failed",
+      "validation": {
+        "usernameRequired": "Enter username",
+        "usernamePattern": "Username: 3-30 characters (letters, numbers, ._-)",
+        "emailRequired": "Enter email",
+        "emailInvalid": "Enter a valid email",
+        "passwordRequired": "Enter password",
+        "passwordPattern": "Password: min 8 chars, uppercase and lowercase Latin letters, digit, special character",
+        "confirmRequired": "Confirm password",
+        "passwordMismatch": "Passwords do not match"
+      }
+    },
+    "verify": {
+      "title": "Verify Email",
+      "subtitle": "We sent a verification code to {email}",
+      "codeLabel": "Verification Code",
+      "placeholder": "000000",
+      "submit": "Verify Email",
+      "submitting": "Verifying...",
+      "resend": "Resend Code",
+      "resendWait": "Resend in {time}s",
+      "resendSending": "Sending...",
+      "success": "Email verified! Redirecting...",
+      "resendSuccess": "New code sent!",
+      "invalidCode": "Incorrect verification code",
+      "expiredCode": "Code expired, please request a new one",
+      "failed": "Verification failed"
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your email to receive instructions",
+      "emailLabel": "Email",
+      "submit": "Send Reset Link",
+      "submitting": "Sending...",
+      "success": "Check your email for reset instructions",
+      "backToLogin": "Back to Login"
+    },
+    "resetPassword": {
+      "title": "Set New Password",
+      "passwordLabel": "New Password",
+      "placeholder": "Minimum 8 characters",
+      "submit": "Reset Password",
+      "submitting": "Resetting...",
+      "success": "Password reset successfully! Redirecting...",
+      "failed": "Failed to reset password",
+      "invalidTokenTitle": "Link expired",
+      "invalidTokenMessage": "This password reset link is invalid or has already expired. Please request a new one.",
+      "requestNewLink": "Request new link"
+    },
+    "setupProfile": {
+      "title": "Welcome!",
+      "hint": "Please choose a username. This name will be used in the system.",
+      "usernameLabel": "Username",
+      "usernamePlaceholder": "e.g., john_doe"
+    },
+    "accountSettings": {
+      "accountSection": "Your account",
+      "title": "Account Settings",
+      "emailLabel": "Email",
+      "newEmailLabel": "New email",
+      "newEmailCodeLabel": "Code from new email",
+      "currentPasswordLabel": "Current password",
+      "newPasswordLabel": "New password",
+      "confirmPasswordLabel": "Confirm new password",
+      "passwordLabel": "Password",
+      "passwordSectionTitle": "Change password",
+      "currentPasswordPlaceholder": "Current password",
+      "newPasswordPlaceholder": "New password",
+      "confirmPasswordPlaceholder": "Confirm new password",
+      "currentPasswordRequired": "Enter current password",
+      "forgotPasswordLink": "Forgot password?",
+      "emailHint": "This email is used for login and notifications.",
+      "changeEmail": "Change email",
+      "currentEmailStepHint": "We sent a code to your current email. Enter it to confirm it's you.",
+      "currentEmailCodePlaceholder": "Code from email",
+      "currentEmailCodeRequired": "Enter the code from email",
+      "currentEmailSubmit": "Confirm email",
+      "currentEmailCodeSent": "Code sent to your current email",
+      "newEmailStepHint": "Enter your new email and the code we sent there.",
+      "newEmailCodePlaceholder": "Code from new email",
+      "newEmailCodeRequired": "Enter the code from new email",
+      "newEmailSubmit": "Save new email",
+      "newEmailCodeSent": "Code sent to your new email",
+      "reservePasswordTitle": "Set password",
+      "reservePasswordPlaceholder": "Enter password",
+      "reservePasswordConfirmPlaceholder": "Confirm password",
+      "changeEmailTitle": "Change email",
+      "enterCodeTitle": "Enter code",
+      "newEmailHint": "Enter new email address",
+      "resendIn": "Resend code in",
+      "resendCode": "Resend code",
+      "codePlaceholder": "6-digit code",
+      "profileSettings": "Profile / Settings"
+    },
+    "passwordValidation": {
+      "noCyrillic": "Password must use Latin characters only (Cyrillic is not allowed)",
+      "tooShort": "Password must be at least 8 characters long",
+      "tooLong": "Password must be no longer than 64 characters",
+      "needUppercase": "Password must contain at least one uppercase letter (A-Z)",
+      "needLowercase": "Password must contain at least one lowercase letter (a-z)",
+      "needDigit": "Password must contain at least one digit (0-9)",
+      "needSpecial": "Password must contain at least one special character (!, #, $, % etc.)"
+    }
+  },
+  "interviews": {
+    "startResearch": "Start research",
+    "title": "Researches",
+    "loading": "Loading...",
+    "sorted": "Sorted",
+    "newCard": "+ New Card",
+    "createFolder": "+ Create Project",
+    "noInterviews": "No researches yet. Click \"New Card\" to start.",
+    "loadingInterviews": "Loading researches...",
+    "loadError": "Failed to load researches",
+    "foldersLoadError": "Failed to load projects. Please refresh the page.",
+    "noDescription": "No description",
+    "transcriptReady": "✓ Transcript ready",
+    "folder": "Project",
+    "uncategorized": "Uncategorized",
+    "uncategorizedDescription": "Researches without project",
+    "created": "Created",
+    "backToList": "← Back to List",
+    "notFound": "Interview not found.",
+    "returnToList": "Return to list",
+    "loadingDetails": "Loading research details...",
+    "loadFailed": "Failed to load research",
+    "uploadInterview": "Upload research",
+    "sortRecent": "Recent",
+    "sortOldest": "Oldest",
+    "searchFoldersPlaceholder": "Search projects",
+    "searchInterviewsPlaceholder": "Search researches",
+    "deleteFolderTitle": "Delete Project",
+    "deleteFolderConfirm": "Delete project \"{name}\"? Cards will not be deleted.",
+    "countSuffix": {
+      "million": "M",
+      "thousand": "K"
+    },
+    "autoReevaluate": {
+      "title": "Insights and ideas update",
+      "message": "After the new research is processed, the project's insights and ideas will be automatically updated.",
+      "confirm": "Continue"
+    },
+    "renameFolder": {
+      "title": "Rename project",
+      "placeholder": "New name"
+    },
+    "selection": {
+      "select": "Select",
+      "done": "Done",
+      "cancelSelect": "Cancel",
+      "selected": "Selected",
+      "selectedCountLabel": "Selected {count}: ",
+      "resetSelection": "Reset",
+      "moveToFolder": "To project",
+      "loadMore": "Load more",
+      "assignToFolder": "📁 To project",
+      "delete": "🗑 Delete",
+      "deleteTitle": "Delete cards",
+      "deleteConfirm": "Delete {count} selected card(s)? This cannot be undone.",
+      "deleteError": "Failed to delete some cards",
+      "deleteConfirmTitle": "Are you sure?",
+      "deleteConfirmMessage": "Deletion is irreversible — data cannot be restored after this.",
+      "deleteConfirmBack": "Back",
+      "deleteConfirmYes": "Yes, delete",
+      "movedToFolder": "{count} card(s) moved to \"{folder}\"",
+      "removedFromFolder": "{count} card(s) removed from project",
+      "unknownError": "Unknown error"
+    },
+    "insightsHint": "Add transcription cards to project to create insight map",
+    "results": "results"
+  },
+  "card": {
+    "edit": "✎ Edit",
+    "save": "✓ Save",
+    "saveFailed": "Failed to save data. Please try again.",
+    "titleTooLong": "Title must be no more than 255 characters. Shorten the title and try again.",
+    "cancel": "✕ Cancel",
+    "assignFolder": "📁 Project",
+    "changeFolder": "📁 Change project",
+    "retry": "↻ Retry",
+    "delete": "🗑 Delete",
+    "deleteConfirmTitle": "Delete interview?",
+    "deleteConfirmMessage": "This will permanently delete the interview and all associated data (transcript, insights, evidence). This action cannot be undone.",
+    "deleteConfirmYes": "Yes, delete",
+    "deleteConfirmBack": "Cancel",
+    "description": "Description",
+    "noDescription": "No description",
+    "audio": "Audio",
+    "transcriptTitle": "Transcript",
+    "notes": "Notes",
+    "noNotes": "No notes",
+    "notesToolbar": {
+      "bold": "Bold",
+      "italic": "Italic",
+      "header": "Header",
+      "ul": "Bullet list"
+    },
+    "inlineEditing": {
+      "saving": "Saving...",
+      "saved": "Saved"
+    },
+    "downloads": "Downloads",
+    "downloadAudio": "⬇ Download Audio (.ogg)",
+    "downloadTranscript": "⬇ Download Transcript (.txt)",
+    "downloadingAudio": "Downloading audio...",
+    "downloadingTranscript": "Downloading transcript...",
+    "downloadAudioFailed": "Failed to download audio. Please try again.",
+    "downloadTranscriptFailed": "Failed to download transcript. Please try again.",
+    "retryFailed": "Failed to retry processing. Please try again.",
+    "metadata": {
+      "id": "ID",
+      "created": "Created",
+      "updated": "Updated"
+    },
+    "speakerNames": {
+      "assign": "👤 Assign Names",
+      "title": "Assign Speaker Names",
+      "description": "Assign custom names to the detected speakers.",
+      "noSpeakers": "No speakers detected. Speaker diarization may not be enabled.",
+      "speaker": "Speaker",
+      "firstPhrase": "First phrase",
+      "customName": "Custom name",
+      "enterName": "Enter name for speaker",
+      "phrases": "phrases",
+      "phrase": "phrase",
+      "assigning": "Assigning...",
+      "assignButton": "Assign Names",
+      "validation": {
+        "empty": "Name cannot be empty",
+        "tooLong": "Name must be 100 characters or less",
+        "invalidChars": "Name can only contain letters, numbers, spaces, hyphens, and underscores",
+        "reserved": "Name cannot contain reserved pattern",
+        "fixErrors": "Please fix the validation errors"
+      }
+    },
+    "transcript": {
+      "formatted": "Formatted",
+      "plain": "Plain",
+      "viewDiarized": "Diarized",
+      "viewPlain": "Plain",
+      "editSpeakers": "👤 Edit Speakers",
+      "expand": "Expand transcript",
+      "collapse": "Collapse transcript",
+      "noTranscript": "No transcript available",
+      "pendingTranscript": "Transcript will appear here after processing...",
+      "formatError": "Transcript is available, but automatic formatting failed.",
+      "diarizationDisabled": "Diarization is disabled for this research. Speaker naming is unavailable."
+    },
+    "upload": {
+      "dropFiles": "Drop audio/video/text files here",
+      "orBrowse": "or click to browse",
+      "formats": "Supports: mp3, mp4, ogg, aac, webm, m4a, mov, mkv, txt, md, pdf",
+      "maxSize": "Max file size: 5 GB",
+      "filesSelected": "{count} file(s) selected",
+      "language": "Language",
+      "russian": "Russian",
+      "english": "English",
+      "popularLanguages": "Popular",
+      "otherLanguages": "Other languages",
+      "startProcessing": "🚀 Start Processing",
+      "invalidFormat": "Invalid format: {name}",
+      "fileTooLarge": "File too large: {name} (max 2GB)",
+      "uploadFailed": "Error uploading research",
+      "fileProcessingError": "File processing error (unsupported format or corrupted file)",
+      "processingFailed": "Processing failed",
+      "retryProcessing": "↻ Retry Processing",
+      "uploadFile": "Upload file",
+      "addToFolder": "Add to project"
+    },
+    "progress": {
+      "uploading": "Uploading...",
+      "processing": "Processing...",
+      "transcribing": "Transcribing...",
+      "complete": "Complete",
+      "steps": {
+        "upload": "Upload",
+        "process": "Process",
+        "transcribe": "Transcribe"
+      }
+    },
+    "formatting": {
+      "h1": "H1",
+      "bold": "Bold",
+      "italic": "Italic"
+    },
+    "translation": {
+      "button": "Translate",
+      "original": "Original",
+      "translated": "Translated",
+      "translating": "Translating...",
+      "selectLanguage": "Translate to",
+      "error": "Translation failed",
+      "translateTo": "Translate to"
+    }
+  },
+  "status": {
+    "empty": "Empty",
+    "uploading": "Uploading",
+    "converting": "Converting",
+    "analyzing": "Analyzing",
+    "ready": "Ready",
+    "failed": "Failed",
+    "titles": {
+      "empty": "Research created, no files yet",
+      "uploading": "Files uploading to server",
+      "converting": "Converting audio to .ogg format",
+      "analyzing": "Generating transcript and summary",
+      "ready": "Processing complete, ready to download",
+      "failed": "Processing failed, click to retry"
+    }
+  },
+  "dialogs": {
+    "createCard": {
+      "title": "Create New Card",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter card title",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter card description",
+      "sidesLabel": "Sides/Participants",
+      "sidesPlaceholder": "e.g., John, Sarah",
+      "notesLabel": "Notes",
+      "notesPlaceholder": "Enter your notes",
+      "create": "Create Card",
+      "creating": "Creating...",
+      "failed": "Failed to create card",
+      "titleTooLong": "Title must be no more than 255 characters. Shorten the title and try again."
+    },
+    "createFolder": {
+      "title": "Create Project",
+      "nameLabel": "Name",
+      "namePlaceholder": "Enter project name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Enter project description",
+      "create": "Create Project",
+      "creating": "Creating...",
+      "failed": "Failed to create project",
+      "networkError": "No connection to server. Check your internet connection.",
+      "validationError": "Invalid data. Check name and description."
+    },
+    "assignFolder": {
+      "title": "Assign project",
+      "folderLabel": "Project",
+      "placeholder": "Choose project",
+      "hint": "Leave empty to remove from project (move to \"Without project\")",
+      "assign": "Assign"
+    },
+    "lowBalance": {
+      "title": "Low balance",
+      "message": "The selected files require {required}h but only {available}h remain on your account.",
+      "topUp": "Please top up to continue or go back to the main menu.",
+      "buyHours": "Buy more hours",
+      "menu": "Menu"
+    }
+  },
+  "billing": {
+    "title": "Billing",
+    "backToInterviews": "← Back to researches",
+    "balance": {
+      "title": "Your balance",
+      "hoursSuffix": "h",
+      "totalAvailable": "Total available",
+      "free": "Free (trial):",
+      "paid": "Paid:"
+    },
+    "packages": {
+      "title": "Buy hours",
+      "popular": "Popular",
+      "perHour": "/ hour",
+      "buy": "Buy"
+    },
+    "custom": {
+      "title": "Custom amount",
+      "description": "Need a different amount? Enter the number of hours.",
+      "hours": "Hours",
+      "total": "Total:",
+      "buyHours": "Buy {count} h."
+    },
+    "time": {
+      "hours": "{count} hours",
+      "hour": "{count} hour",
+      "hours24": "{count} hours",
+      "minutes": "m",
+      "hourShort": "h",
+      "minuteShort": "m",
+      "format": "{h}h {m}m"
+    },
+    "page": {
+      "title": "Billing and usage",
+      "subtitle": "Manage plan, token balance, pay-per-use, and recent charges.",
+      "openPricing": "Open pricing"
+    },
+    "tokenBadge": {
+      "label": "Tokens"
+    },
+    "currentPlan": {
+      "title": "Current plan",
+      "subtitle": "Subscription state synced from Paddle",
+      "status": "Status",
+      "renewalDate": "Next renewal",
+      "upgrade": "Upgrade",
+      "downgrade": "Downgrade",
+      "cancel": "Cancel subscription"
+    },
+    "tokenBalance": {
+      "title": "Token balance",
+      "persistent": "Persistent",
+      "nonPersistent": "Non-persistent",
+      "frozen": "Frozen",
+      "effective": "Effective available"
+    },
+    "ppu": {
+      "title": "Pay-per-use",
+      "subtitle": "Extra token spend after included allowance is exhausted",
+      "limit": "Monthly limit (USD)",
+      "used": "Used this cycle, cents",
+      "pending": "Pending charge, cents",
+      "remaining": "Remaining, cents",
+      "debt": "Outstanding debt, cents"
+    },
+    "usageHistory": {
+      "title": "Usage history",
+      "date": "Date",
+      "operation": "Operation",
+      "tokens": "Tokens",
+      "balanceAfter": "Balance after",
+      "empty": "No token transactions yet."
+    },
+    "insufficient": {
+      "title": "Insufficient token balance",
+      "body": "This action needs {estimated} tokens, but only {available} are currently available.",
+      "ppuLimitBody": "This action needs about {estimated} tokens. Your remaining PPU budget is {ppuRemainingCents} cents out of {ppuSpendingLimitCents}, but this run would need about {estimatedPpuCents} cents.",
+      "upgradePlan": "Upgrade plan",
+      "enablePpu": "Enable PPU",
+      "increaseLimit": "Increase limit"
+    },
+    "messages": {
+      "loadBalanceError": "Failed to load balance. Please refresh the page.",
+      "loadPackagesError": "Failed to load packages. Please refresh the page.",
+      "purchaseSuccess": "Successfully purchased {hours} hours!",
+      "purchaseError": "Failed to complete payment. Please try again.",
+      "paymentServiceUnavailable": "Payment service is temporarily unavailable. Please try again later.",
+      "paymentFailed": "Payment could not be completed. Please try again or contact support.",
+      "loadSubscriptionError": "Failed to load subscription details.",
+      "loadTransactionsError": "Failed to load token transactions.",
+      "ppuSaved": "PPU settings updated.",
+      "ppuSaveError": "Failed to save PPU settings.",
+      "planUpdated": "Plan change requested.",
+      "planUpdateError": "Failed to update plan.",
+      "cancelScheduled": "Cancellation scheduled for the end of the current cycle.",
+      "cancelError": "Failed to cancel subscription."
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the plan that matches your research throughput.",
+    "openBilling": "Open billing",
+    "cta": "Choose plan",
+    "checkoutError": "Failed to open checkout. Please try again.",
+    "ppu": {
+      "title": "Pay-per-use add-on",
+      "description": "When enabled, extra token usage is charged at the end of the cycle within your spending limit."
+    }
+  },
+  "buy": {
+    "title": "Special offer",
+    "subtitle": "One payment for transcription access during the call.",
+    "price": "$40",
+    "pay": "Pay",
+    "processing": "Opening checkout...",
+    "back": "Back to site",
+    "messages": {
+      "paymentServiceUnavailable": "Payment service is temporarily unavailable. Please try again later.",
+      "paymentFailed": "Payment could not be completed. Please try again."
+    }
+  },
+  "audioPlayer": {
+    "processing": "Audio is still processing",
+    "processingHint": "Come back later or refresh the page.",
+    "loading": "Loading audio…",
+    "loadingHint": "This may take a few seconds.",
+    "unsupportedFormat": "Browser does not support OGG (Opus) format.",
+    "unsupportedHint": "Download the file and open it locally or use a different browser (Chrome, Edge, Firefox).",
+    "downloadFile": "Download file",
+    "download": "Download",
+    "downloading": "Downloading file...",
+    "playbackError": "Failed to play audio.",
+    "pause": "Pause",
+    "play": "Play",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "volumeLow": "Low volume",
+    "volumeMedium": "Medium volume",
+    "volumeHigh": "High volume",
+    "browserNotSupported": "Your browser does not support OGG playback. Download the file.",
+    "errors": {
+      "formatNotSupported": "Audio format is not supported by your browser.",
+      "serverError": "Server returned an error: {status} {statusText}{details}",
+      "fetchFailed": "Failed to fetch audio file. Check your connection or try refreshing the page.",
+      "unexpectedType": "Server returned unexpected data type (expected audio/*). Download the file manually.",
+      "invalidResponse": "Received invalid response from server.",
+      "playerNotReady": "Player was not ready to load audio. Try refreshing the page.",
+      "prepareFailed": "Failed to prepare audio file.",
+      "loadFailed": "Failed to load file. Try refreshing the page.",
+      "unknown": "Unknown playback error.",
+      "aborted": "Audio loading was aborted.",
+      "network": "Network problem while loading audio.",
+      "decode": "Failed to decode audio. File may be corrupted.",
+      "srcNotSupported": "Audio format is not supported or file is unavailable. Download the file and open it locally.",
+      "playFailed": "Failed to start playback.",
+      "downloadFailed": "Failed to download file. Please try again or contact support."
+    }
+  },
+  "insights": {
+    "graphView": "📊 Insights Graph",
+    "notInFolder": "Move to a research to extract insights",
+    "noTranscript": "Transcript not available",
+    "extractSuccess": "Extracted {count} insights",
+    "extractError": "Failed to extract insights",
+    "graph": {
+      "title": "Insights Graph",
+      "loading": "Loading data...",
+      "error": "Loading error",
+      "repulsionForce": "Node repulsion",
+      "settings": "Graph settings",
+      "exportAll": "Export all",
+      "ungrouped": "Ungrouped",
+      "nodeDistance": "Node distance",
+      "csv": {
+        "name": "Name",
+        "description": "Description",
+        "group": "Group",
+        "interview": "Research",
+        "quote": "Quote",
+        "speaker": "Speaker",
+        "timestamp": "Timestamp"
+      },
+      "legend": {
+        "castdev": "Castdev (research)",
+        "group": "Insight Group",
+        "insight": "Insight",
+        "insightInGroup": "Insight (in group)",
+        "ungrouped": "Ungrouped insight"
+      },
+      "controlsPanel": {
+        "title": "Graph controls",
+        "autoCollapse": "Auto-collapse",
+        "legendAndVisibility": "Legend & visibility:",
+        "toggleUngrouped": "Toggle all ungrouped",
+        "toggleGroups": "Toggle all groups",
+        "toggleExtCastdev": "Toggle from interviews",
+        "toggleExtInsight": "Toggle inside groups",
+        "collapseAll": "Collapse all nodes",
+        "showGrid": "Show background grid",
+        "untangle": "Untangle nodes",
+        "pullNodes": "Pull to center",
+        "baseNode": "Base Node"
+      },
+      "hint": "Click on a group to see insights. Click again to hide.",
+      "panel": {
+        "insights": "Insights",
+        "relatedInterviews": "Related researches",
+        "interview": "Research",
+        "insightTitle": "Insight"
+      },
+      "feedback": {
+        "step1Title": "How useful were<br>the insights?",
+        "useful": "Useful",
+        "notVery": "Not very",
+        "step2Title": "What went wrong?",
+        "reasonSuperficial": "Superficial insights",
+        "reasonOffTopic": "Off-topic",
+        "reasonMissed": "Important points missed",
+        "reasonHardToUnderstand": "Hard to understand",
+        "reasonOther": "Other",
+        "placeholder": "For example: insights are too general or key points are missing",
+        "send": "Send",
+        "thanksTitle": "Thank you for your feedback!",
+        "thanksSubtitle": "This helps us improve<br>the product"
+      },
+      "backToFolder": "← Back to project"
+    }
+  },
+  "landing": {
+    "nav": {
+      "register": "Sign up",
+      "login": "Login",
+      "process": "Process",
+      "features": "Features",
+      "about": "About us"
+    },
+    "hero": {
+      "kicker": "AI assistant for product and project managers",
+      "title": "Transcription of your castdevs by roles",
+      "subtitle": "Upload research records, get a structured transcript by role and notes - without manual routine.",
+      "cta": "Get started"
+    },
+    "process": {
+      "title": "How it works",
+      "steps": [
+        {
+          "title": "Upload audio or video",
+          "text": "We support zoom recordings, voice memos, mp4, mp3 and other common formats."
+        },
+        {
+          "title": "Get role-based transcript",
+          "text": "The assistant splits the conversation by participant roles."
+        },
+        {
+          "title": "Add notes and save",
+          "text": "Change names, mark insights, save the research card in the desired project."
+        }
+      ]
+    },
+    "features": {
+      "title": "Extra features",
+      "items": [
+        {
+          "title": "All researches in one place",
+          "text": "A single research database that is always at your fingertips."
+        },
+        {
+          "title": "Research-based organisation",
+          "text": "Group researches by projects, hypotheses or segments."
+        },
+        {
+          "title": "Faster playback",
+          "text": "Listen at 1.5x-2x right inside the app."
+        },
+        {
+          "title": "Popular format support",
+          "text": "Upload video, audio or call recordings."
+        },
+        {
+          "title": "Rich Markdown for notes",
+          "text": "Use lists, emphasis, checkboxes and formatting right inside the research card."
+        },
+        {
+          "title": "Lowest price on the market",
+          "text": "Save budget without sacrificing quality."
+        }
+      ]
+    },
+    "final": {
+      "title": "Start putting things in order in your researches today",
+      "text": "Connect the assistant to stop losing insights and free time for real product work.",
+      "cta": "Sign up"
+    },
+    "footer": "© {year} zernote. Built for product teams."
+  },
+  "ideasPage": {
+    "title": "Ideas",
+    "searchPlaceholder": "Search by title",
+    "filter": "Filter",
+    "apply": "Apply",
+    "export": "Export",
+    "newIdea": "New idea",
+    "newIdeaCta": "+ New idea",
+    "viewSettings": {
+      "title": "Table view"
+    },
+    "layouts": {
+      "horizontal": "Table View",
+      "vertical": "Card View"
+    },
+    "retry": "Try again",
+    "resetAll": "Reset all",
+    "delete": "Delete",
+    "change": "Change",
+    "noFolder": "Without project",
+    "exportEmptySelection": "Select at least one idea using the checkboxes first.",
+    "exportReady": "Ready to export!\nCount: {count}\nID: {ids}",
+    "filters": {
+      "type": "Type",
+      "status": "Status",
+      "folder": "Project",
+      "allFolders": "All projects",
+      "typeLabel": "Type:",
+      "statusLabel": "Status:",
+      "folderLabel": "Project:"
+    },
+    "columns": {
+      "idea": "Ideas",
+      "type": "Type",
+      "status": "Status",
+      "pain": "Pain",
+      "priority": "Priority",
+      "folder": "Project",
+      "confidence": "Confidence",
+      "evidence": "Evidence"
+    },
+    "types": {
+      "hypothesis": "Hypothesis",
+      "manual": "No template",
+      "insight": "Insight",
+      "jtbd": "JTBD"
+    },
+    "statuses": {
+      "hasSignals": "Has signals",
+      "noData": "No data",
+      "confirmed": "Confirmed",
+      "refuted": "Refuted"
+    },
+    "emptyStates": {
+      "initial": {
+        "title": "You do not have any ideas yet",
+        "desc": "Create your first idea to start working on the project and tracking progress.",
+        "btn": "New idea"
+      },
+      "error": {
+        "title": "Failed to load ideas",
+        "desc": "An error occurred while loading data.",
+        "btn": "Try again"
+      },
+      "filter": {
+        "title": "Nothing found",
+        "desc": "Try changing the filters, search query, or reset all filters.",
+        "btn": "Reset filters"
+      }
+    },
+    "modals": {
+      "deleteTitle": "Delete ideas?",
+      "deleteWarning": "Deletion is irreversible",
+      "confirmDelete": "Yes, delete",
+      "chooseFolder": "Choose project"
+    },
+    "confirmDeleteCount": "Delete {count} idea(s)?",
+    "selectedCount": "{count} selected",
+    "selection": {
+      "count": "{count} selected",
+      "changeFolder": "Change project",
+      "deleteConfirmTitle": "Delete ideas?",
+      "deleteConfirmMessage": "Are you sure you want to delete {count} selected idea(s)? This action is irreversible."
+    },
+    "folderActions": {
+      "add": "Add to project",
+      "change": "Change project"
+    },
+    "drawer": {
+      "title": "New idea",
+      "types": {
+        "hypothesis": "Hypothesis",
+        "manual": "No template",
+        "jtbd": "JTBD"
+      },
+      "goToLibrary": "Go to template library",
+      "templateTitle": "Template",
+      "fields": {
+        "name": "Title",
+        "folder": "Project",
+        "segment": "User segment",
+        "problem": "Problem",
+        "solution": "Solution",
+        "description": "Description",
+        "pain": "Pain score",
+        "priority": "Priority score",
+        "notSet": "Not set",
+        "jtbdWhen": "When",
+        "jtbdWant": "I want",
+        "jtbdResult": "So that"
+      },
+      "placeholders": {
+        "name": "Enter idea title",
+        "segment": "Who is this for?",
+        "problem": "What is the problem?",
+        "solution": "What is the solution?",
+        "description": "Short description",
+        "jtbdWhen": "Context",
+        "jtbdWant": "Action",
+        "jtbdResult": "Outcome"
+      },
+      "aiAssessment": "If both fields are empty, AI will evaluate the idea based on researches.",
+      "painPlaceholder": "Choose pain score (1-10)",
+      "priorityPlaceholder": "Choose priority (1-10)",
+      "save": "Add idea",
+      "hints": {
+        "hypothesisLine1": "We believe that [user segment] faces the problem [problem description].",
+        "hypothesisLine2": "If we implement [solution / idea], users will be able to [expected outcome].",
+        "jtbdLine1": "When [context / situation], I want [action], so I can [desired outcome].",
+        "jtbdLine2": "What blocks me now is [barrier / problem].",
+        "manualLine1": "Free form idea description.",
+        "manualLine2": "Add any details that don't fit the templates."
+      }
+    },
+    "errors": {
+      "selectFolder": "Choose project to load ideas.",
+      "loadIdeas": "Failed to load ideas",
+      "loadIdeasToast": "Error loading ideas",
+      "loadFolders": "Failed to load projects",
+      "chooseFolder": "Choose project for idea"
+    },
+    "toasts": {
+      "priorityUpdated": "Priority updated successfully.",
+      "priorityUpdateFailed": "Failed to update priority.",
+      "deleteSuccess": "Deleted {count} idea(s) successfully.",
+      "deleteFailed": "An error occurred during deletion. Check the console.",
+      "folderAdded": "Ideas ({count}) successfully added to project {folder}.",
+      "folderChanged": "Ideas ({count}) successfully moved to project {folder}.",
+      "folderChangeFailed": "An error occurred while changing projects: {error}",
+      "createSuccess": "New idea added successfully!",
+      "createSuccessAuto": "New idea added and evaluated based on researches.",
+      "createFailed": "Error creating idea",
+      "autoEvaluateStarted": "AI evaluation started in the background.",
+      "autoEvaluateSuccess": "AI finished evaluating the idea.",
+      "autoEvaluateFailed": "Idea created, but AI could not evaluate it based on researches."
+    }
+  },
+  "ideaDetail": {
+    "title": "Idea Details",
+    "actions": {
+      "add": "Add",
+      "duplicate": "Duplicate",
+      "history": "Change history"
+    },
+    "banner": {
+      "text": "This idea has changed. Refresh the evidence?",
+      "evaluating": "Evaluating..."
+    },
+    "evidence": {
+      "title": "Evidence",
+      "defaultTitle": "Research quote",
+      "filters": {
+        "all": "All evidence",
+        "positive": "Confirming",
+        "negative": "Refuting"
+      }
+    },
+    "details": {
+      "title": "Details",
+      "folderPlaceholder": "Choose project",
+      "expectedEffect": "Expected effect",
+      "expectedEffectPlaceholder": "What outcome should the user get?"
+    },
+    "editIdea": {
+      "title": "Edit idea",
+      "nameLabel": "Name",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Optional — shown on the card under the title"
+    },
+    "modal": {
+      "addTitle": "Add evidence",
+      "editTitle": "Edit evidence",
+      "character": "Type",
+      "speaker": "Speaker",
+      "description": "Description",
+      "quoteLocked": "The quote cannot be edited",
+      "weight": "Weight",
+      "weightHint": "How much this evidence affects the final conclusion"
+    },
+    "toasts": {
+      "ideaSaved": "Idea saved. You can refresh the evidence when ready.",
+      "updated": "Evidence updated.",
+      "updateFailed": "Failed to evaluate the idea.",
+      "added": "Added [{title}] to evidence.",
+      "edited": "Updated [{title}] in evidence.",
+      "deleted": "Removed [{title}] from evidence."
+    }
+  },
+  "support": {
+    "title": "Contact Dev Team",
+    "button": "Contact Dev Team",
+    "placeholder": "Describe your issue or suggestion...",
+    "submit": "Send",
+    "cancel": "Cancel",
+    "success": "Your message has been sent successfully!",
+    "error": "Failed to send message"
+  },
+  "jtbd": {
+    "extractJobs": "Job Tree",
+    "extracting": "Extracting...",
+    "viewTree": "View Tree",
+    "noTranscript": "Transcript not available",
+    "extractError": "Failed to extract job tree",
+    "title": "Job Tree (JTBD)",
+    "backToInterview": "← Back to card",
+    "noTree": "Job tree has not been extracted yet",
+    "extractButton": "Extract Job Tree",
+    "reExtract": "↻ Re-extract",
+    "extractedAt": "Extracted",
+    "highLevel": "High-Level Job",
+    "coreJob": "Core Job",
+    "microJob": "Micro Job",
+    "whenTrigger": "When",
+    "iWantTo": "I want to",
+    "soThat": "So that",
+    "currentSolution": "Current solution",
+    "importance": "Importance",
+    "satisfaction": "Satisfaction",
+    "evidence": "Quote",
+    "context": "Context",
+    "loading": "Loading job tree...",
+    "transferToIdeas": "Move to Ideas",
+    "edit": "Edit",
+    "copy": "Copy",
+    "download": "Download",
+    "delete": "Delete",
+    "inIdea": "Move to Idea",
+    "connections": "Connections",
+    "confirmDeleteTitle": "Delete Job?",
+    "confirmDeleteMsg": "Are you sure you want to delete \"{name}\"?",
+    "deleteWarning": "This action cannot be undone",
+    "deleteConfirmButton": "Yes, delete",
+    "selectedCount": "{count} jobs selected",
+    "transferSuccess": "Moved to Ideas successfully",
+    "transferSuccessMsg": "Idea \"{name}\" added successfully",
+    "transferError": "Transfer failed",
+    "loadError": "Failed to load tree",
+    "extractSuccess": "Jobs extracted successfully",
+    "exportSuccess": "Data exported successfully",
+    "export": "Export",
+    "editComingSoon": "Edit",
+    "copySuccess": "Link copied",
+    "deleteSuccess": "Deleted",
+    "transferProgress": "Transferring...",
+    "transferModal": {
+      "title": "Add to Idea",
+      "name": "Name",
+      "namePlaceholder": "Understand what to write for a specific market...",
+      "description": "Description",
+      "descriptionPlaceholder": "Max 100 characters",
+      "maxChars": "Maximum 100 characters",
+      "project": "Project",
+      "templateTitle": "JTBD Template",
+      "when": "When",
+      "whenPlaceholder": "Context...",
+      "want": "I want",
+      "wantPlaceholder": "Action...",
+      "soThat": "So that",
+      "soThatPlaceholder": "Result...",
+      "solution": "Current solution",
+      "solutionPlaceholder": "Barriers..."
+    },
+    "editModal": {
+      "title": "Edit job",
+      "name": "Name",
+      "nameRequired": "Name is required",
+      "success": "Job updated successfully",
+      "error": "Error updating job"
+    }
+  },
+  "folderJtbd": {
+    "title": "Job Tree",
+    "generating": "Generating job tree...",
+    "generatingHint": "This may take a few minutes",
+    "emptyTitle": "Job tree has not been generated yet",
+    "emptyDesc": "Click the button below to generate a unified job tree based on all interviews in this folder.",
+    "generateButton": "Generate",
+    "export": "Export",
+    "regenerate": "Regenerate",
+    "loadError": "Failed to load job tree",
+    "generateError": "Failed to generate job tree",
+    "nav": {
+      "interviews": "Interviews",
+      "notes": "Notes",
+      "insights": "Insights",
+      "jobTree": "Job Tree",
+      "ideas": "Ideas"
+    },
+    "panel": {
+      "noDescription": "No description",
+      "scores": "Scores",
+      "sectorTitle": "Segment",
+      "hlTitle": "High level job",
+      "coreTitle": "Core job",
+      "microTitle": "Micro job",
+      "prev": "Back",
+      "next": "Next"
+    }
+  },
+  "billing": {
+    "title": "Billing",
+    "backToInterviews": "← Back to researches",
+    "balance": {
+      "title": "Your balance",
+      "hoursSuffix": "h",
+      "totalAvailable": "Total available",
+      "free": "Free (trial):",
+      "paid": "Paid:"
+    },
+    "packages": {
+      "title": "Buy hours",
+      "popular": "Popular",
+      "perHour": "/ hour",
+      "buy": "Buy"
+    },
+    "custom": {
+      "title": "Custom amount",
+      "description": "Need a different amount? Enter the number of hours.",
+      "hours": "Hours",
+      "total": "Total:",
+      "buyHours": "Buy {count} h."
+    },
+    "time": {
+      "hours": "{count} hours",
+      "hour": "{count} hour",
+      "hours24": "{count} hours",
+      "minutes": "m",
+      "hourShort": "h",
+      "minuteShort": "m",
+      "format": "{h}h {m}m"
+    },
+    "page": {
+      "title": "Billing and usage",
+      "subtitle": "Manage plan, token balance, pay-per-use, and recent charges.",
+      "openPricing": "Open pricing"
+    },
+    "tokenBadge": {
+      "label": "Tokens"
+    },
+    "currentPlan": {
+      "title": "Current plan",
+      "subtitle": "Subscription state synced from Paddle",
+      "status": "Status",
+      "renewalDate": "Next renewal",
+      "upgrade": "Upgrade",
+      "downgrade": "Downgrade",
+      "cancel": "Cancel subscription"
+    },
+    "tokenBalance": {
+      "title": "Token balance",
+      "persistent": "Persistent",
+      "nonPersistent": "Non-persistent",
+      "frozen": "Frozen",
+      "effective": "Effective available"
+    },
+    "ppu": {
+      "title": "Pay-per-use",
+      "subtitle": "Extra token spend after included allowance is exhausted",
+      "limit": "Monthly limit (USD)",
+      "used": "Used this cycle, cents",
+      "pending": "Pending charge, cents",
+      "remaining": "Remaining, cents",
+      "debt": "Outstanding debt, cents"
+    },
+    "usageHistory": {
+      "title": "Usage history",
+      "date": "Date",
+      "operation": "Operation",
+      "tokens": "Tokens",
+      "balanceAfter": "Balance after",
+      "empty": "No token transactions yet."
+    },
+    "insufficient": {
+      "title": "Insufficient token balance",
+      "body": "This action needs {estimated} tokens, but only {available} are currently available.",
+      "ppuLimitBody": "This action needs about {estimated} tokens. Your remaining PPU budget is {ppuRemainingCents} cents out of {ppuSpendingLimitCents}, but this run would need about {estimatedPpuCents} cents.",
+      "upgradePlan": "Upgrade plan",
+      "enablePpu": "Enable PPU",
+      "increaseLimit": "Increase limit"
+    },
+    "messages": {
+      "loadBalanceError": "Failed to load balance. Please refresh the page.",
+      "loadPackagesError": "Failed to load packages. Please refresh the page.",
+      "purchaseSuccess": "Successfully purchased {hours} hours!",
+      "purchaseError": "Failed to complete payment. Please try again.",
+      "paymentServiceUnavailable": "Payment service is temporarily unavailable. Please try again later.",
+      "paymentFailed": "Payment could not be completed. Please try again or contact support.",
+      "loadSubscriptionError": "Failed to load subscription details.",
+      "loadTransactionsError": "Failed to load token transactions.",
+      "ppuSaved": "PPU settings updated.",
+      "ppuSaveError": "Failed to save PPU settings.",
+      "planUpdated": "Plan change requested.",
+      "planUpdateError": "Failed to update plan.",
+      "cancelScheduled": "Cancellation scheduled for the end of the current cycle.",
+      "cancelError": "Failed to cancel subscription."
+    }
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the plan that matches your research throughput.",
+    "openBilling": "Open billing",
+    "cta": "Choose plan",
+    "checkoutError": "Failed to open checkout. Please try again.",
+    "ppu": {
+      "title": "Pay-per-use add-on",
+      "description": "When enabled, extra token usage is charged at the end of the cycle within your spending limit."
+    }
+  },
+  "buy": {
+    "title": "Special offer",
+    "subtitle": "One payment for transcription access during the call.",
+    "price": "$40",
+    "pay": "Pay",
+    "processing": "Opening checkout...",
+    "back": "Back to site",
+    "messages": {
+      "paymentServiceUnavailable": "Payment service is temporarily unavailable. Please try again later.",
+      "paymentFailed": "Payment could not be completed. Please try again."
+    }
+  },
+  "dialogs": {
+    "createCard": {
+      "title": "Create research card",
+      "titleLabel": "Title",
+      "titlePlaceholder": "For example: Customer interview OCHI",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "Context or brief summary of the research",
+      "notesPlaceholder": "Add any notes or context here...",
+      "creating": "Creating...",
+      "create": "Create",
+      "titleTooLong": "Title is too long",
+      "failed": "Failed to create card"
+    },
+    "createFolder": {
+      "title": "Create Project",
+      "nameLabel": "Project Name",
+      "namePlaceholder": "For example: OCHI mobile app",
+      "descriptionLabel": "Description",
+      "descriptionPlaceholder": "What this project is about...",
+      "creating": "Creating...",
+      "create": "Create Project",
+      "networkError": "Network error. Please try again.",
+      "validationError": "Invalid request or project already exists.",
+      "failed": "Failed to create project"
+    },
+    "assignFolder": {
+      "placeholder": "Select a project"
+    }
+  },
+  "support": {
+    "button": "Support"
+  }
+}

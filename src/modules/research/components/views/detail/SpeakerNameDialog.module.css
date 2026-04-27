@@ -1,0 +1,236 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--fg);
+}
+
+.btnClose {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--muted);
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btnClose:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--fg);
+}
+
+.body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.speakerInfo {
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--bg-alt);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+}
+
+.speakerInfo p {
+  margin: 0 0 8px 0;
+  color: var(--fg);
+  font-size: 14px;
+}
+
+.noSpeakers {
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.speakerCard {
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-alt);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.speakerCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.speakerLabel {
+  font-weight: 700;
+  color: var(--fg);
+  font-size: 15px;
+}
+
+.phraseBadge {
+  background: rgba(0, 123, 255, 0.1);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.speakerContext {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.contextTitle {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.contextText {
+  margin: 0;
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.inputLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.speakerInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: var(--bg-card);
+  color: var(--fg);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speakerInput:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.fieldError {
+  margin-top: -4px;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btnAssign {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.btnAssign:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btnAssign:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+}
+
+.btnCancel {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  background: var(--bg-alt);
+  color: var(--fg);
+  transition: background 0.3s ease;
+}
+
+.btnCancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.errorMessage {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(220, 38, 38, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btnAssign, .btnCancel {
+    width: 100%;
+  }
+}

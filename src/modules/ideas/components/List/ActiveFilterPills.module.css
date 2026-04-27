@@ -1,0 +1,44 @@
+.row {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px 16px 24px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--fg);
+}
+
+.label {
+  color: var(--muted);
+}
+
+.pill strong {
+  font-weight: 500;
+}
+
+.remove {
+  cursor: pointer;
+  color: #6a7c92;
+  transition: color 0.2s;
+  margin-left: 2px;
+}
+
+.remove:hover {
+  color: #1a1a1a;
+}
+
+@media (max-width: 768px) {
+  .row {
+    padding: 0 16px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

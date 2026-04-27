@@ -1,0 +1,121 @@
+.actionBar {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px 8px 20px;
+  background-color: #121c2d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.countText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  color: #fff;
+}
+
+.btnDelete {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+}
+
+.btnDelete:hover {
+  background-color: rgba(239, 68, 68, 0.25);
+  color: #fecaca;
+}
+
+.btnFolder {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.btnFolder:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btnClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  margin-left: 4px;
+}
+
+.btnClose:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .actionBar {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    width: calc(100% - 32px);
+    justify-content: space-between;
+    padding: 8px 8px 8px 16px;
+  }
+
+  .countText {
+    font-size: 13px;
+  }
+
+  .btn {
+    padding: 0 12px;
+    height: 32px;
+  }
+
+  .btn span {
+    display: none;
+  }
+}

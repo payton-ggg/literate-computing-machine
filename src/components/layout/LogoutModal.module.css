@@ -1,0 +1,125 @@
+.logoutOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.logoutOverlay.visible {
+  opacity: 1;
+}
+
+.logoutModal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transform: scale(0.96) translateY(4px);
+  opacity: 0;
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.logoutModal.visible {
+  transform: none;
+  opacity: 1;
+}
+
+.logoutModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logoutModalTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.2px;
+}
+
+.logoutModalClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.14s ease;
+  flex-shrink: 0;
+}
+
+.logoutModalClose:hover {
+  background: var(--bg-alt);
+  color: var(--fg);
+  border-color: var(--muted);
+}
+
+.logoutModalBody {
+  padding: 18px 20px;
+  font-size: 14px;
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+.logoutModalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 20px 16px;
+}
+
+.logoutBtnCancel {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.14s ease;
+}
+
+.logoutBtnCancel:hover {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+}
+
+.logoutBtnConfirm {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #dc2626;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.14s ease;
+}
+
+.logoutBtnConfirm:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+}

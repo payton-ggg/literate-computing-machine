@@ -1,0 +1,184 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 608px;
+  max-width: 95vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  padding: 32px 32px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.closeBtn {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.18s ease;
+}
+
+.closeBtn:hover {
+  color: var(--fg);
+}
+
+.body {
+  padding: 2px 32px 16px;
+  overflow-y: auto;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.requiredStar {
+  color: #db132a;
+  font-weight: 600;
+}
+
+.textInput {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+  background: var(--bg-alt);
+  color: var(--fg);
+  outline: none;
+  transition: border-color 0.18s ease;
+}
+
+.textInput:focus {
+  border-color: var(--accent);
+}
+
+.textInput::placeholder {
+  color: var(--muted);
+}
+
+.textarea {
+  composes: textInput;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.footer {
+  padding: 24px 32px 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btnGhost {
+  padding: 8px 16px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--fg-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btnGhost:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.btnPrimary {
+  padding: 8px 20px;
+  height: 40px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.18s ease;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  margin-top: 4px;
+  padding: 12px;
+  background: rgba(219, 19, 42, 0.1);
+  color: #ec5b5b;
+  border: 1px solid rgba(219, 19, 42, 0.3);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    width: calc(100% - 32px);
+    margin: 16px;
+  }
+  .header {
+    padding: 24px 20px 16px;
+  }
+  .body {
+    padding: 0 20px 16px;
+  }
+  .footer {
+    padding: 16px 20px 24px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btnGhost, .btnPrimary {
+    width: 100%;
+  }
+}

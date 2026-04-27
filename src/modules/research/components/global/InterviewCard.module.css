@@ -1,0 +1,168 @@
+.card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 180px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-color: var(--border-light);
+}
+
+.selectionIndicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 2;
+}
+
+.selectionIndicator:hover {
+  border-color: var(--accent-solid);
+  color: var(--accent-solid);
+}
+
+.selectionIndicatorChecked {
+  composes: selectionIndicator;
+  background: var(--accent-solid);
+  border-color: var(--accent-solid);
+  color: #fff;
+}
+
+.isSelectionMode {
+  padding-top: 24px;
+}
+
+.isSelectionMode .cardHeader {
+  padding-right: 36px;
+}
+
+.isSelected {
+  border-color: var(--accent-solid);
+  background: color-mix(in srgb, var(--bg-card) 92%, var(--accent-solid) 8%);
+  box-shadow: 0 10px 30px rgba(0, 109, 250, 0.12);
+}
+
+.accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.accentReady { background: var(--success); }
+.accentLoading { background: var(--accent-solid); }
+.accentError { background: var(--danger); }
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.statusReady {
+  composes: statusBadge;
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.statusLoading {
+  composes: statusBadge;
+  color: var(--accent-solid);
+  border-color: var(--accent-solid);
+}
+
+.statusError {
+  composes: statusBadge;
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.cardDate {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.cardDesc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    min-height: 140px;
+    gap: 12px;
+  }
+  .cardTitle {
+    font-size: 14px;
+    -webkit-line-clamp: 2;
+  }
+  .cardDesc {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+  .statusBadge {
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+}

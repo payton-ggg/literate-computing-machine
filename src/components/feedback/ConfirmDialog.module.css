@@ -1,0 +1,168 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 21, 30, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 3000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.header {
+  padding: 24px 24px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.closeBtn:hover {
+  color: var(--fg);
+}
+
+.body {
+  padding: 0 24px 24px;
+}
+
+.message {
+  font-size: 14px;
+  color: var(--fg-secondary);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.itemsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.itemsList li {
+  font-size: 14px;
+  color: var(--fg-secondary);
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #d92d20;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.btnSecondary {
+  composes: btn;
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--fg);
+}
+
+.btnSecondary:hover {
+  background: var(--bg-alt);
+}
+
+.btnPrimary {
+  composes: btn;
+  background: var(--accent);
+  color: white;
+}
+
+.btnPrimary:hover {
+  filter: brightness(1.1);
+}
+
+.btnDanger {
+  composes: btn;
+  background: #d92d20;
+  color: white;
+}
+
+.btnDanger:hover {
+  filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btnSecondary, .btnPrimary, .btnDanger {
+    width: 100%;
+  }
+}

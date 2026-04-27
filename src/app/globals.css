@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@source "../";
+
+@theme {
+  --color-app-bg: var(--app-bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-card: var(--bg-card);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-solid: var(--accent-solid);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-sans: "Onest", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+  --app-bg: #F4F4F6;
+  --bg: #F4F4F6;
+  --bg-alt: #F4F4F6;
+  --bg-card: #ffffff;
+  --fg: #1e293b;
+  --fg-secondary: #475569;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #3b82f6;
+  --accent-solid: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --border-light: #c3c4c7;
+
+  /* Header specific (Premium Dark) */
+  --header-bg: #030712;
+  --header-fg: #94a3b8;
+  --header-fg-active: #ffffff;
+  --header-nav-active-bg: #1e293b;
+  --header-border: transparent;
+  --header-logo-dot: #0ea5e9;
+
+  /* Toast variables */
+  --toast-bg: #ffffff;
+  --toast-fg: #1e293b;
+  --toast-border: #e2e8f0;
+  --toast-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --toast-error-border: #fecaca;
+  --toast-error-bg: #fef2f2;
+  --toast-error-text: #991b1b;
+  --toast-success-border: #bbf7d0;
+  --toast-success-bg: #f0fdf4;
+  --toast-success-text: #166534;
+  --toast-info-border: #bfdbfe;
+  --toast-info-bg: #eff6ff;
+  --toast-info-text: #1e40af;
+}
+
+html[data-theme='dark'] {
+  --app-bg: #0a0a0a;
+  --bg: #0a0a0a;
+  --bg-alt: #0f1621;
+  --bg-card: #121c2d;
+  --fg: #ffffff;
+  --fg-secondary: #f4f4f6;
+  --muted: #8891aa;
+  --border: #394762;
+  --accent: #99cdff;
+  --accent-solid: rgb(0, 123, 255);
+  --success: #28a745;
+  --warning: #ff9800;
+  --danger: #dc2626;
+  --border-light: #394762;
+
+  /* Toast variables */
+  --toast-bg: rgba(18, 28, 45, 0.98);
+  --toast-fg: #ffffff;
+  --toast-border: #394762;
+  --toast-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  --toast-error-border: #c35323;
+  --toast-error-bg: rgba(195, 83, 35, 0.1);
+  --toast-error-text: #fac2a0;
+  --toast-success-border: #14b053;
+  --toast-success-bg: rgba(20, 176, 83, 0.1);
+  --toast-success-text: #b4f0c8;
+  --toast-info-border: #006dfa;
+  --toast-info-bg: rgba(0, 109, 250, 0.1);
+  --toast-info-text: #b4d2ff;
+}
+
+/* ========== Reset & Base ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: var(--app-bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+
+body,
+button,
+input,
+select,
+textarea {
+  color: var(--fg);
+  font-family:
+    "Onest",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========== Global Button Utilities ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-family: inherit;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    height: auto;
+    min-height: 36px;
+    min-width: 0;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+.btn.primary {
+  background: #006dfa;
+  border-color: #006dfa;
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.15);
+}
+
+.btn.primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+}
+
+.btn.secondary:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn.secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

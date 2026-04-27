@@ -1,0 +1,62 @@
+.wrapper {
+  position: relative;
+  width: auto;
+}
+.desktopOnly {
+  display: block;
+}
+.mobileSearchBar {
+  display: none;
+  width: 100%;
+  margin-top: 16px;
+  animation: searchSlideDown 0.2s ease-out;
+  padding: 0 16px 0 16px;
+}
+.searchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+}
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px 0 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--fg);
+  background: var(--bg-alt);
+  outline: none;
+  transition: all 0.2s;
+  font-family: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.searchInput::placeholder {
+  color: var(--muted);
+}
+.searchInput:hover {
+  border-color: var(--accent-solid);
+}
+.searchInput:focus {
+  border-color: var(--accent-solid);
+  box-shadow: 0 0 0 0.5px var(--accent-solid);
+}
+@keyframes searchSlideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .desktopOnly {
+    display: none !important;
+  }
+  .mobileSearchBar {
+    display: block;
+  }
+  .wrapper {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}

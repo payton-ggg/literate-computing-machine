@@ -1,0 +1,39 @@
+.billingPage {
+  padding: 1.5rem;
+}
+
+.billingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.billingHeader h1,
+.billingHeader p {
+  margin: 0;
+}
+
+.billingHeader h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.billingHeader p {
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.billingGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .billingHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

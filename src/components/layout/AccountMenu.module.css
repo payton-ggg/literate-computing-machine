@@ -1,0 +1,134 @@
+.accountMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.accountMenuPanel {
+  position: absolute;
+  width: 240px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.accountMenuHeader {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.accountMenuUsername {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--fg);
+}
+
+.accountMenuEmail {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.accountMenuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: var(--fg);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.13s ease;
+}
+
+.accountMenuItem:hover {
+  background: var(--bg-alt);
+}
+
+.accountMenuItem.exit {
+  color: var(--danger);
+}
+
+.accountMenuDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.accountMenuItem.exit .itemIcon {
+  color: var(--danger);
+}
+
+.itemLabel {
+  flex: 1;
+  text-align: left;
+}
+
+.itemBadge {
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.itemThemeToggle {
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--border);
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.itemThemeToggle.active {
+  background: var(--accent-solid);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.itemThemeToggle.active .toggleKnob {
+  transform: translateX(14px);
+}
+
+/* Mobile override: panel anchors to top of screen */
+@media (max-width: 768px) {
+  .accountMenuPanel {
+    top: 72px !important;
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+  }
+}

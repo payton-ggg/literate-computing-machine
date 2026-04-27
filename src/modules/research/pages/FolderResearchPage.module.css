@@ -1,0 +1,170 @@
+.page {
+  min-height: calc(100vh - 60px);
+  padding: 24px 40px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.projectLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.layoutInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  width: 100%;
+}
+
+.contentBulk {
+  composes: content;
+  padding-bottom: 104px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.loadingState,
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Skeleton cards */
+.skeletonCard {
+  height: 160px;
+  cursor: default;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeletonCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  animation: skeletonSweep 1.5s infinite linear;
+}
+
+@keyframes skeletonSweep {
+  100% {
+    left: 100%;
+  }
+}
+
+.skeletonPill {
+  width: 70px;
+  height: 22px;
+  background: var(--bg-alt);
+  border-radius: 12px;
+}
+
+.skeletonText {
+  height: 14px;
+  background: var(--bg-alt);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.skeletonTextShort {
+  composes: skeletonText;
+  width: 40%;
+  margin-bottom: 0;
+}
+.skeletonTextTitle {
+  composes: skeletonText;
+  height: 18px;
+  width: 80%;
+  margin-bottom: 12px;
+}
+.skeletonTextDesc {
+  composes: skeletonText;
+  height: 12px;
+}
+.skeletonTextDescLast {
+  composes: skeletonTextDesc;
+  width: 60%;
+}
+
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.loadMoreBtn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.loadMoreBtn:hover {
+  border-color: var(--accent-solid);
+  color: var(--accent-solid);
+}
+
+@media (max-width: 1024px) {
+  .layoutInner {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 16px 12px;
+  }
+  .content {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .contentBulk {
+    padding-bottom: 120px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

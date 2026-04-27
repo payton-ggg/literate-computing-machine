@@ -1,0 +1,170 @@
+/* Ported 1:1 from EmailVerification.vue <style scoped> */
+
+.authCard {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.authHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.authTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--fg);
+}
+
+.authSubtitle {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--fg);
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.codeInput {
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 24px;
+  font-family: monospace;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.authButton {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+}
+
+.authButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.linkButton:disabled {
+  color: var(--muted);
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+.authError {
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  color: #ef4444;
+  font-size: 14px;
+  text-align: center;
+}
+
+.authSuccess {
+  padding: 12px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 12px;
+  color: #22c55e;
+  font-size: 14px;
+  text-align: center;
+}
+
+.authFooter {
+  margin-top: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.authText {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.authLink {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.authLink:hover {
+  text-decoration: underline;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
