@@ -12,8 +12,6 @@ const nextConfig: NextConfig = {
   basePath: isProd ? "" : "",
 
   async rewrites() {
-    if (isProd) return [];
-
     return [
       {
         source: "/api/:path*",
