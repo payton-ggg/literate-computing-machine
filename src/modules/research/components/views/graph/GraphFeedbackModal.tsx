@@ -36,7 +36,7 @@ export default function GraphFeedbackModal({
     currentText: string,
   ) => {
     try {
-      let message = `${t("insights.graph.feedback.step1Title").replace("<br>", " ")} (${
+      let message = `${t("insights.graph.feedback.step1Title").replace(/<br\s*\/?>/gi, " ")} (${
         folderName || folderId
       })\n`;
       message += `${
