@@ -6,6 +6,9 @@
 .container.withBackground {
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  margin: 0 -10px;
+  border-radius: 20px;
 }
 
 .bar {

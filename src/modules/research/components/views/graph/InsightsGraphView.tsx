@@ -341,7 +341,7 @@ export default function InsightsGraphView({
 
   return (
     <div className="insights-graph-page">
-      <div className="px-4 md:px-8 py-2 md:py-3">
+      <div className="px-4 md:px-8 py-2 md:py-3 rounded-2xl">
         {!isFullScreen && <Breadcrumbs items={breadcrumbs} background />}
       </div>
 
