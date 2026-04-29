@@ -48,7 +48,7 @@ export default function GraphControls({
         </button>
       </div>
 
-      <div className="floating-side-buttons right">
+      <div className="floating-side-buttons right ">
         <button
           className="btn-floating-icon fullscreen-btn"
           onClick={toggleFullScreen}
