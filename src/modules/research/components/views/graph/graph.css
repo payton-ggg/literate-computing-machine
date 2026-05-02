@@ -8,6 +8,7 @@
   flex: 1;
   background: var(--bg);
   overflow: hidden;
+  padding: 0 10px 0 10px;
 }
 
 @media (max-width: 768px) {
@@ -344,7 +345,7 @@
   right: 0;
   bottom: 0;
   background-color: var(--border);
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -355,7 +356,7 @@
   left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -390,7 +391,7 @@ input:checked + .slider:before {
 .legend-item.interactive:hover {
   background: var(--bg-alt);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .btn-collapse-all {
@@ -492,8 +493,12 @@ input:checked + .slider:before {
 }
 
 @keyframes slideLeft {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -622,17 +627,32 @@ input:checked + .slider:before {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 8px currentColor); }
-  50% { transform: scale(1.15); filter: drop-shadow(0 0 20px currentColor); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 8px currentColor); }
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px currentColor);
+  }
 }
 
 .node-circle {
-  transition: fill 0.2s ease, filter 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease;
+  transition:
+    fill 0.2s ease,
+    filter 0.2s ease,
+    stroke 0.2s ease,
+    stroke-width 0.2s ease;
 }
 
 .node-circle.hovered {
@@ -718,7 +738,7 @@ input[type="range"]::-webkit-slider-thumb {
   position: absolute;
   bottom: 52px;
   right: 32px;
-  background: #0B1320;
+  background: #0b1320;
   border: 1px solid #1a365d;
   border-radius: 12px;
   padding: 24px 20px 20px;
@@ -731,8 +751,14 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 @keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .feedback-close-btn {
@@ -848,7 +874,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .feedback-textarea-wrapper:focus-within {
-  border-color: #006DFA;
+  border-color: #006dfa;
 }
 
 .feedback-textarea-wrapper textarea {
@@ -875,7 +901,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .primary-submit-btn {
-  background: #006DFA;
+  background: #006dfa;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -898,7 +924,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .feedback-thanks-title {
-  color: #61a0ff; 
+  color: #61a0ff;
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 12px;
