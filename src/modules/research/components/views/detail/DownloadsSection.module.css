@@ -1,0 +1,68 @@
+.downloads {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.downloads h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btnDownload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--fg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnDownload:hover:not(:disabled) {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+  transform: translateY(-1px);
+}
+
+.btnDownload:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--bg-card);
+}
+
+.btnDownloadLoading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btnDownloadSpinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--muted);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

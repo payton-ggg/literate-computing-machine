@@ -1,0 +1,231 @@
+.notesFmtBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.15s ease;
+}
+
+.notesFmtBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.notesFmtBtn.autoSaveBtn {
+  width: 38px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-left: 2px;
+}
+
+.notesFmtBtn.autoSaveBtn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.notesFmtBtn.autoSaveBtn.active:hover {
+  opacity: 0.9;
+}
+
+.fmtLabel {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.fmtLabel sub {
+  font-size: 10px;
+}
+
+.notesToolbarDivider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.notesEditorTextarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 10px 10px;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notesEditorTextarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.12);
+}
+
+.notesEditorTextarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.notesFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.notesSaveStatus {
+  font-size: 12px;
+}
+
+.statusSaving {
+  color: var(--muted);
+}
+
+.statusSaved {
+  color: #10b981;
+}
+
+.statusError {
+  color: #ef4444;
+}
+
+.notesSaveBtn {
+  padding: 8px 20px;
+  background: var(--accent, #0263E0);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 8px rgba(2, 99, 224, 0.2);
+}
+
+.notesSaveBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(2, 99, 224, 0.3);
+}
+
+.notesSaveBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.notesPreviewCard {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notesMarkdown {
+  /* Add markdown styling here if needed */
+}
+
+.notesClosePreview {
+  align-self: flex-end;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.notesClosePreview:hover {
+  background: var(--bg-alt);
+  border-color: var(--muted);
+}
+
+/* Layout for the notes section */
+.notesSection {
+  margin-bottom: 24px;
+}
+
+.notesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.notesHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notesPreviewToggle {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.notesPreviewToggle:hover {
+  background: var(--bg-alt);
+  color: var(--fg);
+}
+
+.notesPreviewToggle.active {
+  color: var(--accent);
+}
+
+.notesToolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px 10px 0 0;
+}
+
+@media (max-width: 768px) {
+  .notesToolbar {
+    gap: 0;
+    padding: 4px;
+  }
+
+  .notesFmtBtn {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+
+  .notesEditorTextarea {
+    min-height: 120px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .notesSaveBtn {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+}

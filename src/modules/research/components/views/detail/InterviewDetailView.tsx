@@ -12,7 +12,8 @@ import {
 import UploadArea from "./UploadArea";
 import UploadProgress from "../../global/UploadProgress";
 import TranscriptViewer from "./TranscriptViewer";
-import NotesEditor from "./NotesEditor";
+import { NotesSection } from "./NotesSection";
+import { DownloadsSection } from "./DownloadsSection";
 import SupportFeedbackDialog from "../../dialogs/SupportFeedbackDialog";
 import LowBalanceDialog from "../../dialogs/LowBalanceDialog";
 import AssignFolderDialog from "../../dialogs/AssignFolderDialog";
@@ -35,7 +36,6 @@ export default function InterviewDetailView({
 }: InterviewDetailViewProps) {
   const t = useTranslations();
   const [isEditing, setIsEditing] = useState(false);
-  const [isNotesEditing, setIsNotesEditing] = useState(false);
   const [editData, setEditData] = useState({
     title: "",
     description: "",
@@ -422,84 +422,19 @@ export default function InterviewDetailView({
         />
       </div>
 
-      <div className={`${styles.section} ${styles.notesSection}`}>
-        <div className={styles.notesHeader}>
-          <h3>{t("card.notes")}</h3>
-        </div>
-        {isNotesEditing ? (
-          <NotesEditor
-            initialNotes={interview.notes || ""}
-            onSave={async (notes) => await onUpdateFields({ notes })}
-            onBlur={() => setIsNotesEditing(false)}
-            placeholder={t("dialogs.createCard.notesPlaceholder")}
-          />
-        ) : (
-          <div
-            className={styles.notesPreviewCard}
-            onClick={() => setIsNotesEditing(true)}
-            style={{ cursor: "text" }}
-          >
-            <div className={styles.notesMarkdown}>
-              {interview.notes ? (
-                <span
-                  className={styles.plainText}
-                  style={{ whiteSpace: "pre-wrap" }}
-                >
-                  {interview.notes}
-                </span>
-              ) : (
-                <span className={styles.placeholder}>
-                  {t("card.noDescription")}
-                </span>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+      <NotesSection
+        initialNotes={interview.notes || ""}
+        onSave={async (notes) => await onUpdateFields({ notes })}
+      />
 
-      {interview.status === "ready" && (
-        <div className={`${styles.section} ${styles.downloads}`}>
-          <h3>{t("card.downloads")}</h3>
-          <div className={styles.buttonGroup}>
-            {isAudioSource && (
-              <button
-                onClick={downloadAudio}
-                disabled={isDownloadingAudio}
-                className={styles.btnDownload}
-              >
-                {isDownloadingAudio ? (
-                  <span className={styles.btnDownloadLoading}>
-                    <span
-                      className={styles.btnDownloadSpinner}
-                      aria-hidden="true"
-                    ></span>
-                    {t("card.downloadingAudio")}
-                  </span>
-                ) : (
-                  <span>{t("card.downloadAudio")}</span>
-                )}
-              </button>
-            )}
-            <button
-              onClick={downloadTranscript}
-              disabled={!interview.transcript || isDownloadingTranscript}
-              className={styles.btnDownload}
-            >
-              {isDownloadingTranscript ? (
-                <span className={styles.btnDownloadLoading}>
-                  <span
-                    className={styles.btnDownloadSpinner}
-                    aria-hidden="true"
-                  ></span>
-                  {t("card.downloadingTranscript")}
-                </span>
-              ) : (
-                <span>{t("card.downloadTranscript")}</span>
-              )}
-            </button>
-          </div>
-        </div>
-      )}
+      <DownloadsSection
+        interview={interview}
+        isAudioSource={isAudioSource}
+        isDownloadingAudio={isDownloadingAudio}
+        isDownloadingTranscript={isDownloadingTranscript}
+        onDownloadAudio={downloadAudio}
+        onDownloadTranscript={downloadTranscript}
+      />
 
       <div className={`${styles.section} ${styles.metadata}`}>
         <div className={styles.metaItem}>

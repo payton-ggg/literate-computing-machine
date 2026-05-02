@@ -286,6 +286,7 @@
     "results": "results"
   },
   "card": {
+    "autoSave": "Auto Save",
     "edit": "✎ Edit",
     "save": "✓ Save",
     "saveFailed": "Failed to save data. Please try again.",
@@ -679,7 +680,7 @@
         "insightTitle": "Insight"
       },
       "feedback": {
-        "step1Title": "How useful were<br />the insights?",
+        "step1Title": "How useful were<br>the insights?",
         "useful": "Useful",
         "notVery": "Not very",
         "step2Title": "What went wrong?",
@@ -691,7 +692,7 @@
         "placeholder": "For example: insights are too general or key points are missing",
         "send": "Send",
         "thanksTitle": "Thank you for your feedback!",
-        "thanksSubtitle": "This helps us improve<br />the product"
+        "thanksSubtitle": "This helps us improve<br>the product"
       },
       "backToFolder": "← Back to project"
     }
