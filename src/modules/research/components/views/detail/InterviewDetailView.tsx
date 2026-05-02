@@ -420,12 +420,12 @@ export default function InterviewDetailView({
           speakerMappings={speakerMappings}
           onAssignSpeakers={handleAssignSpeakers}
         />
-      </div>
 
-      <NotesSection
-        initialNotes={interview.notes || ""}
-        onSave={async (notes) => await onUpdateFields({ notes })}
-      />
+        <NotesSection
+          initialNotes={interview.notes || ""}
+          onSave={async (notes) => await onUpdateFields({ notes })}
+        />
+      </div>
 
       <DownloadsSection
         interview={interview}

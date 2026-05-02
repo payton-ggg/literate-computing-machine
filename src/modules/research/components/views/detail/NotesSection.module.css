@@ -35,7 +35,7 @@
 }
 
 .fmtLabel {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif;
   font-size: 15px;
   line-height: 1;
 }
@@ -65,7 +65,9 @@
   line-height: 1.6;
   resize: vertical;
   box-sizing: border-box;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .notesEditorTextarea:focus {
@@ -105,7 +107,7 @@
 
 .notesSaveBtn {
   padding: 8px 20px;
-  background: var(--accent, #0263E0);
+  background: var(--accent, #0263e0);
   color: #fff;
   border: none;
   border-radius: 20px;
@@ -137,7 +139,62 @@
 }
 
 .notesMarkdown {
-  /* Add markdown styling here if needed */
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--fg);
+  word-break: break-word;
+}
+
+.notesMarkdown h1 {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0.5em 0;
+  color: var(--fg);
+}
+
+.notesMarkdown h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+.notesMarkdown h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+.notesMarkdown ul,
+.notesMarkdown ol {
+  padding-left: 24px;
+  margin: 0.5em 0;
+}
+
+.notesMarkdown li {
+  margin-bottom: 4px;
+}
+
+.notesMarkdown blockquote {
+  border-left: 4px solid var(--accent, #0263e0);
+  margin: 0.8em 0;
+  padding: 8px 16px;
+  color: var(--muted, #666);
+  background: var(--bg-alt, #f9fafb);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.notesMarkdown strong {
+  font-weight: 600;
+}
+
+.notesMarkdown em {
+  font-style: italic;
+}
+
+.notesMarkdown del {
+  text-decoration: line-through;
+  opacity: 0.7;
 }
 
 .notesClosePreview {
@@ -159,6 +216,7 @@
 
 /* Layout for the notes section */
 .notesSection {
+  margin-top: 24px;
   margin-bottom: 24px;
 }
 
