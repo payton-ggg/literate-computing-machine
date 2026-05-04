@@ -449,22 +449,30 @@
     display: none;
   }
   .pageTitle {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
     margin-bottom: 0;
   }
+  .pageTitle svg {
+    width: 20px;
+    height: 20px;
+  }
   .header {
-    margin-bottom: 16px;
+    margin-bottom: 0;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
   }
   .mobileHeaderActions {
     display: flex;
     gap: 8px;
+    flex-shrink: 0;
   }
   .controlsRow {
     display: none;
   }
   .actionButtons {
-    width: 100%;
-    justify-content: flex-start;
+    display: none;
   }
   .searchRow {
     display: none;

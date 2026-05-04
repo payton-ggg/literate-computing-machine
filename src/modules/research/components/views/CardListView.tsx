@@ -144,21 +144,53 @@ export default function CardListView() {
         </h2>
 
         <div className={styles.mobileHeaderActions}>
-          <button 
+          <button
             className={styles.mobileActionBtn}
             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M17.5 17.5L13.875 13.875" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M15.75 15.75L12.4875 12.4875"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
-          <button 
+          <button
             className={styles.mobileActionBtn}
             onClick={filtering.toggleSort}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M5 11.6667V3.33333M5 3.33333L1.66667 6.66667M5 3.33333L8.33333 6.66667M15 8.33333V16.6667M15 16.6667L18.3333 13.3333M15 16.6667L11.6667 13.3333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="24" height="24" fill="white" fillOpacity="0.01" />
+              <path
+                d="M4.90536 8.56244C4.74479 8.82023 4.76773 9.17665 4.97418 9.40626L5.05654 9.48279C5.28832 9.66138 5.60879 9.63586 5.81523 9.40626L7.79999 7.0969V13.8C7.79999 14.1314 8.06862 14.4 8.39999 14.4C8.73136 14.4 8.99999 14.1314 8.99999 13.8V7.09539L10.9847 9.40626L11.0671 9.48279C11.2989 9.66138 11.6194 9.63586 11.8258 9.40626C12.0581 9.14795 12.0581 8.72914 11.8258 8.47083L8.82052 4.99372L8.73815 4.91718C8.50637 4.7386 8.1859 4.76411 7.97946 4.99372L4.97418 8.47083L4.90536 8.56244Z"
+                fill="currentColor"
+              />
+              <path
+                d="M19.0946 15.4375C19.2552 15.1797 19.2322 14.8233 19.0258 14.5937L18.9434 14.5172C18.7117 14.3386 18.3912 14.3641 18.1847 14.5937L16.2 16.9031V10.2C16.2 9.86862 15.9314 9.59999 15.6 9.59999C15.2686 9.59999 15 9.86862 15 10.2V16.9046L13.0152 14.5937L12.9329 14.5172C12.7011 14.3386 12.3806 14.3641 12.1742 14.5937C11.9419 14.852 11.9419 15.2708 12.1742 15.5291L15.1795 19.0063L15.2618 19.0828C15.4936 19.2614 15.8141 19.2359 16.0205 19.0063L19.0258 15.5291L19.0946 15.4375Z"
+                fill="currentColor"
+              />
             </svg>
           </button>
         </div>
@@ -190,7 +222,9 @@ export default function CardListView() {
           </div>
         </div>
       </div>
-      <div className={`${styles.searchRow} ${isMobileSearchOpen ? styles.mobileSearchOpen : ""}`}>
+      <div
+        className={`${styles.searchRow} ${isMobileSearchOpen ? styles.mobileSearchOpen : ""}`}
+      >
         <div className={styles.searchInputWrapper}>
           <svg
             className={styles.searchIcon}
@@ -332,12 +366,23 @@ export default function CardListView() {
         </div>
       )}
 
-      <button 
+      <button
         className={styles.mobileFab}
         onClick={() => setShowCreateFolder(true)}
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{marginRight: 8}}>
-          <path d="M8 3.333v9.334M3.333 8h9.334" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          style={{ marginRight: 8 }}
+        >
+          <path
+            d="M8 3.333v9.334M3.333 8h9.334"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
         </svg>
         {t("interviews.startResearch")}
       </button>
@@ -405,6 +450,36 @@ export default function CardListView() {
         onConfirm={executeDelete}
         onClose={() => setShowDeleteConfirm(false)}
       />
+
+      <button
+        className={styles.mobileFab}
+        onClick={() => setShowCreateCard(true)}
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ marginRight: 8 }}
+        >
+          <path
+            d="M10 4.16667V15.8333"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16699 10H15.8337"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        {t("interviews.uploadInterview")}
+      </button>
     </div>
   );
 }
