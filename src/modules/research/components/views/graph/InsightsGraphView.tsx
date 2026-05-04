@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useGraphData } from "../../../hooks/useGraphData";
 import { useGraphSimulation } from "../../../hooks/useGraphSimulation";
 import GraphCanvas from "./GraphCanvas";
-import GraphLegend from "./GraphLegend";
+
 import GraphControls from "./GraphControls";
 import GraphSettings from "./GraphSettings";
 import GraphSidePanel from "./GraphSidePanel";
@@ -42,7 +42,7 @@ export default function InsightsGraphView({
   } = useGraphData(folderId);
 
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [legendMinimized, setLegendMinimized] = useState(false);
+
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [feedbackVisible, setFeedbackVisible] = useState(false);
@@ -431,6 +431,13 @@ export default function InsightsGraphView({
               setChargeStrengthAbs={setChargeStrengthAbs}
               showGridEnabled={showGridEnabled}
               setShowGridEnabled={setShowGridEnabled}
+              autoCollapseEnabled={autoCollapseEnabled}
+              setAutoCollapseEnabled={setAutoCollapseEnabled}
+              toggleAllGroups={toggleAllGroups}
+              toggleAllUngrouped={toggleAllUngrouped}
+              collapseAllNodes={collapseAllNodes}
+              untangleNodes={untangleNodes}
+              pullFloatingNodes={pullFloatingNodes}
               t={t}
             />
 
@@ -439,20 +446,6 @@ export default function InsightsGraphView({
               svgRef={svgRef}
               showGridEnabled={showGridEnabled}
               loading={loading}
-              t={t}
-            />
-
-            <GraphLegend
-              isFullScreen={isFullScreen}
-              legendMinimized={legendMinimized}
-              setLegendMinimized={setLegendMinimized}
-              autoCollapseEnabled={autoCollapseEnabled}
-              setAutoCollapseEnabled={setAutoCollapseEnabled}
-              toggleAllGroups={toggleAllGroups}
-              toggleAllUngrouped={toggleAllUngrouped}
-              collapseAllNodes={collapseAllNodes}
-              untangleNodes={untangleNodes}
-              pullFloatingNodes={pullFloatingNodes}
               t={t}
             />
 

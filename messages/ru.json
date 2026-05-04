@@ -667,8 +667,10 @@
       },
       "controlsPanel": {
         "title": "Управление графом",
+        "displaySettings": "Отображение",
+        "actions": "Действия",
         "autoCollapse": "Авто-сворачивание",
-        "legendAndVisibility": "Легенда и видимость:",
+        "legendAndVisibility": "Легенда и видимость",
         "toggleUngrouped": "Показать/скрыть все одиночные",
         "toggleGroups": "Показать/скрыть все группы",
         "toggleExtCastdev": "Показать/скрыть от интервью",
