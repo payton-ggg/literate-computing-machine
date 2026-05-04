@@ -306,7 +306,7 @@ export default function InsightsGraphView({
   };
 
   const breadcrumbs = useMemo(() => {
-    const items = [{ label: t("header.nav.interviews"), href: "/research" }];
+    const items = [{ label: t("header.nav.interviews"), href: "/" }];
     if (currentFolder) {
       items.push({
         label: currentFolder.name,
