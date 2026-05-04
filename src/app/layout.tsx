@@ -8,9 +8,43 @@ import GlobalUploadManager from "@/modules/research/components/global/GlobalUplo
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zernote – Know what to build",
+  title: "Zernote - AI workspace for customer interviews",
   description:
-    "Zernote turns customer interviews into clear decisions on what to build next.",
+    "Zernote turns customer interviews, notes, and hypotheses into transcripts and insights. AI workspace for UX research and customer development.",
+  metadataBase: new URL("https://zernote.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Zernote",
+    url: "https://zernote.com/",
+    title: "Zernote - AI workspace for customer interviews",
+    description:
+      "Zernote turns customer interviews, notes, and hypotheses into transcripts and insights. AI workspace for UX research and customer development.",
+    images: [
+      {
+        url: "https://zernote.com/og-image.png",
+        secureUrl: "https://zernote.com/og-image.png",
+        type: "image/png",
+        width: 1200,
+        height: 630,
+        alt: "Zernote - AI workspace for customer interviews",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zernote - AI workspace for customer interviews",
+    description:
+      "Zernote turns customer interviews, notes, and hypotheses into transcripts and insights. AI workspace for UX research and customer development.",
+    images: [
+      {
+        url: "https://zernote.com/og-image.png",
+        alt: "Zernote - AI workspace for customer interviews",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({
@@ -34,7 +68,7 @@ export default async function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Onest:wght@400;500;600;700&family=Playfair+Display:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap"
           rel="stylesheet"
         />
       </head>
