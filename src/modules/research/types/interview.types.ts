@@ -1,6 +1,8 @@
 export type InterviewStatus =
   | "empty"
   | "uploading"
+  | "processing"
+  | "proccesing"
   | "converting"
   | "analyzing"
   | "ready"

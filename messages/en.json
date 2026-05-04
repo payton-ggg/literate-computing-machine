@@ -413,6 +413,8 @@
   "status": {
     "empty": "Empty",
     "uploading": "Uploading",
+    "processing": "Processing",
+    "proccesing": "Processing",
     "converting": "Converting",
     "analyzing": "Analyzing",
     "ready": "Ready",
@@ -420,6 +422,8 @@
     "titles": {
       "empty": "Research created, no files yet",
       "uploading": "Files uploading to server",
+      "processing": "Files are being processed",
+      "proccesing": "Files are being processed",
       "converting": "Converting audio to .ogg format",
       "analyzing": "Generating transcript and summary",
       "ready": "Processing complete, ready to download",

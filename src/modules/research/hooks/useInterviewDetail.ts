@@ -10,35 +10,38 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   const [interview, setInterview] = useState<Interview | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const pollingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const fetchInterview = useCallback(async (hideLoading = false) => {
-    if (!id) return null;
-    
-    if (!hideLoading) {
-      setIsLoading(true);
-    }
-    setError(null);
-    
-    try {
-      const res = await interviewApi.get(id);
-      setInterview(res.data);
-      return res.data;
-    } catch (err: unknown) {
-      console.error("Failed to load interview:", err);
-      if (err instanceof Error) {
-        setError(err.message || "Failed to load interview");
-      } else {
-        setError("Failed to load interview");
-      }
-      return null;
-    } finally {
+  const fetchInterview = useCallback(
+    async (hideLoading = false) => {
+      if (!id) return null;
+
       if (!hideLoading) {
-        setIsLoading(false);
+        setIsLoading(true);
       }
-    }
-  }, [id]);
+      setError(null);
+
+      try {
+        const res = await interviewApi.get(id);
+        setInterview(res.data);
+        return res.data;
+      } catch (err: unknown) {
+        console.error("Failed to load interview:", err);
+        if (err instanceof Error) {
+          setError(err.message || "Failed to load interview");
+        } else {
+          setError("Failed to load interview");
+        }
+        return null;
+      } finally {
+        if (!hideLoading) {
+          setIsLoading(false);
+        }
+      }
+    },
+    [id],
+  );
 
   const stopPolling = useCallback(() => {
     if (pollingTimerRef.current) {
@@ -50,7 +53,7 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   // Initial load
   useEffect(() => {
     fetchInterview();
-    
+
     return () => {
       stopPolling();
     };
@@ -59,10 +62,13 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   // Polling logic
   const startPolling = useCallback(() => {
     if (pollingTimerRef.current) return;
-    
+
     pollingTimerRef.current = setInterval(async () => {
       const latest = await fetchInterview(true);
-      if (latest && !['uploading', 'converting', 'analyzing'].includes(latest.status)) {
+      if (
+        latest &&
+        !["uploading", "converting", "analyzing"].includes(latest.status)
+      ) {
         stopPolling();
       }
     }, 5000);
@@ -70,7 +76,10 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
 
   // Watch status to trigger polling
   useEffect(() => {
-    if (interview && ['uploading', 'converting', 'analyzing'].includes(interview.status)) {
+    if (
+      interview &&
+      ["uploading", "converting", "analyzing"].includes(interview.status)
+    ) {
       startPolling();
     } else {
       stopPolling();
@@ -92,6 +101,7 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   const deleteInterview = async () => {
     if (!id) return;
     await interviewApi.delete(id);
+    setInterview(null);
   };
 
   const retryInterview = async () => {
@@ -109,6 +119,6 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
     deleteInterview,
     retryInterview,
     startPolling,
-    setInterview // For optimistic updates
+    setInterview, // For optimistic updates
   };
 }

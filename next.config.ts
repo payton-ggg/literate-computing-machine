@@ -11,6 +11,10 @@ const isProd = process.env.NODE_ENV === "production";
 const nextConfig: NextConfig = {
   basePath: isProd ? "" : "",
 
+  experimental: {
+    proxyClientMaxBodySize: 2000, // 2GB limit for file uploads via proxy
+  },
+
   async rewrites() {
     return [
       {

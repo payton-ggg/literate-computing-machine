@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 // Since PRIORITY_LANGUAGES are needed, let's hardcode a few common ones if constants are missing,
 // but ideally we'd import them. I'll mock them based on typical usage.
 const PRIORITY_LANGUAGES = [
@@ -37,6 +38,18 @@ export default function LanguageDropdown({
 }: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const [coords, setCoords] = useState({ bottom: 0, left: 0, width: 0 });
+
+  useEffect(() => {
+    if (isOpen && wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      setCoords({
+        bottom: window.innerHeight - rect.top,
+        left: rect.left,
+        width: rect.width,
+      });
+    }
+  }, [isOpen]);
 
   const allLanguages = [...PRIORITY_LANGUAGES, ...OTHER_LANGUAGES];
   const selectedLang = allLanguages.find((l) => l.code === value);
@@ -44,7 +57,10 @@ export default function LanguageDropdown({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -53,7 +69,11 @@ export default function LanguageDropdown({
   }, []);
 
   return (
-    <div className="language-dropdown-wrapper" ref={wrapperRef} style={{ position: "relative", flex: 1, maxWidth: "280px" }}>
+    <div
+      className="language-dropdown-wrapper"
+      ref={wrapperRef}
+      style={{ position: "relative", flex: 1, maxWidth: "280px" }}
+    >
       <button
         type="button"
         style={{
@@ -74,72 +94,99 @@ export default function LanguageDropdown({
         <span>▾</span>
       </button>
 
-      {isOpen && (
-        <div
-          style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            width: "100%",
-            background: "var(--bg-card)",
-            border: "1px solid var(--border)",
-            borderRadius: "6px",
-            maxHeight: "320px",
-            overflowY: "auto",
-            zIndex: 9999,
-            marginTop: "4px",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.4)"
-          }}
-        >
-          <div style={{ padding: "4px 0" }}>
-            <div style={{ padding: "6px 12px", fontSize: "11px", fontWeight: 600, color: "var(--muted)", textTransform: "uppercase" }}>
-              {popularLabel}
-            </div>
-            {PRIORITY_LANGUAGES.map((lang) => (
+      {isOpen &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            style={{
+              position: "fixed",
+              bottom: coords.bottom,
+              left: coords.left,
+              width: coords.width,
+              background: "var(--bg-card)",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              maxHeight: "320px",
+              overflowY: "auto",
+              zIndex: 9999,
+              marginBottom: "4px",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+            }}
+          >
+            <div style={{ padding: "4px 0" }}>
               <div
-                key={lang.code}
-                onClick={() => {
-                  onChange(lang.code);
-                  setIsOpen(false);
-                }}
                 style={{
-                  padding: "8px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  background: value === lang.code ? "rgba(34, 197, 94, 0.15)" : "transparent",
-                  color: value === lang.code ? "var(--success)" : "var(--fg)"
+                  padding: "6px 12px",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  color: "var(--muted)",
+                  textTransform: "uppercase",
                 }}
               >
-                {lang.name}
+                {popularLabel}
               </div>
-            ))}
-          </div>
+              {PRIORITY_LANGUAGES.map((lang) => (
+                <div
+                  key={lang.code}
+                  onClick={() => {
+                    onChange(lang.code);
+                    setIsOpen(false);
+                  }}
+                  style={{
+                    padding: "8px 12px",
+                    fontSize: "14px",
+                    cursor: "pointer",
+                    background:
+                      value === lang.code
+                        ? "rgba(34, 197, 94, 0.15)"
+                        : "transparent",
+                    color: value === lang.code ? "var(--success)" : "var(--fg)",
+                  }}
+                >
+                  {lang.name}
+                </div>
+              ))}
+            </div>
 
-          <div style={{ padding: "4px 0", borderTop: "1px solid var(--border)" }}>
-            <div style={{ padding: "6px 12px", fontSize: "11px", fontWeight: 600, color: "var(--muted)", textTransform: "uppercase" }}>
-              {otherLabel}
-            </div>
-            {OTHER_LANGUAGES.map((lang) => (
+            <div
+              style={{ padding: "4px 0", borderTop: "1px solid var(--border)" }}
+            >
               <div
-                key={lang.code}
-                onClick={() => {
-                  onChange(lang.code);
-                  setIsOpen(false);
-                }}
                 style={{
-                  padding: "8px 12px",
-                  fontSize: "14px",
-                  cursor: "pointer",
-                  background: value === lang.code ? "rgba(34, 197, 94, 0.15)" : "transparent",
-                  color: value === lang.code ? "var(--success)" : "var(--fg)"
+                  padding: "6px 12px",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  color: "var(--muted)",
+                  textTransform: "uppercase",
                 }}
               >
-                {lang.name}
+                {otherLabel}
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+              {OTHER_LANGUAGES.map((lang) => (
+                <div
+                  key={lang.code}
+                  onClick={() => {
+                    onChange(lang.code);
+                    setIsOpen(false);
+                  }}
+                  style={{
+                    padding: "8px 12px",
+                    fontSize: "14px",
+                    cursor: "pointer",
+                    background:
+                      value === lang.code
+                        ? "rgba(34, 197, 94, 0.15)"
+                        : "transparent",
+                    color: value === lang.code ? "var(--success)" : "var(--fg)",
+                  }}
+                >
+                  {lang.name}
+                </div>
+              ))}
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
