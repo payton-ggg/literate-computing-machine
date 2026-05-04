@@ -38,6 +38,7 @@ export default function LanguageDropdown({
 }: LanguageDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState({ bottom: 0, left: 0, width: 0 });
 
   useEffect(() => {
@@ -57,10 +58,11 @@ export default function LanguageDropdown({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        wrapperRef.current &&
-        !wrapperRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const isOutsideWrapper = wrapperRef.current && !wrapperRef.current.contains(target);
+      const isOutsideDropdown = dropdownRef.current && !dropdownRef.current.contains(target);
+
+      if (isOutsideWrapper && (!dropdownRef.current || isOutsideDropdown)) {
         setIsOpen(false);
       }
     };
@@ -98,6 +100,7 @@ export default function LanguageDropdown({
         typeof document !== "undefined" &&
         createPortal(
           <div
+            ref={dropdownRef}
             style={{
               position: "fixed",
               bottom: coords.bottom,

@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { interviewApi } from "../api/interviews.api";
 import type { Interview } from "../types/interview.types";
 
@@ -10,6 +11,7 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   const [interview, setInterview] = useState<Interview | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   const pollingTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -67,7 +69,7 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
       const latest = await fetchInterview(true);
       if (
         latest &&
-        !["uploading", "converting", "analyzing"].includes(latest.status)
+        !["uploading", "converting", "analyzing", "processing", "proccesing"].includes(latest.status)
       ) {
         stopPolling();
       }
@@ -78,7 +80,7 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
   useEffect(() => {
     if (
       interview &&
-      ["uploading", "converting", "analyzing"].includes(interview.status)
+      ["uploading", "converting", "analyzing", "processing", "proccesing"].includes(interview.status)
     ) {
       startPolling();
     } else {
@@ -100,8 +102,13 @@ export function useInterviewDetail({ id }: UseInterviewDetailOptions) {
 
   const deleteInterview = async () => {
     if (!id) return;
+    const folderId = interview?.folder_id;
     await interviewApi.delete(id);
-    setInterview(null);
+    if (folderId) {
+      router.push(`/research/${folderId}`);
+    } else {
+      router.push("/research");
+    }
   };
 
   const retryInterview = async () => {

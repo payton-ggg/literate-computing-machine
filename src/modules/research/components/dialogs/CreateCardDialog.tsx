@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { interviewApi, folderApi } from "@/modules/research/api/interviews.api";
 import type { Folder } from "@/modules/research/types/interview.types";
 import styles from "./CreateFolderDialog.module.css";
-import UploadProgress from "../global/UploadProgress";
+import { useUploadStore } from "../../store/useUploadStore";
 
 interface CreateCardDialogProps {
   isOpen: boolean;
@@ -35,8 +35,6 @@ export default function CreateCardDialog({
   const [isDragover, setIsDragover] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isCreating, setIsCreating] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploadStep, setUploadStep] = useState<string>("uploading");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -88,8 +86,6 @@ export default function CreateCardDialog({
 
     setIsCreating(true);
     setErrorMessage("");
-    setUploadProgress(0);
-    setUploadStep("uploading");
 
     try {
       const payload: Record<string, unknown> = {
@@ -103,65 +99,9 @@ export default function CreateCardDialog({
       const interview = res.data;
 
       if (selectedFile) {
-        try {
-          const name = (selectedFile.name || "").toLowerCase();
-          const canUseDirect = !name.endsWith(".txt") && !name.endsWith(".md") && !name.endsWith(".pdf");
-
-          if (canUseDirect) {
-            const urlRes = await interviewApi.requestUploadUrl(interview.id, {
-              filename: selectedFile.name,
-              size_bytes: selectedFile.size,
-              content_type: selectedFile.type || "application/octet-stream",
-            });
-
-            if (urlRes.data?.direct && urlRes.data?.upload_url) {
-              await interviewApi.uploadToSignedUrl(
-                urlRes.data.upload_url,
-                selectedFile,
-                urlRes.data.headers || { "Content-Type": selectedFile.type || "application/octet-stream" },
-                (ev: any) => {
-                  if (ev.loaded && selectedFile.size) {
-                    setUploadProgress(Math.min(99, Math.round((ev.loaded / selectedFile.size) * 100)));
-                  }
-                }
-              );
-
-              setUploadStep("processing");
-              await interviewApi.confirmUpload(interview.id, {
-                language: selectedLanguage,
-                files: [{
-                  filename: selectedFile.name,
-                  object_key: urlRes.data.object_key,
-                  size_bytes: selectedFile.size,
-                  content_type: selectedFile.type || "application/octet-stream",
-                }],
-              });
-            } else {
-              const fd = new FormData();
-              fd.append("files", selectedFile);
-              fd.append("language", selectedLanguage);
-              await interviewApi.attachAudio(interview.id, fd, {
-                onUploadProgress: (ev: any) => {
-                  if (ev.total) setUploadProgress(Math.round((ev.loaded / ev.total) * 100));
-                }
-              });
-              setUploadStep("processing");
-            }
-          } else {
-            const fd = new FormData();
-            fd.append("files", selectedFile);
-            fd.append("language", selectedLanguage);
-            await interviewApi.attachAudio(interview.id, fd, {
-              onUploadProgress: (ev: any) => {
-                if (ev.total) setUploadProgress(Math.round((ev.loaded / ev.total) * 100));
-              }
-            });
-            setUploadStep("processing");
-          }
-          setUploadProgress(100);
-        } catch (uploadErr) {
-          console.error("Upload failed:", uploadErr);
-        }
+        useUploadStore
+          .getState()
+          .setPendingUpload(interview.id, selectedFile, selectedLanguage);
       }
 
       onCreated(interview);
@@ -204,12 +144,7 @@ export default function CreateCardDialog({
           </button>
         </div>
 
-        {isCreating && selectedFile ? (
-          <div className={styles.body} style={{ padding: "32px 20px" }}>
-            <UploadProgress step={uploadStep} progress={uploadProgress} />
-          </div>
-        ) : (
-          <form className={styles.body} onSubmit={handleSubmit}>
+        <form className={styles.body} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label>
               <span className={styles.requiredStar}>*</span>{" "}
@@ -390,8 +325,7 @@ export default function CreateCardDialog({
           {errorMessage && (
             <div className={styles.errorMessage}>{errorMessage}</div>
           )}
-          </form>
-        )}
+        </form>
 
         <div className={styles.footer}>
           <button

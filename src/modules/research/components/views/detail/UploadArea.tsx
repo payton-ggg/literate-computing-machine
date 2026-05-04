@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./UploadArea.module.css";
 import LanguageDropdown from "../../global/LanguageDropdown";
@@ -15,14 +15,18 @@ interface UploadAreaProps {
   onError: (msg: string) => void;
 }
 
-export default function UploadArea({
+export interface UploadAreaHandle {
+  autoUpload: (files: File[], language: string) => Promise<void>;
+}
+
+const UploadArea = forwardRef<UploadAreaHandle, UploadAreaProps>(({
   interviewId,
   onUploadStart,
   onUploadProgress,
   onUploadComplete,
   onLowBalance,
   onError,
-}: UploadAreaProps) {
+}, ref) => {
   const t = useTranslations();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
@@ -106,75 +110,75 @@ export default function UploadArea({
     return !name.endsWith(".txt") && !name.endsWith(".md") && !name.endsWith(".pdf");
   };
 
-  const uploadViaFormData = async () => {
-    const formData = new FormData();
-    selectedFiles.forEach((f) => formData.append("files", f));
-    formData.append("language", uploadLanguage);
-    await interviewApi.attachAudio(interviewId, formData, {
-      onUploadProgress: (e) => {
-        if (e.total) {
-          onUploadProgress(Math.round((e.loaded / e.total) * 100));
-        }
-      },
-    });
-  };
-
-  const uploadFilesDirectly = async () => {
-    const totalBytes = selectedFiles.reduce((sum, f) => sum + (f.size || 0), 0);
-    let uploadedBytes = 0;
-    const confirmedFiles = [];
-
-    for (const file of selectedFiles) {
-      const urlRes = await interviewApi.requestUploadUrl(interviewId, {
-        filename: file.name,
-        size_bytes: file.size,
-        content_type: file.type || "application/octet-stream",
-      });
-
-      if (!urlRes.data?.direct || !urlRes.data?.upload_url) {
-        return uploadViaFormData();
-      }
-
-      let prevLoaded = 0;
-      await interviewApi.uploadToSignedUrl(
-        urlRes.data.upload_url,
-        file,
-        urlRes.data.headers || { "Content-Type": file.type || "application/octet-stream" },
-        (e) => {
-          const currentLoaded = e.loaded || 0;
-          uploadedBytes += currentLoaded - prevLoaded;
-          prevLoaded = currentLoaded;
-          if (totalBytes > 0) {
-            onUploadProgress(Math.min(99, Math.round((uploadedBytes / totalBytes) * 100)));
-          }
-        }
-      );
-
-      uploadedBytes += (file.size || 0) - prevLoaded;
-      confirmedFiles.push({
-        filename: file.name,
-        object_key: urlRes.data.object_key,
-        size_bytes: file.size,
-        content_type: file.type || "application/octet-stream",
-      });
-    }
-
-    await interviewApi.confirmUpload(interviewId, {
-      language: uploadLanguage,
-      files: confirmedFiles,
-    });
-  };
-
-  const startUpload = async () => {
-    if (selectedFiles.length === 0) return;
+  const executeUpload = async (files: File[], language: string) => {
+    if (files.length === 0) return;
     onUploadStart();
 
+    const uploadViaFormDataFn = async () => {
+      const formData = new FormData();
+      files.forEach((f) => formData.append("files", f));
+      formData.append("language", language);
+      await interviewApi.attachAudio(interviewId, formData, {
+        onUploadProgress: (e) => {
+          if (e.total) {
+            onUploadProgress(Math.round((e.loaded / e.total) * 100));
+          }
+        },
+      });
+    };
+
+    const uploadFilesDirectlyFn = async () => {
+      const totalBytes = files.reduce((sum, f) => sum + (f.size || 0), 0);
+      let uploadedBytes = 0;
+      const confirmedFiles = [];
+
+      for (const file of files) {
+        const urlRes = await interviewApi.requestUploadUrl(interviewId, {
+          filename: file.name,
+          size_bytes: file.size,
+          content_type: file.type || "application/octet-stream",
+        });
+
+        if (!urlRes.data?.direct || !urlRes.data?.upload_url) {
+          return uploadViaFormDataFn();
+        }
+
+        let prevLoaded = 0;
+        await interviewApi.uploadToSignedUrl(
+          urlRes.data.upload_url,
+          file,
+          urlRes.data.headers || { "Content-Type": file.type || "application/octet-stream" },
+          (e) => {
+            const currentLoaded = e.loaded || 0;
+            uploadedBytes += currentLoaded - prevLoaded;
+            prevLoaded = currentLoaded;
+            if (totalBytes > 0) {
+              onUploadProgress(Math.min(99, Math.round((uploadedBytes / totalBytes) * 100)));
+            }
+          }
+        );
+
+        uploadedBytes += (file.size || 0) - prevLoaded;
+        confirmedFiles.push({
+          filename: file.name,
+          object_key: urlRes.data.object_key,
+          size_bytes: file.size,
+          content_type: file.type || "application/octet-stream",
+        });
+      }
+
+      await interviewApi.confirmUpload(interviewId, {
+        language: language,
+        files: confirmedFiles,
+      });
+    };
+
     try {
-      const canUseDirect = selectedFiles.every(supportsDirectUpload);
+      const canUseDirect = files.every(supportsDirectUpload);
       if (canUseDirect) {
-        await uploadFilesDirectly();
+        await uploadFilesDirectlyFn();
       } else {
-        await uploadViaFormData();
+        await uploadViaFormDataFn();
       }
       onUploadProgress(100);
       clearFiles();
@@ -192,6 +196,16 @@ export default function UploadArea({
       }
     }
   };
+
+  const startUpload = () => executeUpload(selectedFiles, uploadLanguage);
+
+  useImperativeHandle(ref, () => ({
+    autoUpload: async (files: File[], language: string) => {
+      setSelectedFiles(files);
+      setUploadLanguage(language);
+      await executeUpload(files, language);
+    }
+  }));
 
   return (
     <div className={styles.uploadArea}>
@@ -256,4 +270,6 @@ export default function UploadArea({
       {uploadError && <div className={styles.uploadError}>{uploadError}</div>}
     </div>
   );
-}
+});
+
+export default UploadArea;

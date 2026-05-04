@@ -9,7 +9,7 @@ import {
   speakerApi,
 } from "@/modules/research/api/interviews.api";
 
-import UploadArea from "./UploadArea";
+import UploadArea, { UploadAreaHandle } from "./UploadArea";
 import UploadProgress from "../../global/UploadProgress";
 import TranscriptViewer from "./TranscriptViewer";
 import { NotesSection } from "./NotesSection";
@@ -18,6 +18,7 @@ import SupportFeedbackDialog from "../../dialogs/SupportFeedbackDialog";
 import LowBalanceDialog from "../../dialogs/LowBalanceDialog";
 import AssignFolderDialog from "../../dialogs/AssignFolderDialog";
 import { AudioPlayer } from "../../global/AudioPlayer";
+import { useUploadStore } from "@/modules/research/store/useUploadStore";
 
 interface InterviewDetailViewProps {
   interview: Interview;
@@ -79,6 +80,34 @@ export default function InterviewDetailView({
   // Phase 2 Upload States
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
+  const uploadAreaRef = React.useRef<UploadAreaHandle>(null);
+  const pendingUpload = useUploadStore((s) => s.pendingUpload);
+  const clearPendingUpload = useUploadStore((s) => s.clearPendingUpload);
+
+  React.useEffect(() => {
+    if (
+      interview.status === "empty" &&
+      !isUploading &&
+      pendingUpload &&
+      pendingUpload.id === interview.id &&
+      uploadAreaRef.current
+    ) {
+      const file = pendingUpload.file;
+      const lang = pendingUpload.language;
+      clearPendingUpload();
+      // Use setTimeout to ensure state is settled and ref is available
+      setTimeout(() => {
+        uploadAreaRef.current?.autoUpload([file], lang);
+      }, 50);
+    }
+  }, [
+    interview.status,
+    interview.id,
+    isUploading,
+    pendingUpload,
+    clearPendingUpload,
+  ]);
 
   const handleUploadStart = () => {
     setIsUploading(true);
@@ -348,6 +377,7 @@ export default function InterviewDetailView({
       {interview.status === "empty" && !isUploading && (
         <div className={styles.section}>
           <UploadArea
+            ref={uploadAreaRef}
             interviewId={interview.id}
             onUploadStart={handleUploadStart}
             onUploadProgress={handleUploadProgress}
@@ -359,7 +389,7 @@ export default function InterviewDetailView({
       )}
 
       {(isUploading ||
-        ["uploading", "converting", "analyzing", "processing"].includes(
+        ["uploading", "converting", "analyzing", "processing", "proccesing"].includes(
           interview.status,
         )) && (
         <div className={styles.section}>
@@ -377,6 +407,7 @@ export default function InterviewDetailView({
           "converting",
           "analyzing",
           "processing",
+          "proccesing",
         ].includes(interview.status) &&
         !isUploading && (
           <div className={styles.section}>
