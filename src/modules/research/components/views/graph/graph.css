@@ -106,11 +106,14 @@
     align-items: stretch;
     gap: 12px;
   }
+  .header-search-container {
+    display: none;
+  }
   .search-container {
-    width: 100% !important;
+    display: none;
   }
   .search-input {
-    width: 100% !important;
+    display: none;
   }
 }
 
@@ -434,6 +437,7 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   .legend-card {
+    display: none;
     top: 10px;
     left: 10px;
     bottom: auto;
@@ -989,7 +993,6 @@ input[type="range"]::-webkit-slider-thumb {
   height: 20px;
   flex-shrink: 0;
 }
-
 
 .pill-secondary {
   background: var(--bg-alt);
