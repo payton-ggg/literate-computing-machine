@@ -102,7 +102,7 @@ export default function CreateCardDialog({
       if (selectedFile) {
         useUploadStore
           .getState()
-          .setPendingUpload(interview.id, selectedFile, selectedLanguage);
+          .addTask(interview.id, [selectedFile], selectedLanguage);
       }
 
       onCreated(interview);

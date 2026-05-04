@@ -83,35 +83,11 @@ export default function InterviewDetailView({
   const [globalUploadError, setGlobalUploadError] = useState<string | null>(null);
 
   const uploadAreaRef = React.useRef<UploadAreaHandle>(null);
-  const pendingUpload = useUploadStore((s) => s.pendingUpload);
-  const clearPendingUpload = useUploadStore((s) => s.clearPendingUpload);
-  const hasAutoUploaded = React.useRef(false);
+  const globalTask = useUploadStore((s) => s.tasks[interview.id]);
 
-  React.useEffect(() => {
-    if (
-      interview.status === "empty" &&
-      !isUploading &&
-      pendingUpload &&
-      pendingUpload.id === interview.id &&
-      uploadAreaRef.current &&
-      !hasAutoUploaded.current
-    ) {
-      hasAutoUploaded.current = true;
-      const file = pendingUpload.file;
-      const lang = pendingUpload.language;
-      clearPendingUpload();
-      // Use setTimeout to ensure state is settled and ref is available
-      setTimeout(() => {
-        uploadAreaRef.current?.autoUpload([file], lang);
-      }, 50);
-    }
-  }, [
-    interview.status,
-    interview.id,
-    isUploading,
-    pendingUpload,
-    clearPendingUpload,
-  ]);
+  // Combine local and global upload state
+  const currentIsUploading = isUploading || !!globalTask;
+  const currentUploadProgress = globalTask ? globalTask.progress : uploadProgress;
 
   const handleUploadStart = () => {
     setIsUploading(true);
@@ -284,7 +260,7 @@ export default function InterviewDetailView({
   };
 
   const getProgressStep = () => {
-    if (isUploading) return "uploading";
+    if (currentIsUploading) return "uploading";
     if (interview.status === "converting") return "processing";
     if (["analyzing", "processing", "proccesing"].includes(interview.status)) {
       return "transcribing";
@@ -388,7 +364,7 @@ export default function InterviewDetailView({
         )}
       </div>
 
-      {interview.status === "empty" && !isUploading && (
+      {interview.status === "empty" && !currentIsUploading && (
         <div className={styles.section}>
           <UploadArea
             ref={uploadAreaRef}
@@ -419,14 +395,14 @@ export default function InterviewDetailView({
         </div>
       )}
 
-      {(isUploading ||
+      {(currentIsUploading ||
         ["uploading", "converting", "analyzing", "processing", "proccesing"].includes(
           interview.status,
         )) && (
         <div className={styles.section}>
           <UploadProgress
-            step={getProgressStep()}
-            progress={uploadProgress}
+            step={globalTask ? globalTask.step : getProgressStep()}
+            progress={currentUploadProgress}
           />
         </div>
       )}
@@ -440,7 +416,7 @@ export default function InterviewDetailView({
           "processing",
           "proccesing",
         ].includes(interview.status) &&
-        !isUploading && (
+        !currentIsUploading && (
           <div className={styles.section}>
             <h3>{t("card.audio")}</h3>
             {interview.status === "ready" ? (
