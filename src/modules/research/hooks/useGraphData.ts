@@ -156,7 +156,7 @@ export function useGraphData(folderId: string) {
       const ins = insightsMap[insId];
       if (ins) {
         newNodes.push({
-          id: insId,
+          id: `ungrouped-${insId}`,
           type: "ungrouped",
           name: ins.name,
           description: ins.description,
@@ -205,7 +205,7 @@ export function useGraphData(folderId: string) {
       if (ins) {
         newLinks.push({
           source: ins.castdev_id,
-          target: insId,
+          target: `ungrouped-${insId}`,
           type: "castdev-ungrouped",
           hidden: true,
         });

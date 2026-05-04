@@ -14,7 +14,7 @@ interface UseGraphSimulationProps {
     node: GraphNode,
     show: boolean,
     x: number,
-    y: number
+    y: number,
   ) => void;
   onShowInsightPanel: (node: GraphNode) => void;
   onOpenGroupPanel: (node: GraphNode) => void;
@@ -41,13 +41,42 @@ export function useGraphSimulation({
   const [nodes, setNodes] = useState<GraphNode[]>([]);
   const [links, setLinks] = useState<GraphLink[]>([]);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
-  const [expandedCastdevs, setExpandedCastdevs] = useState<Set<string>>(new Set());
+  const [expandedCastdevs, setExpandedCastdevs] = useState<Set<string>>(
+    new Set(),
+  );
 
-  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
-  const linkGroupRef = useRef<d3.Selection<SVGGElement, unknown, null, undefined> | null>(null);
-  const nodeGroupRef = useRef<d3.Selection<SVGGElement, unknown, null, undefined> | null>(null);
-  const zoomBehaviorRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
-  const svgSelectionRef = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined> | null>(null);
+  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(
+    null,
+  );
+  const linkGroupRef = useRef<d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  > | null>(null);
+  const nodeGroupRef = useRef<d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  > | null>(null);
+  const zoomBehaviorRef = useRef<d3.ZoomBehavior<
+    SVGSVGElement,
+    unknown
+  > | null>(null);
+  const svgSelectionRef = useRef<d3.Selection<
+    SVGSVGElement,
+    unknown,
+    null,
+    undefined
+  > | null>(null);
+
+  const handlersRef = useRef({
+    onNodeHover,
+    onShowInsightPanel,
+    toggleGroupInsights: (node: GraphNode) => {},
+    toggleCastdevInsights: (node: GraphNode) => {},
+  });
 
   const INITIAL_ZOOM_SCALE = 0.75;
 
@@ -75,7 +104,7 @@ export function useGraphSimulation({
         return ins && ins.castdevId === castdevId;
       });
     },
-    [insightsMap]
+    [insightsMap],
   );
 
   const getNodeColor = (type: string) => {
@@ -112,40 +141,55 @@ export function useGraphSimulation({
 
     const matchedNodes: GraphNode[] = [];
 
-    nodeGroupRef.current.selectAll<SVGGElement, GraphNode>("g.node").each(function (d) {
-      const nodeSelection = d3.select(this);
-      const circle = nodeSelection.select("circle");
-      if (searchTerms.length === 0) {
-        nodeSelection.style("opacity", 1);
-        nodeSelection.style("pointer-events", "all");
-        circle.attr("stroke", null).attr("stroke-width", null);
-      } else {
-        const isMatch = isMatchNode(d);
-        if (isMatch) matchedNodes.push(d);
-        nodeSelection.style("opacity", isMatch ? 1 : 0.15);
-        nodeSelection.style("pointer-events", isMatch ? "all" : "none");
-
-        if (isMatch) {
-          circle.attr("stroke", "#FFF").attr("stroke-width", 3);
-        } else {
+    nodeGroupRef.current
+      .selectAll<SVGGElement, GraphNode>("g.node")
+      .each(function (d) {
+        const nodeSelection = d3.select(this);
+        const circle = nodeSelection.select("circle");
+        if (searchTerms.length === 0) {
+          nodeSelection.style("opacity", 1);
+          nodeSelection.style("pointer-events", "all");
           circle.attr("stroke", null).attr("stroke-width", null);
+        } else {
+          const isMatch = isMatchNode(d);
+          if (isMatch) matchedNodes.push(d);
+          nodeSelection.style("opacity", isMatch ? 1 : 0.15);
+          nodeSelection.style("pointer-events", isMatch ? "all" : "none");
+
+          if (isMatch) {
+            circle.attr("stroke", "#FFF").attr("stroke-width", 3);
+          } else {
+            circle.attr("stroke", null).attr("stroke-width", null);
+          }
         }
-      }
-    });
+      });
 
-    linkGroupRef.current.selectAll<SVGLineElement, GraphLink>("line").each(function (d) {
-      const linkSelection = d3.select(this);
-      if (searchTerms.length === 0) {
-        linkSelection.style("opacity", 1);
-      } else {
-        const sourceMatch = typeof d.source === "object" && isMatchNode(d.source as GraphNode);
-        const targetMatch = typeof d.target === "object" && isMatchNode(d.target as GraphNode);
-        linkSelection.style("opacity", sourceMatch || targetMatch ? 1 : 0.05);
-      }
-    });
+    linkGroupRef.current
+      .selectAll<SVGLineElement, GraphLink>("line")
+      .each(function (d) {
+        const linkSelection = d3.select(this);
+        if (searchTerms.length === 0) {
+          linkSelection.style("opacity", 1);
+        } else {
+          const sourceMatch =
+            typeof d.source === "object" && isMatchNode(d.source as GraphNode);
+          const targetMatch =
+            typeof d.target === "object" && isMatchNode(d.target as GraphNode);
+          linkSelection.style("opacity", sourceMatch || targetMatch ? 1 : 0.05);
+        }
+      });
 
-    if (searchTerms.length > 0 && matchedNodes.length > 0 && svgSelectionRef.current && zoomBehaviorRef.current && containerRef.current) {
-      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    if (
+      searchTerms.length > 0 &&
+      matchedNodes.length > 0 &&
+      svgSelectionRef.current &&
+      zoomBehaviorRef.current &&
+      containerRef.current
+    ) {
+      let minX = Infinity,
+        minY = Infinity,
+        maxX = -Infinity,
+        maxY = -Infinity;
       matchedNodes.forEach((n) => {
         if (n.x !== undefined && n.x < minX) minX = n.x;
         if (n.x !== undefined && n.x > maxX) maxX = n.x;
@@ -154,7 +198,10 @@ export function useGraphSimulation({
       });
 
       const hw = 10;
-      minX -= hw; maxX += hw; minY -= hw; maxY += hw;
+      minX -= hw;
+      maxX += hw;
+      minY -= hw;
+      maxY += hw;
 
       const width = containerRef.current.clientWidth || 800;
       const height = containerRef.current.clientHeight || 600;
@@ -162,27 +209,62 @@ export function useGraphSimulation({
       const bx = maxX - minX || 1;
       const by = maxY - minY || 1;
 
-      const targetScale = Math.min(2, Math.max(0.5, Math.min((width - padding * 2) / bx, (height - padding * 2) / by)));
+      const targetScale = Math.min(
+        2,
+        Math.max(
+          0.5,
+          Math.min((width - padding * 2) / bx, (height - padding * 2) / by),
+        ),
+      );
 
       const centerX = minX + (maxX - minX) / 2;
       const centerY = minY + (maxY - minY) / 2;
 
-      const transform = d3.zoomIdentity.translate(width / 2, height / 2).scale(targetScale).translate(-centerX, -centerY);
-      svgSelectionRef.current.transition().duration(750).call(zoomBehaviorRef.current.transform, transform);
+      const transform = d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(targetScale)
+        .translate(-centerX, -centerY);
+      svgSelectionRef.current
+        .transition()
+        .duration(750)
+        .call(zoomBehaviorRef.current.transform, transform);
     }
   }, [searchQuery]);
 
   const updateGraph = useCallback(() => {
-    if (!svgRef.current || !nodeGroupRef.current || !linkGroupRef.current || !simulationRef.current) return;
+    if (
+      !svgRef.current ||
+      !nodeGroupRef.current ||
+      !linkGroupRef.current ||
+      !simulationRef.current
+    )
+      return;
 
     const visibleNodes = nodes.filter((n) => !n.hidden);
-    const visibleLinks = links.filter((l) => !l.hidden);
+    const visibleNodeIds = new Set(visibleNodes.map((n) => n.id));
 
-    const linkSelection = linkGroupRef.current.selectAll<SVGLineElement, GraphLink>("line").data(visibleLinks, (d) => {
-      const sourceId = typeof d.source === "object" ? d.source.id : d.source;
-      const targetId = typeof d.target === "object" ? d.target.id : d.target;
-      return `${sourceId}-${targetId}`;
-    });
+    // We MUST map source and target to string IDs here.
+    // Otherwise, D3 keeps references to OLD node objects from previous renders,
+    // causing links to detach from the actual nodes when they are re-created in React state.
+    // ALSO: strictly filter out any links where the source or target is not in visibleNodes to prevent D3 crashes.
+    const visibleLinks = links
+      .filter((l) => !l.hidden)
+      .map((l) => ({
+        ...l,
+        source: typeof l.source === "object" ? l.source.id : l.source,
+        target: typeof l.target === "object" ? l.target.id : l.target,
+      }))
+      .filter(
+        (l) => visibleNodeIds.has(l.source) && visibleNodeIds.has(l.target),
+      );
+
+    const linkSelection = linkGroupRef.current
+      .selectAll<SVGLineElement, GraphLink>("line")
+      .data(visibleLinks, (d) => {
+        const sourceId = typeof d.source === "object" ? d.source.id : d.source;
+        const targetId = typeof d.target === "object" ? d.target.id : d.target;
+        return `${sourceId}-${targetId}`;
+      });
 
     linkSelection.join(
       (enter) =>
@@ -195,26 +277,42 @@ export function useGraphSimulation({
           })
           .attr("stroke-width", 2)
           .attr("stroke-opacity", 0)
-          .call((e) => e.transition().duration(400).attr("stroke-opacity", 0.6)),
+          .call((e) =>
+            e.transition().duration(400).attr("stroke-opacity", 0.6),
+          ),
       (update) => update,
-      (exit) => exit.transition().duration(300).attr("stroke-opacity", 0).remove()
+      (exit) =>
+        exit.transition().duration(300).attr("stroke-opacity", 0).remove(),
     );
 
-    const nodeSelection = nodeGroupRef.current.selectAll<SVGGElement, GraphNode>("g.node").data(visibleNodes, (d) => d.id);
+    const nodeSelection = nodeGroupRef.current
+      .selectAll<SVGGElement, GraphNode>("g.node")
+      .data(visibleNodes, (d) => d.id);
 
-    const dragstarted = (event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>, d: GraphNode) => {
-      if (!event.active && simulationRef.current) simulationRef.current.alphaTarget(0.3).restart();
+    const dragstarted = (
+      event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>,
+      d: GraphNode,
+    ) => {
+      if (!event.active && simulationRef.current)
+        simulationRef.current.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     };
 
-    const dragged = (event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>, d: GraphNode) => {
+    const dragged = (
+      event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>,
+      d: GraphNode,
+    ) => {
       d.fx = event.x;
       d.fy = event.y;
     };
 
-    const dragended = (event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>, d: GraphNode) => {
-      if (!event.active && simulationRef.current) simulationRef.current.alphaTarget(0);
+    const dragended = (
+      event: d3.D3DragEvent<SVGGElement, GraphNode, GraphNode>,
+      d: GraphNode,
+    ) => {
+      if (!event.active && simulationRef.current)
+        simulationRef.current.alphaTarget(0);
       d.fx = null;
       d.fy = null;
     };
@@ -224,7 +322,13 @@ export function useGraphSimulation({
       .append("g")
       .attr("class", "node")
       .attr("opacity", 0)
-      .call(d3.drag<SVGGElement, GraphNode>().on("start", dragstarted).on("drag", dragged).on("end", dragended));
+      .call(
+        d3
+          .drag<SVGGElement, GraphNode>()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended),
+      );
 
     nodeEnter.transition().duration(500).attr("opacity", 1);
 
@@ -236,7 +340,10 @@ export function useGraphSimulation({
       .attr("filter", (d) => getNodeFilter(d.type))
       .style("cursor", "pointer");
 
-    circleEnter.transition().duration(500).attr("r", (d) => d.radius);
+    circleEnter
+      .transition()
+      .duration(500)
+      .attr("r", (d) => d.radius);
 
     nodeEnter
       .append("text")
@@ -254,21 +361,36 @@ export function useGraphSimulation({
 
     nodeEnter
       .on("mouseover", (event, d) => {
-        const circle = d3.select(event.currentTarget as Element).select("circle");
-        circle.classed("hovered", d.type === "group").classed("castdev-pulse", d.type === "castdev").attr("filter", "url(#glow-hover)");
-        onNodeHover(event, d, true, event.pageX, event.pageY);
+        const circle = d3
+          .select(event.currentTarget as Element)
+          .select("circle");
+        circle
+          .classed("hovered", d.type === "group")
+          .classed("castdev-pulse", d.type === "castdev")
+          .attr("filter", "url(#glow-hover)");
+        handlersRef.current.onNodeHover(
+          event,
+          d,
+          true,
+          event.pageX,
+          event.pageY,
+        );
       })
       .on("mouseout", (event, d) => {
-        d3.select(event.currentTarget as Element).select("circle").classed("hovered", false).classed("castdev-pulse", false).attr("filter", getNodeFilter(d.type));
-        onNodeHover(event, d, false, 0, 0);
+        d3.select(event.currentTarget as Element)
+          .select("circle")
+          .classed("hovered", false)
+          .classed("castdev-pulse", false)
+          .attr("filter", getNodeFilter(d.type));
+        handlersRef.current.onNodeHover(event, d, false, 0, 0);
       })
       .on("click", (event, d) => {
         if (d.type === "castdev") {
-          toggleCastdevInsights(d);
+          handlersRef.current.toggleCastdevInsights(d);
         } else if (d.type === "group") {
-          toggleGroupInsights(d);
+          handlersRef.current.toggleGroupInsights(d);
         } else if (d.type === "ungrouped" || d.type === "insight") {
-          onShowInsightPanel(d);
+          handlersRef.current.onShowInsightPanel(d);
         }
       });
 
@@ -277,15 +399,20 @@ export function useGraphSimulation({
       .transition()
       .duration(300)
       .attr("opacity", 0)
-      .attr("transform", (d) => `translate(${(d as GraphNode).x},${(d as GraphNode).y}) scale(0.1)`)
+      .attr("transform", (d) => {
+        const x = (d as GraphNode).x || 0;
+        const y = (d as GraphNode).y || 0;
+        return `translate(${x},${y}) scale(0.1)`;
+      })
       .remove();
 
     applySearchFilter();
 
     simulationRef.current.nodes(visibleNodes);
-    simulationRef.current.force<d3.ForceLink<GraphNode, GraphLink>>("link")?.links(visibleLinks);
+    simulationRef.current
+      .force<d3.ForceLink<GraphNode, GraphLink>>("link")
+      ?.links(visibleLinks);
     simulationRef.current.alpha(0.3).restart();
-
   }, [nodes, links, applySearchFilter, onNodeHover, onShowInsightPanel]);
 
   // Initial setup
@@ -319,10 +446,18 @@ export function useGraphSimulation({
       .on("zoom", (event) => {
         container.attr("transform", event.transform);
       });
-    
+
     zoomBehaviorRef.current = zoom;
     svg.call(zoom);
-    svg.transition().duration(1000).call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(INITIAL_ZOOM_SCALE));
+    svg
+      .transition()
+      .duration(1000)
+      .call(
+        zoom.transform,
+        d3.zoomIdentity
+          .translate(width / 2, height / 2)
+          .scale(INITIAL_ZOOM_SCALE),
+      );
 
     linkGroupRef.current = container.append("g").attr("class", "links");
     nodeGroupRef.current = container.append("g").attr("class", "nodes");
@@ -332,21 +467,33 @@ export function useGraphSimulation({
 
     const sim = d3
       .forceSimulation(visibleNodes)
-      .force("link", d3.forceLink<GraphNode, GraphLink>(visibleLinks).id((d) => d.id).distance(linkDistance))
+      .force(
+        "link",
+        d3
+          .forceLink<GraphNode, GraphLink>(visibleLinks)
+          .id((d) => d.id)
+          .distance(linkDistance),
+      )
       .force("charge", d3.forceManyBody().strength(-chargeStrengthAbs))
       .force("center", d3.forceCenter(0, 0))
-      .force("collision", d3.forceCollide<GraphNode>().radius((d) => d.radius + 20));
+      .force(
+        "collision",
+        d3.forceCollide<GraphNode>().radius((d) => d.radius + 20),
+      );
 
     simulationRef.current = sim;
 
     sim.on("tick", () => {
-      linkGroupRef.current?.selectAll<SVGLineElement, GraphLink>("line")
+      linkGroupRef.current
+        ?.selectAll<SVGLineElement, GraphLink>("line")
         .attr("x1", (d) => (d.source as GraphNode).x || 0)
         .attr("y1", (d) => (d.source as GraphNode).y || 0)
         .attr("x2", (d) => (d.target as GraphNode).x || 0)
         .attr("y2", (d) => (d.target as GraphNode).y || 0);
 
-      nodeGroupRef.current?.selectAll<SVGGElement, GraphNode>("g.node").attr("transform", (d) => `translate(${d.x},${d.y})`);
+      nodeGroupRef.current
+        ?.selectAll<SVGGElement, GraphNode>("g.node")
+        .attr("transform", (d) => `translate(${d.x},${d.y})`);
     });
 
     updateGraph();
@@ -356,13 +503,16 @@ export function useGraphSimulation({
     };
     // Initialize exactly once when nodes become available
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nodes.length > 0 && simulationRef.current === null]); 
-
+  }, [nodes.length > 0 && simulationRef.current === null]);
 
   useEffect(() => {
     if (simulationRef.current) {
-      simulationRef.current.force<d3.ForceLink<GraphNode, GraphLink>>("link")?.distance(linkDistance);
-      simulationRef.current.force<d3.ForceManyBody<GraphNode>>("charge")?.strength(-chargeStrengthAbs);
+      simulationRef.current
+        .force<d3.ForceLink<GraphNode, GraphLink>>("link")
+        ?.distance(linkDistance);
+      simulationRef.current
+        .force<d3.ForceManyBody<GraphNode>>("charge")
+        ?.strength(-chargeStrengthAbs);
       simulationRef.current.alpha(0.5).restart();
     }
   }, [linkDistance, chargeStrengthAbs]);
@@ -373,84 +523,148 @@ export function useGraphSimulation({
 
   // Methods to interact with graph
   const collapseCastdevInsights = (castdevId: string) => {
-    setNodes((prev) => prev.map((n) => (n.type === "ungrouped" && n.castdevId === castdevId ? { ...n, hidden: true } : n)));
-    setLinks((prev) => prev.map((l) => (l.type === "castdev-ungrouped" && (typeof l.source === "object" ? l.source.id : l.source) === castdevId ? { ...l, hidden: true } : l)));
+    setNodes((prev) =>
+      prev.map((n) =>
+        n.type === "ungrouped" && n.castdevId === castdevId
+          ? { ...n, hidden: true }
+          : n,
+      ),
+    );
+    setLinks((prev) =>
+      prev.map((l) =>
+        l.type === "castdev-ungrouped" &&
+        (typeof l.source === "object" ? l.source.id : l.source) === castdevId
+          ? { ...l, hidden: true }
+          : l,
+      ),
+    );
   };
 
   const expandCastdevInsights = (castdevNode: GraphNode) => {
-    setNodes((prev) => prev.map((n) => (n.type === "ungrouped" && n.castdevId === castdevNode.id ? { ...n, hidden: false, x: (castdevNode.x || 0) + (Math.random() - 0.5) * 50, y: (castdevNode.y || 0) + (Math.random() - 0.5) * 50 } : n)));
-    setLinks((prev) => prev.map((l) => (l.type === "castdev-ungrouped" && (typeof l.source === "object" ? l.source.id : l.source) === castdevNode.id ? { ...l, hidden: false } : l)));
+    setNodes((prev) =>
+      prev.map((n) =>
+        n.type === "ungrouped" && n.castdevId === castdevNode.id
+          ? {
+              ...n,
+              hidden: false,
+              x: (castdevNode.x || 0) + (Math.random() - 0.5) * 50,
+              y: (castdevNode.y || 0) + (Math.random() - 0.5) * 50,
+            }
+          : n,
+      ),
+    );
+    setLinks((prev) =>
+      prev.map((l) =>
+        l.type === "castdev-ungrouped" &&
+        (typeof l.source === "object" ? l.source.id : l.source) ===
+          castdevNode.id
+          ? { ...l, hidden: false }
+          : l,
+      ),
+    );
   };
 
   const expandGroupsLinkedToCastdev = (castdevNode: GraphNode) => {
     setNodes((prev) => {
-      let changed = false;
-      const nextNodes = prev.map((n) => {
-        if (n.type !== "group" || !groupTouchesCastdev(n, castdevNode.id) || expandedGroups.has(n.id)) return n;
-        changed = true;
-        setExpandedGroups((g) => new Set(g).add(n.id));
+      const groupsToExpand = prev.filter(
+        (n) =>
+          n.type === "group" &&
+          groupTouchesCastdev(n, castdevNode.id) &&
+          !expandedGroups.has(n.id)
+      );
+
+      if (groupsToExpand.length === 0) return prev;
+
+      groupsToExpand.forEach((g) => {
+        setExpandedGroups((prevG) => new Set(prevG).add(g.id));
+      });
+
+      const insightIdsToUnhide = new Set<string>();
+      groupsToExpand.forEach((g) => {
+        if (g.insightIds) g.insightIds.forEach((id) => insightIdsToUnhide.add(id));
+      });
+
+      return prev.map((n) => {
+        if (insightIdsToUnhide.has(n.id)) {
+          const parentGroup = groupsToExpand.find(g => g.insightIds?.includes(n.id));
+          return {
+            ...n,
+            hidden: false,
+            x: (parentGroup?.x || 0) + (Math.random() - 0.5) * 100,
+            y: (parentGroup?.y || 0) + (Math.random() - 0.5) * 100,
+          };
+        }
         return n;
       });
-      if (changed) {
-        nextNodes.forEach((n) => {
-          if (n.type === "group" && expandedGroups.has(n.id)) {
-            n.insightIds?.forEach((insId) => {
-              const insNode = nextNodes.find((node) => node.id === insId);
-              if (insNode) {
-                insNode.hidden = false;
-                insNode.x = (n.x || 0) + (Math.random() - 0.5) * 100;
-                insNode.y = (n.y || 0) + (Math.random() - 0.5) * 100;
-              }
-            });
-          }
-        });
-      }
-      return nextNodes;
     });
 
-    setLinks((prev) => prev.map((l) => {
-      const sourceId = typeof l.source === "object" ? l.source.id : l.source;
-      const targetId = typeof l.target === "object" ? l.target.id : l.target;
-      const groupNode = nodes.find((n) => n.id === sourceId);
-      if (groupNode && groupNode.type === "group" && groupNode.insightIds?.includes(targetId as string) && expandedGroups.has(groupNode.id)) {
-        return { ...l, hidden: false };
-      }
-      return l;
-    }));
+    setLinks((prev) =>
+      prev.map((l) => {
+        const sourceId = typeof l.source === "object" ? l.source.id : l.source;
+        const targetId = typeof l.target === "object" ? l.target.id : l.target;
+        const groupNode = nodes.find((n) => n.id === sourceId);
+        
+        if (
+          groupNode &&
+          groupNode.type === "group" &&
+          groupNode.insightIds?.includes(targetId as string) &&
+          groupTouchesCastdev(groupNode, castdevNode.id)
+        ) {
+          return { ...l, hidden: false };
+        }
+        return l;
+      }),
+    );
   };
 
   const collapseGroupsLinkedToCastdev = (castdevId: string) => {
     setNodes((prev) => {
-      const nextNodes = [...prev];
-      nextNodes.forEach((n) => {
-        if (n.type !== "group" || !groupTouchesCastdev(n, castdevId) || !expandedGroups.has(n.id)) return;
-        setExpandedGroups((g) => {
-          const nextG = new Set(g);
-          nextG.delete(n.id);
+      const groupsToCollapse = prev.filter(
+        (n) =>
+          n.type === "group" &&
+          groupTouchesCastdev(n, castdevId) &&
+          expandedGroups.has(n.id)
+      );
+
+      if (groupsToCollapse.length === 0) return prev;
+
+      groupsToCollapse.forEach((g) => {
+        setExpandedGroups((prevG) => {
+          const nextG = new Set(prevG);
+          nextG.delete(g.id);
           return nextG;
         });
-        n.insightIds?.forEach((insId) => {
-          const insNode = nextNodes.find((node) => node.id === insId);
-          if (insNode) insNode.hidden = true;
-        });
       });
-      return nextNodes;
+
+      const insightIdsToHide = new Set<string>();
+      groupsToCollapse.forEach((g) => {
+        if (g.insightIds) g.insightIds.forEach((id) => insightIdsToHide.add(id));
+      });
+
+      return prev.map((n) => (insightIdsToHide.has(n.id) ? { ...n, hidden: true } : n));
     });
 
-    setLinks((prev) => prev.map((l) => {
-      const sourceId = typeof l.source === "object" ? l.source.id : l.source;
-      const groupNode = nodes.find((n) => n.id === sourceId);
-      if (groupNode && groupNode.type === "group" && l.type === "group-insight" && !expandedGroups.has(groupNode.id)) {
-        return { ...l, hidden: true };
-      }
-      return l;
-    }));
+    setLinks((prev) =>
+      prev.map((l) => {
+        const sourceId = typeof l.source === "object" ? l.source.id : l.source;
+        const groupNode = nodes.find((n) => n.id === sourceId);
+        if (
+          groupNode &&
+          groupNode.type === "group" &&
+          l.type === "group-insight" &&
+          groupTouchesCastdev(groupNode, castdevId)
+        ) {
+          return { ...l, hidden: true };
+        }
+        return l;
+      }),
+    );
   };
 
   const toggleCastdevInsights = (castdevNode: GraphNode) => {
     if (expandedCastdevs.has(castdevNode.id)) {
       collapseCastdevInsights(castdevNode.id);
-      collapseGroupsLinkedToCastdev(castdevNode.id);
+      // We no longer automatically collapse linked groups, keeping user's manual group expansions intact
       setExpandedCastdevs((prev) => {
         const next = new Set(prev);
         next.delete(castdevNode.id);
@@ -460,42 +674,90 @@ export function useGraphSimulation({
     } else {
       if (autoCollapseEnabled) {
         if (expandedCastdevs.size > 0) {
-          expandedCastdevs.forEach((id) => collapseCastdevInsights(id));
+          expandedCastdevs.forEach((id) => {
+            collapseCastdevInsights(id);
+          });
           setExpandedCastdevs(new Set());
         }
         if (expandedGroups.size > 0) {
-          setNodes((prev) => {
-            const nextNodes = [...prev];
-            expandedGroups.forEach((groupId) => {
-              const groupNode = nextNodes.find((n) => n.id === groupId);
-              if (groupNode) {
-                groupNode.insightIds?.forEach((insId) => {
-                  const insNode = nextNodes.find((n) => n.id === insId);
-                  if (insNode) insNode.hidden = true;
-                });
-              }
-            });
-            return nextNodes;
+          const insightsToHide = new Set<string>();
+          expandedGroups.forEach((groupId) => {
+            const groupNode = nodes.find((n) => n.id === groupId);
+            if (groupNode && groupNode.insightIds) {
+              groupNode.insightIds.forEach((id) => insightsToHide.add(id));
+            }
           });
-          setLinks((prev) => prev.map((l) => (l.type === "group-insight" ? { ...l, hidden: true } : l)));
+
+          if (insightsToHide.size > 0) {
+            setNodes((prev) =>
+              prev.map((n) =>
+                insightsToHide.has(n.id) ? { ...n, hidden: true } : n,
+              ),
+            );
+          }
+          setLinks((prev) =>
+            prev.map((l) =>
+              l.type === "group-insight" ? { ...l, hidden: true } : l,
+            ),
+          );
           setExpandedGroups(new Set());
         }
       }
       setExpandedCastdevs((prev) => new Set(prev).add(castdevNode.id));
       expandCastdevInsights(castdevNode);
-      expandGroupsLinkedToCastdev(castdevNode);
+      // We no longer forcefully expand linked groups when clicking a castdev
       onOpenCastdevPanel(castdevNode);
     }
   };
 
   const toggleGroupInsights = (groupNode: GraphNode) => {
-    if (autoCollapseEnabled && expandedCastdevs.size > 0) {
-      expandedCastdevs.forEach((id) => collapseCastdevInsights(id));
-      setExpandedCastdevs(new Set());
+    const isExpanded = expandedGroups.has(groupNode.id);
+
+    if (!isExpanded && autoCollapseEnabled) {
+      if (expandedCastdevs.size > 0) {
+        expandedCastdevs.forEach((id) => collapseCastdevInsights(id));
+        setExpandedCastdevs(new Set());
+      }
+
+      if (expandedGroups.size > 0) {
+        // Collect all insight IDs to hide immutably
+        const insightsToHide = new Set<string>();
+        expandedGroups.forEach((groupId) => {
+          if (groupId !== groupNode.id) {
+            const gNode = nodes.find((n) => n.id === groupId);
+            if (gNode && gNode.insightIds) {
+              gNode.insightIds.forEach((id) => insightsToHide.add(id));
+            }
+          }
+        });
+
+        if (insightsToHide.size > 0) {
+          setNodes((prev) =>
+            prev.map((n) =>
+              insightsToHide.has(n.id) ? { ...n, hidden: true } : n,
+            ),
+          );
+        }
+
+        setLinks((prev) =>
+          prev.map((l) => {
+            if (l.type === "group-insight") {
+              const sourceId =
+                typeof l.source === "object" ? l.source.id : l.source;
+              if (sourceId !== groupNode.id && expandedGroups.has(sourceId)) {
+                return { ...l, hidden: true };
+              }
+            }
+            return l;
+          }),
+        );
+
+        // Clear all except the one we are about to add
+        setExpandedGroups(new Set());
+      }
     }
 
     const insightIds = groupNode.insightIds || [];
-    const isExpanded = expandedGroups.has(groupNode.id);
 
     if (isExpanded) {
       setExpandedGroups((prev) => {
@@ -503,13 +765,47 @@ export function useGraphSimulation({
         next.delete(groupNode.id);
         return next;
       });
-      setNodes((prev) => prev.map((n) => (insightIds.includes(n.id) ? { ...n, hidden: true } : n)));
-      setLinks((prev) => prev.map((l) => (l.type === "group-insight" && (typeof l.source === "object" ? l.source.id : l.source) === groupNode.id ? { ...l, hidden: true } : l)));
+      setNodes((prev) =>
+        prev.map((n) =>
+          insightIds.includes(n.id) ? { ...n, hidden: true } : n,
+        ),
+      );
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "group-insight" &&
+          (typeof l.source === "object" ? l.source.id : l.source) ===
+            groupNode.id
+            ? { ...l, hidden: true }
+            : l,
+        ),
+      );
       onCloseSidePanel();
     } else {
       setExpandedGroups((prev) => new Set(prev).add(groupNode.id));
-      setNodes((prev) => prev.map((n) => (insightIds.includes(n.id) ? { ...n, hidden: false, x: (groupNode.x || 0) + (Math.random() - 0.5) * 100, y: (groupNode.y || 0) + (Math.random() - 0.5) * 100 } : n)));
-      setLinks((prev) => prev.map((l) => (l.type === "group-insight" && (typeof l.source === "object" ? l.source.id : l.source) === groupNode.id && insightIds.includes((typeof l.target === "object" ? l.target.id : l.target) as string) ? { ...l, hidden: false } : l)));
+      setNodes((prev) =>
+        prev.map((n) =>
+          insightIds.includes(n.id)
+            ? {
+                ...n,
+                hidden: false,
+                x: (groupNode.x || 0) + (Math.random() - 0.5) * 100,
+                y: (groupNode.y || 0) + (Math.random() - 0.5) * 100,
+              }
+            : n,
+        ),
+      );
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "group-insight" &&
+          (typeof l.source === "object" ? l.source.id : l.source) ===
+            groupNode.id &&
+          insightIds.includes(
+            (typeof l.target === "object" ? l.target.id : l.target) as string,
+          )
+            ? { ...l, hidden: false }
+            : l,
+        ),
+      );
       onOpenGroupPanel(groupNode);
     }
   };
@@ -522,8 +818,14 @@ export function useGraphSimulation({
   const toggleAllGroups = () => {
     if (areAllGroupsExpanded) {
       setExpandedGroups(new Set());
-      setNodes((prev) => prev.map((n) => (n.type === "insight" ? { ...n, hidden: true } : n)));
-      setLinks((prev) => prev.map((l) => (l.type === "group-insight" ? { ...l, hidden: true } : l)));
+      setNodes((prev) =>
+        prev.map((n) => (n.type === "insight" ? { ...n, hidden: true } : n)),
+      );
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "group-insight" ? { ...l, hidden: true } : l,
+        ),
+      );
     } else {
       const allGroups = nodes.filter((n) => n.type === "group");
       setExpandedGroups(new Set(allGroups.map((g) => g.id)));
@@ -543,7 +845,11 @@ export function useGraphSimulation({
         });
         return nextNodes;
       });
-      setLinks((prev) => prev.map((l) => (l.type === "group-insight" ? { ...l, hidden: false } : l)));
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "group-insight" ? { ...l, hidden: false } : l,
+        ),
+      );
     }
   };
 
@@ -555,8 +861,14 @@ export function useGraphSimulation({
   const toggleAllUngrouped = () => {
     if (areAllUngroupedExpanded) {
       setExpandedCastdevs(new Set());
-      setNodes((prev) => prev.map((n) => (n.type === "ungrouped" ? { ...n, hidden: true } : n)));
-      setLinks((prev) => prev.map((l) => (l.type === "castdev-ungrouped" ? { ...l, hidden: true } : l)));
+      setNodes((prev) =>
+        prev.map((n) => (n.type === "ungrouped" ? { ...n, hidden: true } : n)),
+      );
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "castdev-ungrouped" ? { ...l, hidden: true } : l,
+        ),
+      );
     } else {
       const allCastdevs = nodes.filter((n) => n.type === "castdev");
       setExpandedCastdevs(new Set(allCastdevs.map((c) => c.id)));
@@ -575,15 +887,31 @@ export function useGraphSimulation({
         });
         return nextNodes;
       });
-      setLinks((prev) => prev.map((l) => (l.type === "castdev-ungrouped" ? { ...l, hidden: false } : l)));
+      setLinks((prev) =>
+        prev.map((l) =>
+          l.type === "castdev-ungrouped" ? { ...l, hidden: false } : l,
+        ),
+      );
     }
   };
 
   const collapseAllNodes = () => {
     setExpandedGroups(new Set());
     setExpandedCastdevs(new Set());
-    setNodes((prev) => prev.map((n) => (n.type === "insight" || n.type === "ungrouped" ? { ...n, hidden: true } : n)));
-    setLinks((prev) => prev.map((l) => (l.type === "castdev-ungrouped" || l.type === "group-insight" ? { ...l, hidden: true } : l)));
+    setNodes((prev) =>
+      prev.map((n) =>
+        n.type === "insight" || n.type === "ungrouped"
+          ? { ...n, hidden: true }
+          : n,
+      ),
+    );
+    setLinks((prev) =>
+      prev.map((l) =>
+        l.type === "castdev-ungrouped" || l.type === "group-insight"
+          ? { ...l, hidden: true }
+          : l,
+      ),
+    );
     onCloseSidePanel();
   };
 
@@ -594,16 +922,43 @@ export function useGraphSimulation({
     const visibleLinks = links.filter((l) => !l.hidden);
 
     simulationRef.current.force("charge", null); // we can't easily re-assign strength via d3.forceManyBody directly on the same simulation without re-init, wait... actually d3.forceManyBody is a new force.
-    simulationRef.current.force("charge", d3.forceManyBody<GraphNode>().strength(-currentCharge * 3.5));
-    simulationRef.current.force("collision", d3.forceCollide<GraphNode>().radius((d) => d.radius + 30).iterations(3));
-    simulationRef.current.force("link", d3.forceLink<GraphNode, GraphLink>(visibleLinks).id((d) => d.id).distance(currentDistance * 2));
-    
+    simulationRef.current.force(
+      "charge",
+      d3.forceManyBody<GraphNode>().strength(-currentCharge * 3.5),
+    );
+    simulationRef.current.force(
+      "collision",
+      d3
+        .forceCollide<GraphNode>()
+        .radius((d) => d.radius + 30)
+        .iterations(3),
+    );
+    simulationRef.current.force(
+      "link",
+      d3
+        .forceLink<GraphNode, GraphLink>(visibleLinks)
+        .id((d) => d.id)
+        .distance(currentDistance * 2),
+    );
+
     simulationRef.current.alpha(0.8).restart();
 
     setTimeout(() => {
-      simulationRef.current?.force("charge", d3.forceManyBody<GraphNode>().strength(-currentCharge));
-      simulationRef.current?.force("collision", d3.forceCollide<GraphNode>().radius((d) => d.radius + 20));
-      simulationRef.current?.force("link", d3.forceLink<GraphNode, GraphLink>(visibleLinks).id((d) => d.id).distance(currentDistance));
+      simulationRef.current?.force(
+        "charge",
+        d3.forceManyBody<GraphNode>().strength(-currentCharge),
+      );
+      simulationRef.current?.force(
+        "collision",
+        d3.forceCollide<GraphNode>().radius((d) => d.radius + 20),
+      );
+      simulationRef.current?.force(
+        "link",
+        d3
+          .forceLink<GraphNode, GraphLink>(visibleLinks)
+          .id((d) => d.id)
+          .distance(currentDistance),
+      );
       simulationRef.current?.alpha(0.4).restart();
     }, 1000);
   };
@@ -612,7 +967,7 @@ export function useGraphSimulation({
     if (!simulationRef.current) return;
     simulationRef.current.force("gravityX", d3.forceX(0).strength(0.12));
     simulationRef.current.force("gravityY", d3.forceY(0).strength(0.12));
-    
+
     simulationRef.current.alpha(0.6).restart();
 
     setTimeout(() => {
@@ -622,11 +977,20 @@ export function useGraphSimulation({
     }, 1200);
   };
 
+  // Keep handlers fresh to avoid D3 stale closures on existing nodes
+  useEffect(() => {
+    handlersRef.current = {
+      onNodeHover,
+      onShowInsightPanel,
+      toggleGroupInsights,
+      toggleCastdevInsights,
+    };
+  });
+
   // Re-run updateGraph when node hidden states change
   useEffect(() => {
     updateGraph();
   }, [nodes, links, updateGraph]);
-
 
   return {
     svgRef,
