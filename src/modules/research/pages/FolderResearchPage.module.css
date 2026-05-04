@@ -16,7 +16,7 @@
 .layoutInner {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: 10px;
 }
 
 .content {
@@ -166,5 +166,35 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+.mobileFab {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobileFab {
+    display: flex;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: var(--accent-solid);
+    color: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  .mobileFab:active {
+    transform: scale(0.98);
   }
 }

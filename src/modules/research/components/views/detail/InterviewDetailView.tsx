@@ -80,14 +80,18 @@ export default function InterviewDetailView({
   // Phase 2 Upload States
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [globalUploadError, setGlobalUploadError] = useState<string | null>(null);
+  const [globalUploadError, setGlobalUploadError] = useState<string | null>(
+    null,
+  );
 
   const uploadAreaRef = React.useRef<UploadAreaHandle>(null);
   const globalTask = useUploadStore((s) => s.tasks[interview.id]);
 
   // Combine local and global upload state
   const currentIsUploading = isUploading || !!globalTask;
-  const currentUploadProgress = globalTask ? globalTask.progress : uploadProgress;
+  const currentUploadProgress = globalTask
+    ? globalTask.progress
+    : uploadProgress;
 
   const handleUploadStart = () => {
     setIsUploading(true);
@@ -268,8 +272,86 @@ export default function InterviewDetailView({
     return interview.status;
   };
 
+  const getStatusClass = () => {
+    if (interview.status === "ready") return styles.ready;
+    if (interview.status === "failed") return styles.failed;
+    return styles.processing;
+  };
+
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+
   return (
     <div className={styles.cardDetail}>
+      {/* Mobile Header Row */}
+      <div className={styles.mobileHeader}>
+        <h2 className={styles.pageTitle}>{interview.title}</h2>
+        <div className={styles.mobileHeaderActions}>
+          <button
+            className={styles.mobileActionBtn}
+            onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M6.51584 6.51584C8.80356 4.22812 12.5127 4.22812 14.8004 6.51584C16.8767 8.59213 17.0686 11.8392 15.3761 14.1319L18.9427 17.7C19.2858 18.0432 19.2858 18.5995 18.9427 18.9427C18.5995 19.2858 18.0432 19.2858 17.7 18.9427L14.1329 15.3754C11.8401 17.0686 8.59241 16.877 6.51584 14.8004C4.22812 12.5127 4.22812 8.80356 6.51584 6.51584ZM7.75852 7.75852C6.15712 9.35992 6.15712 11.9563 7.75852 13.5577C9.35992 15.1591 11.9563 15.1591 13.5577 13.5577C15.1591 11.9563 15.1591 9.35992 13.5577 7.75852C11.9563 6.15712 9.35992 6.15712 7.75852 7.75852Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+          <button className={styles.mobileActionBtn} onClick={openAssignFolder}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.11839 4.11852C4.45021 3.7865 4.90026 3.59998 5.36953 3.59998H8.98356C9.45282 3.59998 9.90287 3.7865 10.2347 4.11852C10.5665 4.45053 10.7529 4.90085 10.7529 5.37039V6.01073H18.621C19.0902 6.01073 19.5403 6.19726 19.8721 6.52928C20.2039 6.86129 20.3903 7.3116 20.3903 7.78115V9.62687H21.0301C21.0302 9.62687 21.03 9.62687 21.0301 9.62687C21.3013 9.62681 21.569 9.6891 21.8123 9.80895C22.0556 9.92882 22.2681 10.1031 22.4334 10.3182C22.5988 10.5334 22.7124 10.7836 22.7657 11.0497C22.8185 11.3138 22.8104 11.5863 22.7421 11.8467L20.9738 19.0852C20.8734 19.4623 20.6512 19.7957 20.3418 20.0335C20.0326 20.2712 19.6535 20.4001 19.2634 20.4C19.2634 20.4 19.2635 20.4 19.2634 20.4H5.52774C5.46765 20.4 5.40974 20.3906 5.35541 20.3732C5.32986 20.3709 5.30431 20.368 5.27878 20.3647C4.81897 20.3043 4.39626 20.0802 4.08802 19.7335C3.77978 19.3868 3.60661 18.9406 3.60021 18.4767L3.6001 18.4688L3.60015 5.37039C3.60015 4.90085 3.78657 4.45053 4.11839 4.11852ZM7.27743 19.2699H19.2634C19.4045 19.27 19.5419 19.2234 19.6538 19.1373C19.7643 19.0523 19.8441 18.9336 19.881 18.7991L21.649 11.562C21.6743 11.4672 21.6775 11.3678 21.6582 11.2716C21.639 11.1753 21.5979 11.0848 21.5381 11.007C21.4783 10.9292 21.4014 10.8662 21.3134 10.8228C21.2254 10.7794 21.1286 10.7569 21.0305 10.7569H9.89027C9.7516 10.7568 9.61599 10.8017 9.50503 10.8849C9.39689 10.966 9.31727 11.0793 9.27743 11.2083L7.39273 18.9545C7.39112 18.9611 7.3894 18.9677 7.38755 18.9742C7.3588 19.0762 7.32189 19.175 7.27743 19.2699ZM19.2609 9.62687V7.78115C19.2609 7.61132 19.1935 7.44844 19.0735 7.32836C18.9535 7.20827 18.7907 7.1408 18.621 7.1408H10.1882C9.87635 7.1408 9.62353 6.88783 9.62353 6.57577V5.37039C9.62353 5.20056 9.5561 5.03769 9.43608 4.9176C9.31607 4.79751 9.15329 4.73004 8.98356 4.73004H5.36953C5.1998 4.73004 5.03702 4.79751 4.917 4.9176C4.79699 5.03769 4.72956 5.20056 4.72956 5.37039V18.4644C4.73301 18.6557 4.80475 18.8394 4.93186 18.9824C5.05972 19.1262 5.23507 19.2192 5.4258 19.2442C5.61654 19.2693 5.80992 19.2248 5.97055 19.1189C6.12872 19.0146 6.24473 18.8576 6.29811 18.6759L8.1835 10.9269C8.18547 10.9188 8.18763 10.9108 8.18995 10.9028C8.29705 10.5344 8.52082 10.2108 8.82759 9.98072C9.13419 9.75074 9.5071 9.62657 9.89027 9.62687H19.2609Z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {isMobileSearchOpen && (
+        <div className={styles.mobileSearchRow}>
+          <div className={styles.searchWrapper}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.11839 4.11852C4.45021 3.7865 4.90026 3.59998 5.36953 3.59998H8.98356C9.45282 3.59998 9.90287 3.7865 10.2347 4.11852C10.5665 4.45053 10.7529 4.90085 10.7529 5.37039V6.01073H18.621C19.0902 6.01073 19.5403 6.19726 19.8721 6.52928C20.2039 6.86129 20.3903 7.3116 20.3903 7.78115V9.62687H21.0301C21.0302 9.62687 21.03 9.62687 21.0301 9.62687C21.3013 9.62681 21.569 9.6891 21.8123 9.80895C22.0556 9.92882 22.2681 10.1031 22.4334 10.3182C22.5988 10.5334 22.7124 10.7836 22.7657 11.0497C22.8185 11.3138 22.8104 11.5863 22.7421 11.8467L20.9738 19.0852C20.8734 19.4623 20.6512 19.7957 20.3418 20.0335C20.0326 20.2712 19.6535 20.4001 19.2634 20.4C19.2634 20.4 19.2635 20.4 19.2634 20.4H5.52774C5.46765 20.4 5.40974 20.3906 5.35541 20.3732C5.32986 20.3709 5.30431 20.368 5.27878 20.3647C4.81897 20.3043 4.39626 20.0802 4.08802 19.7335C3.77978 19.3868 3.60661 18.9406 3.60021 18.4767L3.6001 18.4688L3.60015 5.37039C3.60015 4.90085 3.78657 4.45053 4.11839 4.11852ZM7.27743 19.2699H19.2634C19.4045 19.27 19.5419 19.2234 19.6538 19.1373C19.7643 19.0523 19.8441 18.9336 19.881 18.7991L21.649 11.562C21.6743 11.4672 21.6775 11.3678 21.6582 11.2716C21.639 11.1753 21.5979 11.0848 21.5381 11.007C21.4783 10.9292 21.4014 10.8662 21.3134 10.8228C21.2254 10.7794 21.1286 10.7569 21.0305 10.7569H9.89027C9.7516 10.7568 9.61599 10.8017 9.50503 10.8849C9.39689 10.966 9.31727 11.0793 9.27743 11.2083L7.39273 18.9545C7.39112 18.9611 7.3894 18.9677 7.38755 18.9742C7.3588 19.0762 7.32189 19.175 7.27743 19.2699ZM19.2609 9.62687V7.78115C19.2609 7.61132 19.1935 7.44844 19.0735 7.32836C18.9535 7.20827 18.7907 7.1408 18.621 7.1408H10.1882C9.87635 7.1408 9.62353 6.88783 9.62353 6.57577V5.37039C9.62353 5.20056 9.5561 5.03769 9.43608 4.9176C9.31607 4.79751 9.15329 4.73004 8.98356 4.73004H5.36953C5.1998 4.73004 5.03702 4.79751 4.917 4.9176C4.79699 5.03769 4.72956 5.20056 4.72956 5.37039V18.4644C4.73301 18.6557 4.80475 18.8394 4.93186 18.9824C5.05972 19.1262 5.23507 19.2192 5.4258 19.2442C5.61654 19.2693 5.80992 19.2248 5.97055 19.1189C6.12872 19.0146 6.24473 18.8576 6.29811 18.6759L8.1835 10.9269C8.18547 10.9188 8.18763 10.9108 8.18995 10.9028C8.29705 10.5344 8.52082 10.2108 8.82759 9.98072C9.13419 9.75074 9.5071 9.62657 9.89027 9.62687H19.2609Z"
+                fill="currentColor"
+              />
+            </svg>
+
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder={t("interviews.searchInterviewsPlaceholder")}
+              autoFocus
+            />
+          </div>
+        </div>
+      )}
+
       <div className={styles.cardHeader}>
         <div className={styles.titleSection}>
           <div className={styles.titleInline}>
@@ -286,9 +368,7 @@ export default function InterviewDetailView({
               <h2 className={styles.title}>{interview.title}</h2>
             )}
           </div>
-          <div
-            className={`${styles.statusBadge} ${styles[interview.status] || styles.processing}`}
-          >
+          <div className={`${styles.statusBadge} ${getStatusClass()}`}>
             {t(`status.${interview.status}`)}
           </div>
         </div>
@@ -383,10 +463,11 @@ export default function InterviewDetailView({
                 padding: "12px 16px",
                 background: "var(--bg-danger-light, rgba(239, 68, 68, 0.1))",
                 color: "var(--danger, #ef4444)",
-                border: "1px solid var(--border-danger, rgba(239, 68, 68, 0.2))",
+                border:
+                  "1px solid var(--border-danger, rgba(239, 68, 68, 0.2))",
                 borderRadius: 8,
                 fontSize: 14,
-                whiteSpace: "pre-wrap"
+                whiteSpace: "pre-wrap",
               }}
             >
               {globalUploadError}
@@ -396,9 +477,13 @@ export default function InterviewDetailView({
       )}
 
       {(currentIsUploading ||
-        ["uploading", "converting", "analyzing", "processing", "proccesing"].includes(
-          interview.status,
-        )) && (
+        [
+          "uploading",
+          "converting",
+          "analyzing",
+          "processing",
+          "proccesing",
+        ].includes(interview.status)) && (
         <div className={styles.section}>
           <UploadProgress
             step={globalTask ? globalTask.step : getProgressStep()}

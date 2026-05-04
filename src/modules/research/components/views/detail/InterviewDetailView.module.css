@@ -15,6 +15,10 @@
   gap: 16px;
 }
 
+.mobileHeader {
+  display: none;
+}
+
 .titleSection {
   flex: 1;
 }
@@ -462,35 +466,92 @@
 }
 
 @media (max-width: 768px) {
-  .cardHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
+  .cardDetail {
+    border-radius: 0;
+    border: none;
   }
-  
-  .actions {
-    width: 100%;
+
+  .mobileHeader {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
   }
 
-  .btnIcon {
-    width: 100%;
+  .pageTitle {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fg);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+  }
+
+  .mobileHeaderActions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .mobileActionBtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--fg);
+    cursor: pointer;
+    transition: all 0.2s ease;
   }
 
-  .buttonGroup {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
+  .mobileActionBtn:active {
+    background: var(--bg-alt);
+    border-color: var(--accent-solid);
   }
 
-  .btnDownload {
+  .mobileSearchRow {
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .searchWrapper {
+    position: relative;
     width: 100%;
-    padding: 12px;
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .searchInput {
+    width: 100%;
+    height: 40px;
+    padding: 8px 16px 8px 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-alt);
+    color: var(--fg);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .cardHeader {
+    display: none; /* Hidden on mobile in favor of mobileHeader */
+  }
+
+  .section {
+    padding: 16px;
   }
 
   .metaItem {
@@ -501,15 +562,6 @@
   .metaLabel {
     width: 100%;
     margin-bottom: 4px;
-  }
-
-  .supportAction {
-    margin-top: 24px;
-  }
-
-  .btnSupport {
-    width: 100%;
-    padding: 12px;
   }
 }
 

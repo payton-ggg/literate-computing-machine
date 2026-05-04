@@ -100,6 +100,7 @@
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--muted);
 }
 
 .searchInput {
@@ -147,39 +148,84 @@
   font-weight: 500;
   cursor: pointer;
   font-family: inherit;
+  transition: color 0.2s;
 }
 
 .sortButton:hover {
   color: var(--fg);
 }
 
+.mobileHeader {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .mobileHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobileHeaderActions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .mobileActionBtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--fg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobileActionBtn:active {
+    background: var(--bg-alt);
+    border-color: var(--accent-solid);
+  }
+
   .topRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    display: none;
   }
-  .btnPrimary {
-    width: 100%;
-    justify-content: center;
-  }
-  .topRowActions {
-    width: 100%;
-    flex-direction: column;
-  }
-  .topRowActions button {
-    width: 100%;
-    justify-content: center;
-  }
+
   .toolbarRow {
+    display: none;
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 12px;
   }
+
+  .toolbarRow.mobileSearchActive {
+    display: flex;
+  }
+
   .searchWrapper {
     width: 100%;
   }
+
   .toolbarActions {
-    justify-content: space-between;
+    justify-content: flex-end;
+    padding-top: 4px;
+  }
+
+  .resultsCount {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .sortButton {
+    display: none; /* Hidden on mobile because it's in the mobileHeader */
   }
 }
