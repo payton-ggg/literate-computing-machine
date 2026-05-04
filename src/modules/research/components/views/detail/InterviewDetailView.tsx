@@ -84,6 +84,7 @@ export default function InterviewDetailView({
   const uploadAreaRef = React.useRef<UploadAreaHandle>(null);
   const pendingUpload = useUploadStore((s) => s.pendingUpload);
   const clearPendingUpload = useUploadStore((s) => s.clearPendingUpload);
+  const hasAutoUploaded = React.useRef(false);
 
   React.useEffect(() => {
     if (
@@ -91,8 +92,10 @@ export default function InterviewDetailView({
       !isUploading &&
       pendingUpload &&
       pendingUpload.id === interview.id &&
-      uploadAreaRef.current
+      uploadAreaRef.current &&
+      !hasAutoUploaded.current
     ) {
+      hasAutoUploaded.current = true;
       const file = pendingUpload.file;
       const lang = pendingUpload.language;
       clearPendingUpload();
