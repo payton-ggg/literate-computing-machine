@@ -30,7 +30,7 @@ export default function AssignFolderDialog({
 }: AssignFolderDialogProps) {
   const t = useTranslations();
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(
-    currentFolderId || null
+    currentFolderId || null,
   );
   const [showReevaluateConfirm, setShowReevaluateConfirm] = useState(false);
   const [isAssigning, setIsAssigning] = useState(false);
@@ -84,7 +84,7 @@ export default function AssignFolderDialog({
                   value={selectedFolderId || ""}
                   onChange={(e) => setSelectedFolderId(e.target.value || null)}
                 >
-                  <option value="">
+                  <option value="" disabled>
                     {t("dialogs.assignFolder.placeholder")}
                   </option>
                   {folders.map((folder) => (
@@ -93,9 +93,6 @@ export default function AssignFolderDialog({
                     </option>
                   ))}
                 </select>
-              </div>
-              <div className={styles.hint}>
-                {t("dialogs.assignFolder.hint")}
               </div>
             </div>
 
@@ -106,7 +103,7 @@ export default function AssignFolderDialog({
               <button
                 className={styles.btnPrimary}
                 onClick={handleSubmit}
-                disabled={isAssigning}
+                disabled={isAssigning || !selectedFolderId}
               >
                 {t("dialogs.assignFolder.assign")}
               </button>

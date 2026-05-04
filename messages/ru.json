@@ -1211,35 +1211,6 @@
       "paymentFailed": "Не удалось оформить платёж. Попробуйте ещё раз."
     }
   },
-  "dialogs": {
-    "createCard": {
-      "title": "Создать карточку исследования",
-      "titleLabel": "Заголовок",
-      "titlePlaceholder": "Напр., Интервью с клиентом OCHI",
-      "descriptionLabel": "Описание",
-      "descriptionPlaceholder": "Контекст или краткое резюме исследования",
-      "notesPlaceholder": "Добавьте заметки или контекст здесь...",
-      "creating": "Создание...",
-      "create": "Создать",
-      "titleTooLong": "Заголовок слишком длинный",
-      "failed": "Не удалось создать карточку"
-    },
-    "createFolder": {
-      "title": "Создать проект",
-      "nameLabel": "Название проекта",
-      "namePlaceholder": "Напр., Мобильное приложение OCHI",
-      "descriptionLabel": "Описание",
-      "descriptionPlaceholder": "О чем этот проект...",
-      "creating": "Создание...",
-      "create": "Создать проект",
-      "networkError": "Ошибка сети. Попробуйте еще раз.",
-      "validationError": "Некорректный запрос или проект уже существует.",
-      "failed": "Не удалось создать проект"
-    },
-    "assignFolder": {
-      "placeholder": "Выберите проект"
-    }
-  },
   "support": {
     "button": "Поддержка"
   }

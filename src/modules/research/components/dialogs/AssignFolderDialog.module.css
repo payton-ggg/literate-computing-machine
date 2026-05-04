@@ -37,8 +37,8 @@
   border: none;
   color: var(--muted);
   cursor: pointer;
-  padding: 4px;
   border-radius: 4px;
+  font-size: 1.5rem;
 }
 
 .closeBtn:hover {
@@ -91,7 +91,7 @@
   border-radius: 6px;
   color: var(--fg);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
@@ -129,7 +129,8 @@
     flex-direction: column;
     gap: 12px;
   }
-  .btnGhost, .btnPrimary {
+  .btnGhost,
+  .btnPrimary {
     width: 100%;
   }
 }
