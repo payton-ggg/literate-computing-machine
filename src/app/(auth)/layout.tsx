@@ -5,7 +5,7 @@ import ToastContainer from "@/components/feedback/ToastContainer";
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <main>{children}</main>
+      <main className="bg-white">{children}</main>
       <ToastContainer />
     </>
   );
