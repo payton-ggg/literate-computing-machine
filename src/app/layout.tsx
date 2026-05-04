@@ -24,8 +24,8 @@ export const metadata: Metadata = {
       "Zernote turns customer interviews, notes, and hypotheses into transcripts and insights. AI workspace for UX research and customer development.",
     images: [
       {
-        url: "https://zernote.com/og-image.png",
-        secureUrl: "https://zernote.com/og-image.png",
+        url: "/og-image.png",
+        secureUrl: "/og-image.png",
         type: "image/png",
         width: 1200,
         height: 630,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
       "Zernote turns customer interviews, notes, and hypotheses into transcripts and insights. AI workspace for UX research and customer development.",
     images: [
       {
-        url: "https://zernote.com/og-image.png",
+        url: "/og-image.png",
         alt: "Zernote - AI workspace for customer interviews",
       },
     ],
