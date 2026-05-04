@@ -6,6 +6,7 @@ import { interviewApi, folderApi } from "@/modules/research/api/interviews.api";
 import type { Folder } from "@/modules/research/types/interview.types";
 import styles from "./CreateFolderDialog.module.css";
 import { useUploadStore } from "../../store/useUploadStore";
+import LanguageDropdown from "../global/LanguageDropdown";
 
 interface CreateCardDialogProps {
   isOpen: boolean;
@@ -288,15 +289,12 @@ export default function CreateCardDialog({
 
           <div className={styles.formGroup}>
             <label>{t("card.upload.language")}</label>
-            <select
-              className={styles.textInput}
+            <LanguageDropdown
               value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-              style={{ cursor: "pointer" }}
-            >
-              <option value="ru">{t("card.upload.russian")}</option>
-              <option value="en">{t("card.upload.english")}</option>
-            </select>
+              onChange={setSelectedLanguage}
+              popularLabel={t("card.upload.popularLanguages")}
+              otherLabel={t("card.upload.otherLanguages")}
+            />
           </div>
 
           <div className={styles.formGroup}>
