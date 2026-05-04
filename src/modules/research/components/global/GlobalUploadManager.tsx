@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useUploadStore } from "../../store/useUploadStore";
 import { interviewApi } from "../../api/interviews.api";
 import UploadProgress from "./UploadProgress";
@@ -27,7 +27,11 @@ export default function GlobalUploadManager() {
 
     const supportsDirectUpload = (file: File) => {
       const name = (file.name || "").toLowerCase();
-      return !name.endsWith(".txt") && !name.endsWith(".md") && !name.endsWith(".pdf");
+      return (
+        !name.endsWith(".txt") &&
+        !name.endsWith(".md") &&
+        !name.endsWith(".pdf")
+      );
     };
 
     const uploadViaFormDataFn = async () => {
@@ -37,14 +41,19 @@ export default function GlobalUploadManager() {
       await interviewApi.attachAudio(interviewId, formData, {
         onUploadProgress: (e) => {
           if (e.total) {
-            updateTask(interviewId, { progress: Math.round((e.loaded / e.total) * 100) });
+            updateTask(interviewId, {
+              progress: Math.round((e.loaded / e.total) * 100),
+            });
           }
         },
       });
     };
 
     const uploadFilesDirectlyFn = async () => {
-      const totalBytes = files.reduce((sum: number, f: File) => sum + (f.size || 0), 0);
+      const totalBytes = files.reduce(
+        (sum: number, f: File) => sum + (f.size || 0),
+        0,
+      );
       let uploadedBytes = 0;
       const confirmedFiles = [];
 
@@ -63,15 +72,22 @@ export default function GlobalUploadManager() {
         await interviewApi.uploadToSignedUrl(
           urlRes.data.upload_url,
           file,
-          urlRes.data.headers || { "Content-Type": file.type || "application/octet-stream" },
+          urlRes.data.headers || {
+            "Content-Type": file.type || "application/octet-stream",
+          },
           (e) => {
             const currentLoaded = e.loaded || 0;
             uploadedBytes += currentLoaded - prevLoaded;
             prevLoaded = currentLoaded;
             if (totalBytes > 0) {
-              updateTask(interviewId, { progress: Math.min(99, Math.round((uploadedBytes / totalBytes) * 100)) });
+              updateTask(interviewId, {
+                progress: Math.min(
+                  99,
+                  Math.round((uploadedBytes / totalBytes) * 100),
+                ),
+              });
             }
-          }
+          },
         );
 
         uploadedBytes += (file.size || 0) - prevLoaded;
@@ -97,22 +113,55 @@ export default function GlobalUploadManager() {
       } else {
         await uploadViaFormDataFn();
       }
-      
+
       updateTask(interviewId, { progress: 100, step: "transcribing" });
 
-      // After 5 seconds of transcribing, we can dismiss the global UI 
-      // or we just leave it so the user can navigate to the page.
-      // Let's remove it after 4 seconds to not pollute the UI forever
-      setTimeout(() => {
-        removeTask(interviewId);
-      }, 4000);
+      // Poll the backend until the status is "ready" or "failed"
+      const pollInterval = setInterval(async () => {
+        try {
+          const res = await interviewApi.get(interviewId);
+          const status = res.data.status;
 
+          if (
+            ![
+              "uploading",
+              "converting",
+              "analyzing",
+              "processing",
+              "proccesing",
+            ].includes(status)
+          ) {
+            clearInterval(pollInterval);
+
+            if (status === "ready") {
+              updateTask(interviewId, { step: "done", progress: 100 });
+              // Leave it on screen for 5 seconds to show it's done, then remove
+              setTimeout(() => removeTask(interviewId), 5000);
+            } else if (status === "failed") {
+              updateTask(interviewId, {
+                step: "error",
+                error:
+                  res.data.processing_error ||
+                  t("card.upload.processingFailed"),
+              });
+              setTimeout(() => removeTask(interviewId), 10000);
+            } else {
+              // some other status like empty (deleted)
+              removeTask(interviewId);
+            }
+          }
+        } catch (err) {
+          // Silently ignore polling errors so it keeps trying
+        }
+      }, 5000);
     } catch (error: any) {
-      const backendMsg = error.response?.data?.error || error.response?.data?.message;
-      const msg = backendMsg ? `${t("card.upload.uploadFailed")}: ${backendMsg}` : t("card.upload.uploadFailed");
+      const backendMsg =
+        error.response?.data?.error || error.response?.data?.message;
+      const msg = backendMsg
+        ? `${t("card.upload.uploadFailed")}: ${backendMsg}`
+        : t("card.upload.uploadFailed");
       updateTask(interviewId, { error: msg, step: "error" });
-      
-      // Remove error after 10 seconds
+
       setTimeout(() => {
         removeTask(interviewId);
       }, 10000);
@@ -123,44 +172,26 @@ export default function GlobalUploadManager() {
   if (activeTasks.length === 0) return null;
 
   return (
-    <div style={{
-      position: "fixed",
-      bottom: 24,
-      right: 24,
-      zIndex: 9999,
-      display: "flex",
-      flexDirection: "column",
-      gap: 12,
-      maxWidth: 320,
-      width: "100%"
-    }}>
-      {activeTasks.map(task => (
-        <div key={task.id} style={{
-          background: "var(--bg-card)",
-          border: "1px solid var(--border)",
-          borderRadius: 8,
-          padding: 16,
-          boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
-          display: "flex",
-          flexDirection: "column",
-          gap: 8
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "var(--fg)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+    <div className="fixed bottom-6 right-6 z-9999 flex flex-col gap-3 max-w-[360px] w-full">
+      {activeTasks.map((task) => (
+        <div
+          key={task.id}
+          className="bg-(--bg-card) rounded-lg p-4 shadow-md flex flex-col gap-2"
+        >
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-[13px] font-semibold text-(--fg) overflow-hidden truncate whitespace-nowrap flex-1">
               {task.fileName}
             </span>
-            <button 
+            <button
               onClick={() => removeTask(task.id)}
-              style={{ background: "transparent", border: "none", cursor: "pointer", color: "var(--muted)" }}
+              className="bg-transparent border-none cursor-pointer text-(--muted) p-1 shrink-0"
             >
               ✕
             </button>
           </div>
-          
+
           {task.error ? (
-            <div style={{ fontSize: 13, color: "var(--danger)" }}>
-              {task.error}
-            </div>
+            <div className="text-[13px] text-(--danger)">{task.error}</div>
           ) : (
             <UploadProgress step={task.step} progress={task.progress} />
           )}

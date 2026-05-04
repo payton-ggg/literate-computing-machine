@@ -17,13 +17,14 @@
   --color-warning: var(--warning);
   --color-danger: var(--danger);
 
-  --font-sans: "Onest", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans:
+    "Onest", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 :root {
-  --app-bg: #F4F4F6;
-  --bg: #F4F4F6;
-  --bg-alt: #F4F4F6;
+  --app-bg: #f4f4f6;
+  --bg: #f4f4f6;
+  --bg-alt: #f4f4f6;
   --bg-card: #ffffff;
   --fg: #1e293b;
   --fg-secondary: #475569;
@@ -60,7 +61,7 @@
   --toast-info-text: #1e40af;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --app-bg: #0a0a0a;
   --bg: #0a0a0a;
   --bg-alt: #0f1621;
@@ -103,11 +104,10 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: var(--app-bg);
+  background: #121c2d;
   background-attachment: fixed;
   min-height: 100vh;
 }
-
 
 body,
 button,

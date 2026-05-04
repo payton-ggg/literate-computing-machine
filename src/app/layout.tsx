@@ -4,6 +4,7 @@ import { getMessages, getLocale } from "next-intl/server";
 import { LocaleProvider } from "@/lib/i18n";
 import { AuthLoader } from "@/lib/providers/AuthLoader";
 import HeaderSwitch from "@/components/layout/HeaderSwitch";
+import GlobalUploadManager from "@/modules/research/components/global/GlobalUploadManager";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,7 +44,19 @@ export default async function RootLayout({
           <LocaleProvider initialLocale={locale as "en" | "ru"}>
             <AuthLoader>
               <HeaderSwitch />
-              <div className="rounded-4xl ">{children}</div>
+              <div
+                className="flex-1 overflow-hidden"
+                style={{
+                  backgroundColor: "var(--bg)",
+                  borderTopLeftRadius: "28px",
+                  borderTopRightRadius: "28px",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                {children}
+              </div>
+              <GlobalUploadManager />
             </AuthLoader>
           </LocaleProvider>
         </NextIntlClientProvider>
