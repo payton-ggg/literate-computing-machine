@@ -80,6 +80,7 @@ export default function InterviewDetailView({
   // Phase 2 Upload States
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [globalUploadError, setGlobalUploadError] = useState<string | null>(null);
 
   const uploadAreaRef = React.useRef<UploadAreaHandle>(null);
   const pendingUpload = useUploadStore((s) => s.pendingUpload);
@@ -115,6 +116,7 @@ export default function InterviewDetailView({
   const handleUploadStart = () => {
     setIsUploading(true);
     setUploadProgress(0);
+    setGlobalUploadError(null);
   };
 
   const handleUploadProgress = (prog: number) => {
@@ -135,7 +137,7 @@ export default function InterviewDetailView({
   const handleUploadError = (msg: string) => {
     setIsUploading(false);
     console.error(msg);
-    // Ideally show a toast
+    setGlobalUploadError(msg);
   };
 
   const openAssignFolder = async () => {
@@ -281,6 +283,15 @@ export default function InterviewDetailView({
     }
   };
 
+  const getProgressStep = () => {
+    if (isUploading) return "uploading";
+    if (interview.status === "converting") return "processing";
+    if (["analyzing", "processing", "proccesing"].includes(interview.status)) {
+      return "transcribing";
+    }
+    return interview.status;
+  };
+
   return (
     <div className={styles.cardDetail}>
       <div className={styles.cardHeader}>
@@ -388,6 +399,23 @@ export default function InterviewDetailView({
             onLowBalance={handleLowBalance}
             onError={handleUploadError}
           />
+          {globalUploadError && (
+            <div
+              className={styles.uploadError}
+              style={{
+                marginTop: 12,
+                padding: "12px 16px",
+                background: "var(--bg-danger-light, rgba(239, 68, 68, 0.1))",
+                color: "var(--danger, #ef4444)",
+                border: "1px solid var(--border-danger, rgba(239, 68, 68, 0.2))",
+                borderRadius: 8,
+                fontSize: 14,
+                whiteSpace: "pre-wrap"
+              }}
+            >
+              {globalUploadError}
+            </div>
+          )}
         </div>
       )}
 
@@ -397,7 +425,7 @@ export default function InterviewDetailView({
         )) && (
         <div className={styles.section}>
           <UploadProgress
-            step={isUploading ? "uploading" : interview.status}
+            step={getProgressStep()}
             progress={uploadProgress}
           />
         </div>

@@ -192,7 +192,9 @@ const UploadArea = forwardRef<UploadAreaHandle, UploadAreaProps>(({
           Number(error.response.data?.available_seconds) || 0
         );
       } else {
-        onError(t("card.upload.uploadFailed"));
+        const backendMsg = error.response?.data?.error || error.response?.data?.message;
+        const msg = backendMsg ? `${t("card.upload.uploadFailed")}: ${backendMsg}` : t("card.upload.uploadFailed");
+        onError(msg);
       }
     }
   };
