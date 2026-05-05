@@ -30,7 +30,7 @@ export default function Breadcrumbs({
                   {item.label}
                 </Link>
               ) : !isLast ? (
-                <span className={styles.link}>{item.label}</span>
+                <span className={`${styles.link}`}>{item.label}</span>
               ) : (
                 <span className={styles.current}>{item.label}</span>
               )}

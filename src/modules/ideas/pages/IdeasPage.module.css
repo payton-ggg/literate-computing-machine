@@ -5,6 +5,10 @@
   background-color: var(--bg);
 }
 
+.withBorderRadius {
+  border-radius: 16px;
+}
+
 .container {
   width: 100%;
   margin: 0 auto;
@@ -12,6 +16,11 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.hasFolder {
+  background-color: var(--bg-card);
+  border-radius: 16px;
 }
 
 .ideasContent {
@@ -63,7 +72,7 @@
 
 .embedded .ideasContent {
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 0 0 16px 16px;
   border: none;
   overflow: visible;
 }

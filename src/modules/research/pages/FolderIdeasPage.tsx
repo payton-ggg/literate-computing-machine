@@ -45,14 +45,14 @@ export function FolderIdeasPage({ folderId }: FolderIdeasPageProps) {
   ];
 
   return (
-    <div className={`${styles.folderIdeasPage} ${styles.withProjectLayout}`}>
-      <div className={styles.projectLayout}>
+    <div className={`${styles.folderIdeasPage} ${styles.withProjectLayout} rounded-xl`}>
+      <div className={`${styles.projectLayout} rounded-xl`}>
         <Breadcrumbs items={breadcrumbItems} />
 
-        <div className={styles.projectLayoutInner}>
+        <div className={`${styles.projectLayoutInner} rounded-xl`}>
           <InterviewSidebar folder={currentFolder} />
 
-          <main className={styles.projectContent}>
+          <main className={`${styles.projectContent} rounded-xl`}>
             {isLoading && !currentFolder ? (
               <div className={styles.loadingSkeletonWrapper}>
                 {Array.from({ length: 4 }).map((_, i) => (

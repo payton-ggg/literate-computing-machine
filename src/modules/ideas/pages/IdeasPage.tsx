@@ -237,8 +237,8 @@ export default function IdeasPage({ folderId }: IdeasPageProps) {
   const isFilterEmpty = data.length > 0 && table.getFilteredRowModel().rows.length === 0;
 
   return (
-    <div className={`${styles.page} ${isEmbedded ? styles.embedded : ""}`}>
-      <div className={styles.container}>
+    <div className={`${styles.page} ${isEmbedded ? styles.embedded : ""} ${folderId ? styles.withBorderRadius : ""}`}>
+      <div className={`${styles.container} ${folderId ? styles.hasFolder : ""}`}>
         <IdeasPageTitle
           title={t("ideasPage.title")}
           onToggleSearch={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
