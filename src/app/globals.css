@@ -107,6 +107,7 @@ html {
   background: #121c2d;
   background-attachment: fixed;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body,

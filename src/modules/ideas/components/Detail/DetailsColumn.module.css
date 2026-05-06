@@ -63,5 +63,6 @@
   .column {
     position: static;
     top: auto;
+    padding: 16px;
   }
 }

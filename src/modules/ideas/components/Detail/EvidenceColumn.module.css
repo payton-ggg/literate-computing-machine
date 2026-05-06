@@ -1,8 +1,8 @@
 .column {
-  background: transparent;
   display: flex;
   flex-direction: column;
   background: var(--bg-card);
+  padding: 16px 26px;
   border-radius: 12px;
   min-height: 0;
 }
@@ -97,6 +97,9 @@
 }
 
 @media (max-width: 768px) {
+  .column {
+    padding: 16px;
+  }
   .header {
     flex-direction: column;
     align-items: stretch;

@@ -42,11 +42,6 @@ export default function IdeaDetailHeader({
             >
               {statusLabel}
             </span>
-            {idea.pain > 0 && (
-              <span className={`${styles.metaTag} ${styles.painTag}`}>
-                {t("ideasPage.columns.pain")}: {idea.pain}
-              </span>
-            )}
           </div>
         </div>
 
