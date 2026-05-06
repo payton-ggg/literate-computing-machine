@@ -8,6 +8,7 @@ import ConfirmDialog from "@/components/feedback/ConfirmDialog";
 
 import { useInterviewSelection } from "../hooks/useInterviewSelection";
 import { useInterviewFiltering } from "../hooks/useInterviewFiltering";
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { interviewApi, folderApi } from "../api/interviews.api";
 import type { Interview, Folder } from "../types/interview.types";
 import styles from "./FolderResearchPage.module.css";
@@ -41,6 +42,9 @@ export function FolderResearchPage({ folderId }: FolderResearchPageProps) {
 
   const selection = useInterviewSelection();
   const filtering = useInterviewFiltering(interviews);
+
+  const isModalOpen = showCreateDialog || showDeleteConfirm;
+  useLockBodyScroll(isModalOpen);
 
   // Load folders + interviews
   const loadData = useCallback(async () => {
@@ -237,27 +241,29 @@ export function FolderResearchPage({ folderId }: FolderResearchPageProps) {
         }}
       />
       <div className="h-20 w-full" />
-      <button
-        className={styles.mobileFab}
-        onClick={() => setShowCreateDialog(true)}
-      >
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ marginRight: 8 }}
+      {!isModalOpen && (
+        <button
+          className={styles.mobileFab}
+          onClick={() => setShowCreateDialog(true)}
         >
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-          <polyline points="7 10 12 15 17 10" />
-          <line x1="12" y1="15" x2="12" y2="3" />
-        </svg>
-        {t("interviews.uploadInterview")}
-      </button>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ marginRight: 8 }}
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          {t("interviews.uploadInterview")}
+        </button>
+      )}
     </div>
   );
 }
