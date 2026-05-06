@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { interviewApi, folderApi } from "@/modules/research/api/interviews.api";
 import type { Folder } from "@/modules/research/types/interview.types";
 import styles from "./CreateFolderDialog.module.css";
@@ -25,6 +26,7 @@ export default function CreateCardDialog({
 }: CreateCardDialogProps) {
   const t = useTranslations();
   const locale = useLocale();
+  useLockBodyScroll(isOpen);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

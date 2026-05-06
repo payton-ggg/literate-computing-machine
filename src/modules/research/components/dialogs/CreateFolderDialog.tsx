@@ -2,6 +2,7 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import styles from "./CreateFolderDialog.module.css";
 import { folderApi } from "../../api/interviews.api";
 
@@ -17,6 +18,7 @@ export default function CreateFolderDialog({
   onCreated,
 }: CreateFolderDialogProps) {
   const t = useTranslations();
+  useLockBodyScroll(isOpen);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

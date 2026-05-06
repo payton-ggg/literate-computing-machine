@@ -8,7 +8,6 @@ import ConfirmDialog from "@/components/feedback/ConfirmDialog";
 
 import { useInterviewSelection } from "../hooks/useInterviewSelection";
 import { useInterviewFiltering } from "../hooks/useInterviewFiltering";
-import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import { interviewApi, folderApi } from "../api/interviews.api";
 import type { Interview, Folder } from "../types/interview.types";
 import styles from "./FolderResearchPage.module.css";
@@ -44,7 +43,6 @@ export function FolderResearchPage({ folderId }: FolderResearchPageProps) {
   const filtering = useInterviewFiltering(interviews);
 
   const isModalOpen = showCreateDialog || showDeleteConfirm;
-  useLockBodyScroll(isModalOpen);
 
   // Load folders + interviews
   const loadData = useCallback(async () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useLockBodyScroll } from "@/hooks/useLockBodyScroll";
 import styles from "./ConfirmDialog.module.css";
 
 interface ConfirmDialogProps {
@@ -32,6 +33,7 @@ export default function ConfirmDialog({
   onClose,
 }: ConfirmDialogProps) {
   const t = useTranslations();
+  useLockBodyScroll(isOpen);
 
   if (!isOpen) return null;
 
