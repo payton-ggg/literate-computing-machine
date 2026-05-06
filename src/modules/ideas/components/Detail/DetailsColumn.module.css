@@ -1,10 +1,9 @@
 .column {
   background: var(--bg-card);
   border-radius: 12px;
-  border: 1px solid var(--border);
   padding: 24px;
-  position: sticky;
-  top: 32px;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .sectionTitle {

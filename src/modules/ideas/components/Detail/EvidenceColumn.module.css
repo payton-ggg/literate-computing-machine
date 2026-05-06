@@ -1,5 +1,10 @@
 .column {
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: 12px;
+  min-height: 0;
 }
 
 .header {
@@ -72,12 +77,17 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-height: calc(100vh - 320px);
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding-right: 8px;
 }
-.list::-webkit-scrollbar { width: 6px; }
-.list::-webkit-scrollbar-track { background: transparent; }
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
 .list::-webkit-scrollbar-thumb {
   background: var(--border);
   border-radius: 4px;
@@ -98,7 +108,9 @@
     align-items: stretch;
     gap: 10px;
   }
-  .filterSelect { width: 100%; }
+  .filterSelect {
+    width: 100%;
+  }
   .list {
     max-height: none;
     padding-right: 0;
