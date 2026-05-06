@@ -115,7 +115,7 @@
     width: 100%;
   }
   .list {
-    max-height: none;
-    padding-right: 0;
+    max-height: 400px;
+    padding-right: 4px;
   }
 }
