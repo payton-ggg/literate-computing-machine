@@ -21,7 +21,7 @@ interface JobTreeSidePanelProps {
   getBadgeLabel: (level: NodeLevel) => string;
   getImportanceColor: (v?: number) => string;
   getSatisfactionColor: (v?: number) => string;
-  t: (key: string, values?: Record<string, unknown>) => string;
+  t: (key: string) => string;
 }
 
 export default function JobTreeSidePanel({

@@ -24,15 +24,20 @@ export default function InterviewSidebar({
 
   const ideasPath = folder?.id ? `/research/${folder.id}/ideas` : "/ideas";
   const graphPath = `/research/${folder?.id}/graph`;
+  const jobsTreePath = interviewId
+    ? `/research/interview/${interviewId}/job-tree`
+    : `/research/${folder?.id}/job-tree`;
 
   // Determine active state based on pathname
   const isResearchActive =
     pathname === researchPath ||
     (pathname.startsWith(`/research/${folder?.id}`) &&
       !pathname.includes("/graph") &&
-      !pathname.includes("/ideas"));
+      !pathname.includes("/ideas") &&
+      !pathname.includes("/job-tree"));
   const isGraphActive = pathname === graphPath;
   const isIdeasActive = pathname === ideasPath;
+  const isJobsTreeActive = pathname === jobsTreePath;
 
   return (
     <aside className={styles.sidebar}>
@@ -133,6 +138,32 @@ export default function InterviewSidebar({
             />
           </svg>
           <span>{t("insights.graph.title") || "Инсайты"}</span>
+        </Link>
+
+        <Link
+          href={jobsTreePath}
+          className={
+            isJobsTreeActive
+              ? `${styles.navItem} ${styles.navItemActive}`
+              : styles.navItem
+          }
+        >
+          <svg
+            width="25"
+            height="25"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="7.5" y="2" width="5" height="4" rx="1" fill="#606B85" />
+            <rect x="2" y="14" width="5" height="4" rx="1" fill="#606B85" />
+            <rect x="13" y="14" width="5" height="4" rx="1" fill="#606B85" />
+            <path d="M10 6V11" stroke="#606B85" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M4.5 14V11" stroke="#606B85" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M15.5 14V11" stroke="#606B85" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M4.5 11H15.5" stroke="#606B85" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+          <span>{t("folderJtbd.nav.jobTree") || "Job Tree"}</span>
         </Link>
 
         <Link
