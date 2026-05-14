@@ -1,6 +1,10 @@
 "use client";
 
-import type { FlatNode, Connection, NodeLevel } from "../../types/jobTree.types";
+import {
+  FlatNode,
+  Connection,
+  NodeLevel,
+} from "@/modules/research/types/jobTree.types";
 import styles from "./JobTreeCanvas.module.css";
 
 interface JobTreeCanvasProps {

@@ -1,6 +1,6 @@
 "use client";
 
-import type { EditNodeForm } from "../../types/jobTree.types";
+import { EditNodeForm } from "@/modules/research/types/jobTree.types";
 import styles from "./EditJobModal.module.css";
 
 interface EditJobModalProps {
@@ -25,7 +25,12 @@ export default function EditJobModal({
   if (!isOpen) return null;
 
   return (
-    <div className={styles.modalOverlay} onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+    <div
+      className={styles.modalOverlay}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
           <h3 className={styles.modalTitle}>
@@ -64,9 +69,7 @@ export default function EditJobModal({
                 />
               </div>
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>
-                  {t("jtbd.iWantTo")}
-                </label>
+                <label className={styles.formLabel}>{t("jtbd.iWantTo")}</label>
                 <textarea
                   className={styles.formTextarea}
                   value={form.i_want_to}
@@ -76,9 +79,7 @@ export default function EditJobModal({
                 />
               </div>
               <div className={styles.formGroup}>
-                <label className={styles.formLabel}>
-                  {t("jtbd.soThat")}
-                </label>
+                <label className={styles.formLabel}>{t("jtbd.soThat")}</label>
                 <textarea
                   className={styles.formTextarea}
                   value={form.so_that}
@@ -132,9 +133,7 @@ export default function EditJobModal({
             disabled={isSaving}
           >
             {isSaving && <span className={styles.spinnerSmall} />}
-            {isSaving
-              ? t("common.saving") || "Saving..."
-              : t("common.save")}
+            {isSaving ? t("common.saving") || "Saving..." : t("common.save")}
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import type { FlatNode, NodeLevel } from "../../types/jobTree.types";
+import { FlatNode, NodeLevel } from "@/modules/research/types/jobTree.types";
 import styles from "./JobTreeSidePanel.module.css";
 
 interface JobTreeSidePanelProps {
@@ -11,8 +11,8 @@ interface JobTreeSidePanelProps {
   onCopyLink: () => void;
   onDownloadNode: (node: FlatNode) => void;
   onDeleteNode: () => void;
-  onNavigatePrev: () => FlatNode | null;
-  onNavigateNext: () => FlatNode | null;
+  onNavigatePrev: () => void;
+  onNavigateNext: () => void;
   canNavigatePrev: boolean;
   canNavigateNext: boolean;
   children: FlatNode[];
@@ -204,9 +204,7 @@ export default function JobTreeSidePanel({
                   <div
                     className={styles.scoreDot}
                     style={{
-                      background: getSatisfactionColor(
-                        node.data?.satisfaction,
-                      ),
+                      background: getSatisfactionColor(node.data?.satisfaction),
                     }}
                   />
                 </div>
@@ -247,10 +245,7 @@ export default function JobTreeSidePanel({
             <label>{t("jtbd.evidence")}</label>
             <div className={styles.evidenceBox}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 21a9 9 0 100-18 9 9 0 000 18z"
-                  fill="#E0E7FF"
-                />
+                <path d="M12 21a9 9 0 100-18 9 9 0 000 18z" fill="#E0E7FF" />
                 <path d="M10 10h1.5l-1 3h2" stroke="#4F46E5" />
               </svg>
               {node.data.evidence}
@@ -296,11 +291,7 @@ export default function JobTreeSidePanel({
           disabled={!canNavigatePrev}
         >
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M12 15l-5-5 5-5"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
+            <path d="M12 15l-5-5 5-5" stroke="currentColor" strokeWidth="2" />
           </svg>
           {t("folderJtbd.panel.prev")}
         </button>
