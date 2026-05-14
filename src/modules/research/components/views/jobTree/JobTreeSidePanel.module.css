@@ -1,0 +1,359 @@
+/* Side Panel */
+.sidePanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  box-shadow: -12px 0 32px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidePanel {
+    width: 100%;
+    border-left: none;
+  }
+  .panelHeader {
+    padding: 16px 20px;
+  }
+  .panelBody {
+    padding: 20px;
+  }
+  .panelFooter {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidePanel {
+    width: 100%;
+    border-left: none;
+  }
+}
+
+.panelHeader {
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.panelHeaderLeft {
+  display: flex;
+  align-items: center;
+}
+.panelType {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.textCore {
+  color: var(--accent);
+}
+.textHighLevel {
+  color: #818cf8;
+}
+.btnClose {
+  border: none;
+  background: none;
+  font-size: 28px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.panelBody {
+  padding: 24px 32px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.panelTopActions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btnPanel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.btnPanel.primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btnPanel.secondary {
+  background: var(--bg-alt);
+  color: var(--fg);
+}
+.btnPanel.iconOnly {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--muted);
+}
+.btnPanel.iconOnly:hover {
+  color: var(--fg);
+  border-color: var(--muted);
+}
+.btnPanel.iconOnly.danger:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: rgba(217, 45, 32, 0.1);
+}
+.panelSubActions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.panelName {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--fg);
+  margin: 0 0 16px;
+  line-height: 1.25;
+}
+.panelDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+.panelDesc.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.panelDetails {
+  margin-bottom: 16px;
+}
+.detailBlock {
+  margin-bottom: 28px;
+}
+.detailBlock label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.detailContent {
+  background: var(--bg-alt);
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--fg);
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+.scoreRow {
+  display: flex;
+  gap: 32px;
+}
+.scoreItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.scoreDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.panelChildren {
+  margin-top: 8px;
+}
+.childrenTitle {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 24px 0 16px;
+}
+.panelChildItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  cursor: pointer;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+.panelChildBadge {
+  background: var(--bg-card);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.panelChildName {
+  font-size: 14px;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.panelEvidence label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.evidenceBox {
+  background: var(--bg-alt);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 15px;
+  color: var(--accent);
+  font-style: italic;
+  position: relative;
+  margin-top: 12px;
+  padding-left: 60px;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+.evidenceBox svg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  opacity: 0.6;
+}
+
+.panelConnections {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.connHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.connHeader h3 {
+  font-size: 14px;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.connStats {
+  display: flex;
+  gap: 12px;
+}
+.stat {
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.stat.up {
+  color: var(--success);
+}
+.stat.down {
+  color: var(--danger);
+}
+.btnAddConn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  font-size: 20px;
+  color: var(--muted);
+}
+.connBar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.panelFooter {
+  padding: 24px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  background: var(--bg-card);
+}
+.btnNav {
+  flex: 1;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+.btnNavPrimary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+}
+.btnNav:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.btnNav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

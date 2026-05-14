@@ -4,3 +4,4 @@ export { default as ListResearchPage } from "./pages/ListResearchPage";
 export { FolderResearchPage } from "./pages/FolderResearchPage";
 export { FolderIdeasPage } from "./pages/FolderIdeasPage";
 export { InterviewDetailPage } from "./pages/InterviewDetailPage";
+export { JobTreePage } from "./pages/JobTreePage";
