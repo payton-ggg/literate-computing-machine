@@ -36,7 +36,7 @@ export function JobTreePage({ interviewId, folderId }: JobTreePageProps) {
 
   return (
     <div className={`${styles.jobTreePage}`}>
-      <div className="">
+      <div className="px-6 py-2">
         {!tree.isFullScreen && <Breadcrumbs items={tree.breadcrumbItems} />}
       </div>
 
