@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import ConfirmDialog from "@/components/feedback/ConfirmDialog";
 
@@ -23,6 +24,11 @@ export function JobTreePage({ interviewId, folderId }: JobTreePageProps) {
 
   const tree = useJobTree({ interviewId, folderId });
   const canvas = useJobTreeCanvas();
+
+  useEffect(() => {
+    canvas.setOnDeselect(() => tree.setSelectedNodeId(null));
+    return () => canvas.setOnDeselect(null);
+  }, [canvas.setOnDeselect, tree.setSelectedNodeId]);
 
   const handleNavigatePrev = () => {
     const node = tree.navigatePrev();

@@ -986,6 +986,7 @@
     "error": "Failed to send message"
   },
   "jtbd": {
+    "close": "Close",
     "extractJobs": "Job Tree",
     "extracting": "Extracting...",
     "viewTree": "View Tree",

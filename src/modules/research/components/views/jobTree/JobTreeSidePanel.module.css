@@ -14,6 +14,32 @@
   animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.btnCloseFloating {
+  position: absolute;
+  top: 16px;
+  left: -48px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--fg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 101;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+.btnCloseFloating:hover {
+  background: var(--danger, #D92D20);
+  color: #fff;
+  border-color: var(--danger, #D92D20);
+  transform: scale(1.1);
+}
+
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -71,12 +97,25 @@
   color: #818cf8;
 }
 .btnClose {
-  border: none;
-  background: none;
-  font-size: 28px;
-  color: var(--muted);
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--fg);
   cursor: pointer;
-  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.btnClose:hover {
+  background: var(--border);
+  color: var(--danger, #D92D20);
+  border-color: var(--danger, #D92D20);
 }
 
 .panelBody {

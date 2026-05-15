@@ -60,6 +60,12 @@ export function useJobTreeCanvas() {
     [zoom],
   );
 
+  const onDeselectRef = useRef<(() => void) | null>(null);
+
+  const setOnDeselect = useCallback((fn: (() => void) | null) => {
+    onDeselectRef.current = fn;
+  }, []);
+
   const onCanvasMouseDown = useCallback(
     (e: React.MouseEvent) => {
       if ((e.target as HTMLElement).closest(".node-card")) return;
@@ -67,8 +73,13 @@ export function useJobTreeCanvas() {
       setIsDragging(true);
       const startX = e.clientX - panX;
       const startY = e.clientY - panY;
+      let moved = false;
 
       const moveHandler = (me: MouseEvent) => {
+        const dx = me.clientX - (startX + panX);
+        const dy = me.clientY - (startY + panY);
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
         }
@@ -80,6 +91,9 @@ export function useJobTreeCanvas() {
 
       const upHandler = () => {
         setIsDragging(false);
+        if (!moved && onDeselectRef.current) {
+          onDeselectRef.current();
+        }
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
         }
@@ -165,5 +179,6 @@ export function useJobTreeCanvas() {
     onWheel,
     onCanvasMouseDown,
     onCanvasTouchStart,
+    setOnDeselect,
   };
 }

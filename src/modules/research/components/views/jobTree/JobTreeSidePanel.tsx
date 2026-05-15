@@ -46,6 +46,12 @@ export default function JobTreeSidePanel({
 }: JobTreeSidePanelProps) {
   return (
     <div className={styles.sidePanel}>
+      <button className={styles.btnCloseFloating} onClick={onClose} title={t("jtbd.close") || "Close"}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
       <header className={styles.panelHeader}>
         <div className={styles.panelHeaderLeft}>
           <span
@@ -60,9 +66,6 @@ export default function JobTreeSidePanel({
             {getBadgeLabel(node.level)} {t("folderJtbd.panel.coreTitle")}
           </span>
         </div>
-        <button className={styles.btnClose} onClick={onClose}>
-          &times;
-        </button>
       </header>
 
       <div className={styles.panelBody}>
