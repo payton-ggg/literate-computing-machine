@@ -67,7 +67,6 @@ export default function PricingSection() {
               />
               {plan.deco && (
                 <div className="price-card__deco" aria-hidden="true">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/landing-assets/price-pro-deco.png" alt="" />
                 </div>
               )}
