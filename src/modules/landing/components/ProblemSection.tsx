@@ -20,7 +20,6 @@ export default function ProblemSection() {
           </ul>
         </div>
         <div className="problem__art">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/landing-assets/problem.png"
             alt=""
